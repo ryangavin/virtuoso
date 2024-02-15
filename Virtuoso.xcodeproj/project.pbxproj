@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9480B79B2B7EAA2F00DDB251 /* RealityKitContent */; };
+		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
+		9480B7A02B7EAA2F00DDB251 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79F2B7EAA2F00DDB251 /* ContentView.swift */; };
+		9480B7A22B7EAA2F00DDB251 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */; };
+		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
+		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
+		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9480B7AE2B7EAA3000DDB251 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9480B78E2B7EAA2F00DDB251 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9480B7952B7EAA2F00DDB251;
+			remoteInfo = Virtuoso;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9480B79A2B7EAA2F00DDB251 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoApp.swift; sourceTree = "<group>"; };
+		9480B79F2B7EAA2F00DDB251 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
+		9480B7A32B7EAA3000DDB251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9480B7A82B7EAA3000DDB251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9480B7932B7EAA2F00DDB251 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9480B7AA2B7EAA3000DDB251 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9480B78D2B7EAA2F00DDB251 = {
+			isa = PBXGroup;
+			children = (
+				9480B7982B7EAA2F00DDB251 /* Virtuoso */,
+				9480B7992B7EAA2F00DDB251 /* Packages */,
+				9480B7B02B7EAA3000DDB251 /* VirtuosoTests */,
+				9480B7972B7EAA2F00DDB251 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9480B7972B7EAA2F00DDB251 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9480B7962B7EAA2F00DDB251 /* Virtuoso.app */,
+				9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
+			isa = PBXGroup;
+			children = (
+				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
+				9480B79F2B7EAA2F00DDB251 /* ContentView.swift */,
+				9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */,
+				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
+				9480B7A82B7EAA3000DDB251 /* Info.plist */,
+				9480B7A52B7EAA3000DDB251 /* Preview Content */,
+			);
+			path = Virtuoso;
+			sourceTree = "<group>";
+		};
+		9480B7992B7EAA2F00DDB251 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				9480B79A2B7EAA2F00DDB251 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		9480B7A52B7EAA3000DDB251 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9480B7B02B7EAA3000DDB251 /* VirtuosoTests */ = {
+			isa = PBXGroup;
+			children = (
+				9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */,
+			);
+			path = VirtuosoTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9480B7952B7EAA2F00DDB251 /* Virtuoso */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9480B7B52B7EAA3000DDB251 /* Build configuration list for PBXNativeTarget "Virtuoso" */;
+			buildPhases = (
+				9480B7922B7EAA2F00DDB251 /* Sources */,
+				9480B7932B7EAA2F00DDB251 /* Frameworks */,
+				9480B7942B7EAA2F00DDB251 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Virtuoso;
+			packageProductDependencies = (
+				9480B79B2B7EAA2F00DDB251 /* RealityKitContent */,
+			);
+			productName = Virtuoso;
+			productReference = 9480B7962B7EAA2F00DDB251 /* Virtuoso.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9480B7AC2B7EAA3000DDB251 /* VirtuosoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9480B7B82B7EAA3000DDB251 /* Build configuration list for PBXNativeTarget "VirtuosoTests" */;
+			buildPhases = (
+				9480B7A92B7EAA3000DDB251 /* Sources */,
+				9480B7AA2B7EAA3000DDB251 /* Frameworks */,
+				9480B7AB2B7EAA3000DDB251 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9480B7AF2B7EAA3000DDB251 /* PBXTargetDependency */,
+			);
+			name = VirtuosoTests;
+			productName = VirtuosoTests;
+			productReference = 9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9480B78E2B7EAA2F00DDB251 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					9480B7952B7EAA2F00DDB251 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					9480B7AC2B7EAA3000DDB251 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 9480B7952B7EAA2F00DDB251;
+					};
+				};
+			};
+			buildConfigurationList = 9480B7912B7EAA2F00DDB251 /* Build configuration list for PBXProject "Virtuoso" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9480B78D2B7EAA2F00DDB251;
+			productRefGroup = 9480B7972B7EAA2F00DDB251 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9480B7952B7EAA2F00DDB251 /* Virtuoso */,
+				9480B7AC2B7EAA3000DDB251 /* VirtuosoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9480B7942B7EAA2F00DDB251 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
+				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9480B7AB2B7EAA3000DDB251 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9480B7922B7EAA2F00DDB251 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9480B7A02B7EAA2F00DDB251 /* ContentView.swift in Sources */,
+				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
+				9480B7A22B7EAA2F00DDB251 /* ImmersiveView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9480B7A92B7EAA3000DDB251 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9480B7AF2B7EAA3000DDB251 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9480B7952B7EAA2F00DDB251 /* Virtuoso */;
+			targetProxy = 9480B7AE2B7EAA3000DDB251 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9480B7B32B7EAA3000DDB251 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		9480B7B42B7EAA3000DDB251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		9480B7B62B7EAA3000DDB251 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Virtuoso/Preview Content\"";
+				DEVELOPMENT_TEAM = L85GNPB23S;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryangavin.Virtuoso;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		9480B7B72B7EAA3000DDB251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Virtuoso/Preview Content\"";
+				DEVELOPMENT_TEAM = L85GNPB23S;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryangavin.Virtuoso;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+		9480B7B92B7EAA3000DDB251 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L85GNPB23S;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryangavin.VirtuosoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Virtuoso.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Virtuoso";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		9480B7BA2B7EAA3000DDB251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L85GNPB23S;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryangavin.VirtuosoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Virtuoso.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Virtuoso";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9480B7912B7EAA2F00DDB251 /* Build configuration list for PBXProject "Virtuoso" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9480B7B32B7EAA3000DDB251 /* Debug */,
+				9480B7B42B7EAA3000DDB251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9480B7B52B7EAA3000DDB251 /* Build configuration list for PBXNativeTarget "Virtuoso" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9480B7B62B7EAA3000DDB251 /* Debug */,
+				9480B7B72B7EAA3000DDB251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9480B7B82B7EAA3000DDB251 /* Build configuration list for PBXNativeTarget "VirtuosoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9480B7B92B7EAA3000DDB251 /* Debug */,
+				9480B7BA2B7EAA3000DDB251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9480B79B2B7EAA2F00DDB251 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9480B78E2B7EAA2F00DDB251 /* Project object */;
+}
