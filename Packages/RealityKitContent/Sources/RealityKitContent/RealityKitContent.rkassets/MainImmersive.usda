@@ -1,0 +1,42 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 0.1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "PianoKeyboard" (
+        active = true
+        prepend references = @PianoKeyboard.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.0001, 0.0001, 0.0001)
+        float3 xformOp:translate = (-0.0019376231, 9.313226e-10, 0.0017838329)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Piano_Keyboard" (
+        active = true
+        prepend references = @Piano_Keyboard.usdz@
+    )
+    {
+        float3 xformOp:scale = (2.220446e-16, 2.220446e-16, 2.220446e-16)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Piano_Keyboard_1" (
+        active = true
+        prepend references = @Piano_Keyboard.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (0, 1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

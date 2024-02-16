@@ -14,6 +14,10 @@
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
+		9480B7D52B7EDF8C00DDB251 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7CC2B7EDF8B00DDB251 /* ImmersiveView.swift */; };
+		9480B7D72B7EDF8C00DDB251 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7CE2B7EDF8B00DDB251 /* Content */; };
+		9480B7D82B7EDF8C00DDB251 /* Reality Views in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7CF2B7EDF8B00DDB251 /* Reality Views */; };
+		9480B7DA2B7EDF8C00DDB251 /* Entities in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7D12B7EDF8B00DDB251 /* Entities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,10 @@
 		9480B7A82B7EAA3000DDB251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
+		9480B7CC2B7EDF8B00DDB251 /* ImmersiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImmersiveView.swift; path = "../../../.Trash/Virtuoso 19-09-11-355/ImmersiveView.swift"; sourceTree = "<group>"; };
+		9480B7CE2B7EDF8B00DDB251 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
+		9480B7CF2B7EDF8B00DDB251 /* Reality Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Reality Views"; sourceTree = "<group>"; };
+		9480B7D12B7EDF8B00DDB251 /* Entities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Entities; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,10 @@
 		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
 			isa = PBXGroup;
 			children = (
+				9480B7CE2B7EDF8B00DDB251 /* Content */,
+				9480B7D12B7EDF8B00DDB251 /* Entities */,
+				9480B7CC2B7EDF8B00DDB251 /* ImmersiveView.swift */,
+				9480B7CF2B7EDF8B00DDB251 /* Reality Views */,
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				9480B79F2B7EAA2F00DDB251 /* ContentView.swift */,
 				9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */,
@@ -198,8 +210,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9480B7DA2B7EDF8C00DDB251 /* Entities in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
+				9480B7D82B7EDF8C00DDB251 /* Reality Views in Resources */,
+				9480B7D72B7EDF8C00DDB251 /* Content in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9480B7D52B7EDF8C00DDB251 /* ImmersiveView.swift in Sources */,
 				9480B7A02B7EAA2F00DDB251 /* ContentView.swift in Sources */,
 				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
 				9480B7A22B7EAA2F00DDB251 /* ImmersiveView.swift in Sources */,
