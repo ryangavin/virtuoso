@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9480B79B2B7EAA2F00DDB251 /* RealityKitContent */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
-		9480B7A02B7EAA2F00DDB251 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79F2B7EAA2F00DDB251 /* ContentView.swift */; };
-		9480B7A22B7EAA2F00DDB251 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */; };
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
-		9480B7D52B7EDF8C00DDB251 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7CC2B7EDF8B00DDB251 /* ImmersiveView.swift */; };
-		9480B7D72B7EDF8C00DDB251 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7CE2B7EDF8B00DDB251 /* Content */; };
-		9480B7D82B7EDF8C00DDB251 /* Reality Views in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7CF2B7EDF8B00DDB251 /* Reality Views */; };
-		9480B7DA2B7EDF8C00DDB251 /* Entities in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7D12B7EDF8B00DDB251 /* Entities */; };
+		94CD995A2B7EE37A00BF09DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99582B7EE37A00BF09DE /* ContentView.swift */; };
+		94CD995B2B7EE37A00BF09DE /* PianoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99592B7EE37A00BF09DE /* PianoContent.swift */; };
+		94CD995F2B7EE3A200BF09DE /* PianoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD995D2B7EE3A200BF09DE /* PianoEntity.swift */; };
+		94CD99602B7EE3A200BF09DE /* PianoEntity+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD995E2B7EE3A200BF09DE /* PianoEntity+Configuration.swift */; };
+		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
+		94CD99652B7EE40500BF09DE /* PlacementGesturesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99642B7EE40500BF09DE /* PlacementGesturesModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,17 +34,17 @@
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B79A2B7EAA2F00DDB251 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoApp.swift; sourceTree = "<group>"; };
-		9480B79F2B7EAA2F00DDB251 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		9480B7A32B7EAA3000DDB251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9480B7A82B7EAA3000DDB251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
-		9480B7CC2B7EDF8B00DDB251 /* ImmersiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImmersiveView.swift; path = "../../../.Trash/Virtuoso 19-09-11-355/ImmersiveView.swift"; sourceTree = "<group>"; };
-		9480B7CE2B7EDF8B00DDB251 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
-		9480B7CF2B7EDF8B00DDB251 /* Reality Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Reality Views"; sourceTree = "<group>"; };
-		9480B7D12B7EDF8B00DDB251 /* Entities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Entities; sourceTree = "<group>"; };
+		94CD99582B7EE37A00BF09DE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94CD99592B7EE37A00BF09DE /* PianoContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoContent.swift; sourceTree = "<group>"; };
+		94CD995D2B7EE3A200BF09DE /* PianoEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEntity.swift; sourceTree = "<group>"; };
+		94CD995E2B7EE3A200BF09DE /* PianoEntity+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PianoEntity+Configuration.swift"; sourceTree = "<group>"; };
+		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
+		94CD99642B7EE40500BF09DE /* PlacementGesturesModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementGesturesModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,13 +88,11 @@
 		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
 			isa = PBXGroup;
 			children = (
-				9480B7CE2B7EDF8B00DDB251 /* Content */,
-				9480B7D12B7EDF8B00DDB251 /* Entities */,
-				9480B7CC2B7EDF8B00DDB251 /* ImmersiveView.swift */,
-				9480B7CF2B7EDF8B00DDB251 /* Reality Views */,
+				94CD99612B7EE3B600BF09DE /* Reality Views */,
+				94CD995C2B7EE39700BF09DE /* Entities */,
+				94CD99572B7EE34B00BF09DE /* Content */,
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
-				9480B79F2B7EAA2F00DDB251 /* ContentView.swift */,
-				9480B7A12B7EAA2F00DDB251 /* ImmersiveView.swift */,
+				94CD99642B7EE40500BF09DE /* PlacementGesturesModifier.swift */,
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
 				9480B7A82B7EAA3000DDB251 /* Info.plist */,
 				9480B7A52B7EAA3000DDB251 /* Preview Content */,
@@ -124,6 +122,32 @@
 				9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */,
 			);
 			path = VirtuosoTests;
+			sourceTree = "<group>";
+		};
+		94CD99572B7EE34B00BF09DE /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				94CD99582B7EE37A00BF09DE /* ContentView.swift */,
+				94CD99592B7EE37A00BF09DE /* PianoContent.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		94CD995C2B7EE39700BF09DE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				94CD995D2B7EE3A200BF09DE /* PianoEntity.swift */,
+				94CD995E2B7EE3A200BF09DE /* PianoEntity+Configuration.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		94CD99612B7EE3B600BF09DE /* Reality Views */ = {
+			isa = PBXGroup;
+			children = (
+				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
+			);
+			path = "Reality Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,11 +234,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9480B7DA2B7EDF8C00DDB251 /* Entities in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
-				9480B7D82B7EDF8C00DDB251 /* Reality Views in Resources */,
-				9480B7D72B7EDF8C00DDB251 /* Content in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,10 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9480B7D52B7EDF8C00DDB251 /* ImmersiveView.swift in Sources */,
-				9480B7A02B7EAA2F00DDB251 /* ContentView.swift in Sources */,
 				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
-				9480B7A22B7EAA2F00DDB251 /* ImmersiveView.swift in Sources */,
+				94CD99602B7EE3A200BF09DE /* PianoEntity+Configuration.swift in Sources */,
+				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
+				94CD99652B7EE40500BF09DE /* PlacementGesturesModifier.swift in Sources */,
+				94CD995A2B7EE37A00BF09DE /* ContentView.swift in Sources */,
+				94CD995F2B7EE3A200BF09DE /* PianoEntity.swift in Sources */,
+				94CD995B2B7EE37A00BF09DE /* PianoContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

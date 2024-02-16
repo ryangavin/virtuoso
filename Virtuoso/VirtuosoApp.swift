@@ -15,7 +15,7 @@ struct VirtuosoApp: App {
         }
 
         ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView()
+            PianoContent().placementGestures(initialPosition: Point3D([0.0, 0.0, 0.0]))
         }
     }
 }
