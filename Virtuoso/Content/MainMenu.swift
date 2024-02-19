@@ -5,28 +5,35 @@
 //  Created by Ryan Gavin on 2/15/24.
 //
 
-import SwiftUI
 import RealityKit
 import RealityKitContent
+import SwiftUI
 
-struct ContentView: View {
-
+struct MainMenu: View {
+    // All this stuff nees to be in a shared view model
     @State private var showImmersiveSpace = false
     @State private var immersiveSpaceIsShown = false
+    @State private var showConfigurationMenu = false
 
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(\.openWindow) var openWindow
 
     var body: some View {
         VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
+            Text("Welcome to Virtuoso XR")
+                .font(/*@START_MENU_TOKEN@*/ .title/*@END_MENU_TOKEN@*/)
 
-            Text("Hello, world!")
+            Text("Immersive Piano Trainer")
+                .padding(.top, 10)
 
-            Toggle("Show Immersive Space", isOn: $showImmersiveSpace)
+            Toggle("Settings", isOn: $showConfigurationMenu)
                 .toggleStyle(.button)
                 .padding(.top, 50)
+
+            Toggle("Begin Training", isOn: $showImmersiveSpace)
+                .toggleStyle(.button)
+                .padding(.top, 10)
         }
         .padding()
         .onChange(of: showImmersiveSpace) { _, newValue in
@@ -47,9 +54,16 @@ struct ContentView: View {
                 }
             }
         }
+        .onChange(of: showConfigurationMenu) { _, newValue in
+            Task {
+                if newValue {
+                    openWindow(id: "TrainerConfigurationMenu")
+                }
+            }
+        }
     }
 }
 
 #Preview(windowStyle: .automatic) {
-    ContentView()
+    MainMenu()
 }

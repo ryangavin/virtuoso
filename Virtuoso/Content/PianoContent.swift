@@ -10,12 +10,12 @@ import SwiftUI
 
 /// The model content for the orbit module.
 struct PianoContent: View {
-    @State var axZoomIn: Bool = false
-    @State var axZoomOut: Bool = false
+    @Environment(ViewModel.self) private var model
 
     var body: some View {
-        PianoRealityView().placementGestures(
-            initialPosition: Point3D([0.0, 0.0, 0.0])
-        )
+        PianoRealityView(pianoConfiguration: model.pianoConfiguration)
+            .placementGestures(
+                initialPosition: Point3D([200, 0.0, 0.0])
+            )
     }
 }

@@ -1,25 +1,21 @@
 /*
-See the LICENSE.txt file for this sample’s licensing information.
+ See the LICENSE.txt file for this sample’s licensing information.
 
-Abstract:
-A modifier for placing objects.
-*/
+ Abstract:
+ A modifier for placing objects.
+ */
 
-import SwiftUI
 import RealityKit
+import SwiftUI
 
 extension View {
     /// Listens for gestures and places an item based on those inputs.
     func placementGestures(
-        initialPosition: Point3D = .zero,
-        axZoomIn: Bool = false,
-        axZoomOut: Bool = false
+        initialPosition: Point3D = .zero
     ) -> some View {
-        self.modifier(
+        modifier(
             PlacementGesturesModifier(
-                initialPosition: initialPosition,
-                axZoomIn: axZoomIn,
-                axZoomOut: axZoomOut
+                initialPosition: initialPosition
             )
         )
     }
@@ -28,8 +24,6 @@ extension View {
 /// A modifier that adds gestures and positioning to a view.
 private struct PlacementGesturesModifier: ViewModifier {
     var initialPosition: Point3D
-    var axZoomIn: Bool
-    var axZoomOut: Bool
 
     @State private var scale: Double = 1
     @State private var startScale: Double? = nil
@@ -70,17 +64,9 @@ private struct PlacementGesturesModifier: ViewModifier {
                         startScale = scale
                     }
                 }
-                .onEnded { value in
+                .onEnded { _ in
                     startScale = scale
                 }
             )
-            .onChange(of: axZoomIn) {
-                scale = max(0.1, min(3, scale + 0.2))
-                startScale = scale
-            }
-            .onChange(of: axZoomOut) {
-                scale = max(0.1, min(3, scale - 0.2))
-                startScale = scale
-            }
     }
 }

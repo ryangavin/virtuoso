@@ -4,39 +4,54 @@
         string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
     }
     defaultPrim = "Root"
-    metersPerUnit = 0.1
+    metersPerUnit = 0.001
     upAxis = "Y"
 )
 
 def Xform "Root"
 {
-    def "PianoKeyboard" (
-        active = true
-        prepend references = @PianoKeyboard.usdz@
-    )
-    {
-        float3 xformOp:scale = (0.0001, 0.0001, 0.0001)
-        float3 xformOp:translate = (-0.0019376231, 9.313226e-10, 0.0017838329)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
     def "Piano_Keyboard" (
         active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
         prepend references = @Piano_Keyboard.usdz@
     )
     {
-        float3 xformOp:scale = (2.220446e-16, 2.220446e-16, 2.220446e-16)
+        rel material:binding = </Root/Piano_Keyboard/Materials/Pianominor> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        float3 xformOp:scale = (0.5, 0.5, 0.5)
+        float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
 
-    def "Piano_Keyboard_1" (
-        active = true
-        prepend references = @Piano_Keyboard.usdz@
-    )
-    {
-        float3 xformOp:scale = (0.005, 0.005, 0.005)
-        float3 xformOp:translate = (0, 1, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (3505.6396, 299.99994, 658.8221)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (160.05438, -35.98551, -86.24236)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+            float opacity = 0.49186933
+        }
     }
 }
 
