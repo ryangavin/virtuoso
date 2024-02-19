@@ -10,17 +10,25 @@ import RealityKitContent
 import SwiftUI
 
 struct PianoConfigurationMenu: View {
+    public let windowId = "TrainerConfigurationMenu"
+
+    @Environment(\.dismissWindow) private var dismissWindow
+
     @State var numberOfKeys = 71
     @State var bottomKey: String = "C1"
-    @State var topKey: String = "C5"
 
     // Positioning Config
     @State var showAnchors: Bool = false
+
+    // Constants for the notes
+    let notes = ["C", "Db", "D", "Eb", "E", "F", "G", "Ab", "A", "Bb", "B"]
 
     var body: some View {
         VStack {
             Text("Piano Configuration")
                 .font(.title)
+
+            Text("Tell Virtuoso about your physical Piano or Keyboard")
 
             Form {
                 LabeledContent("Number of Keys", value: String($numberOfKeys.wrappedValue))
@@ -28,20 +36,15 @@ struct PianoConfigurationMenu: View {
                 Picker("Bottom Key", selection: $bottomKey) {
                     generateKeyOptions()
                 }
-                Picker("Top Key", selection: $topKey) {
-                    generateKeyOptions()
-                }
                 Toggle("Show Anchors", isOn: $showAnchors)
-            }
+            }.scrollDisabled(true)
 
-            Button("Apply") {
-                print("Apply")
-            }
+            Button("Apply Configuration") {
+                dismissWindow(id: Module.pianoConfigurationMenu.name)
+            }.tint(.blue)
 
         }.padding()
     }
-
-    let notes = ["C", "Db", "D", "Eb", "E", "F", "G", "Ab", "A", "Bb", "B"]
 
     // Generates strings for 5 octaves of musical notes, starting on C1
     func generateKeyOptions() -> some View {

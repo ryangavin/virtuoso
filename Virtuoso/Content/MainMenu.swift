@@ -18,6 +18,7 @@ struct MainMenu: View {
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
 
     var body: some View {
         VStack {
@@ -33,13 +34,14 @@ struct MainMenu: View {
 
             Toggle("Begin Training", isOn: $showImmersiveSpace)
                 .toggleStyle(.button)
+                .tint(.blue)
                 .padding(.top, 10)
         }
         .padding()
         .onChange(of: showImmersiveSpace) { _, newValue in
             Task {
                 if newValue {
-                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                    switch await openImmersiveSpace(id: Module.immersiveSpace.name) {
                     case .opened:
                         immersiveSpaceIsShown = true
                     case .error, .userCancelled:
@@ -57,7 +59,9 @@ struct MainMenu: View {
         .onChange(of: showConfigurationMenu) { _, newValue in
             Task {
                 if newValue {
-                    openWindow(id: "TrainerConfigurationMenu")
+                    openWindow(id: Module.pianoConfigurationMenu.name)
+                } else {
+                    dismissWindow(id: Module.pianoConfigurationMenu.name)
                 }
             }
         }

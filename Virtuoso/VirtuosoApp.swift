@@ -18,15 +18,16 @@ struct VirtuosoApp: App {
     }
 
     var body: some Scene {
-        WindowGroup("Main Menu", id: "MainMenu") {
+        WindowGroup("Main Menu", id: Module.mainMenu.name) {
             MainMenu().environment(model)
         }.defaultSize(width: 400, height: 300)
 
-        WindowGroup("Trainer Configuration Menu", id: "TrainerConfigurationMenu") {
+        WindowGroup("Trainer Configuration Menu", id: Module.pianoConfigurationMenu.name) {
             PianoConfigurationMenu()
-        }.defaultSize(width: 400, height: 800)
+        }.defaultSize(width: 600, height: 450)
 
-        ImmersiveSpace(id: "ImmersiveSpace") {
+        // TODO: this maybe needs to be a volume???
+        ImmersiveSpace(id: Module.immersiveSpace.name) {
             PianoContent().environment(model)
         }.immersionStyle(selection: $immersionStyle, in: .mixed)
     }
