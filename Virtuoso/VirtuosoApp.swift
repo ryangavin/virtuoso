@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct VirtuosoApp: App {
-    @State private var model = ViewModel()
+    @State private var model = AppModel()
 
     @State private var immersionStyle: ImmersionStyle = .mixed
 
@@ -19,16 +19,16 @@ struct VirtuosoApp: App {
 
     var body: some Scene {
         WindowGroup("Main Menu", id: Module.mainMenu.name) {
-            MainMenu().environment(model)
+            MainMenu(model: model)
         }.defaultSize(width: 400, height: 300)
 
         WindowGroup("Trainer Configuration Menu", id: Module.pianoConfigurationMenu.name) {
-            PianoConfigurationMenu()
+            PianoConfigurationMenu(model: model)
         }.defaultSize(width: 600, height: 450)
 
         // TODO: this maybe needs to be a volume???
         ImmersiveSpace(id: Module.immersiveSpace.name) {
-            PianoContent().environment(model)
+            PianoRealityView(model: model)
         }.immersionStyle(selection: $immersionStyle, in: .mixed)
     }
 }
