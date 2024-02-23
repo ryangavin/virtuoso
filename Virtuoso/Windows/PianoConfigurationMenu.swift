@@ -12,12 +12,8 @@ import SwiftUI
 struct PianoConfigurationMenu: View {
     @ObservedObject var model: AppModel
 
-    @Environment(\.dismissWindow) private var dismissWindow
-
-    @State var numberOfKeys = 71
-    @State var bottomKey: String = "C1"
-
-    // Constants for the notes
+    // Constants
+    let supportedKeys = [25, 37, 49, 73, 88]
     let notes = ["C", "Db", "D", "Eb", "E", "F", "G", "Ab", "A", "Bb", "B"]
 
     var body: some View {
@@ -25,36 +21,65 @@ struct PianoConfigurationMenu: View {
             Text("Piano Configuration")
                 .font(.title)
 
-            Text("Tell Virtuoso about your physical Piano or Keyboard")
-
             Form {
-                LabeledContent("Number of Keys", value: String($numberOfKeys.wrappedValue))
-                Stepper("Change Number of Keys", value: $numberOfKeys, in: 25 ... 88)
-                Picker("Bottom Key", selection: $bottomKey) {
-                    generateKeyOptions()
+                Picker("Number of Keys", selection: $model.numberOfKeys) {
+                    ForEach(supportedKeys, id: \.self) { key in
+                        Text("\(key)")
+                    }
                 }
-                Toggle("Show Anchors", isOn: $model.shouldShowConfigurtionAnchors)
             }.scrollDisabled(true)
 
-            Button("Apply Configuration") {
-                dismissWindow(id: Module.pianoConfigurationMenu.name)
-                model.showConfigurationMenu = false
-            }.tint(.blue)
+            HStack {
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "arrow.left.and.line.vertical.and.arrow.right")
+                })
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "arrow.counterclockwise")
+                })
+                Button(action: {
+                    model.moveUp()
+                }, label: {
+                    Image(systemName: "arrowshape.up.fill")
+                })
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "arrow.clockwise")
+                })
+            }
+            HStack {
+                Button("X") {}
+                    .tint(.red)
+                Button(action: {
+                    model.moveLeft()
+                }, label: {
+                    Image(systemName: "arrowshape.left.fill")
+                })
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "tortoise.fill")
+                })
+                Button(action: {
+                    model.moveRight()
+                }, label: {
+                    Image(systemName: "arrowshape.right.fill")
+                })
+            }
+            HStack {
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "arrow.right.and.line.vertical.and.arrow.left")
+                })
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "square.3.layers.3d.top.filled")
+                })
+                Button(action: {
+                    model.moveDown()
+                }, label: {
+                    Image(systemName: "arrowshape.down.fill")
+                })
+                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                    Image(systemName: "square.3.layers.3d.top.filled")
+                })
+            }
 
         }.padding()
-    }
-
-    // Generates strings for 5 octaves of musical notes, starting on C1
-    func generateKeyOptions() -> some View {
-        var keys: [String] = []
-        for octave in 1 ... 5 {
-            for note in notes {
-                keys.append("\(note)\(octave)")
-            }
-        }
-        return ForEach(keys, id: \.self) { key in
-            Text(key)
-        }
     }
 }
 

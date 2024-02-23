@@ -15,34 +15,26 @@ struct PianoRealityView: View {
         // MARK: Respond to changes in the model
 
         update: { _ in
-            if model.shouldShowConfigurtionAnchors {
-                print("Adding anchors")
-                spaceOrigin.addChild(leftAnchor)
-                spaceOrigin.addChild(rightAnchor)
-            } else {
-                print("Removing anchors")
-                // Remove both anchors so they aren't being rendered
-                leftAnchor.removeFromParent()
-                rightAnchor.removeFromParent()
-            }
         }
+
+        .upperLimbVisibility(.hidden)
+
+        // MARK: ARKit related setup
 
         .task {
             await model.startARKitSession()
         }
 
-        // MARK: Gesture for the configuration anchors
+        .task {
+            await model.monitorSessionEvents()
+        }
 
-        .gesture(DragGesture(minimumDistance: 0.0)
-            .targetedToAnyEntity()
-            .onChanged { @MainActor drag in
-                let entity = drag.entity
-                guard entity[parentMatching: "Anchor"] != nil else { return }
+        .task {
+            await model.handleHandTrackingUpdates()
+        }
 
-                // TODO: This is somewhat incomplete but it's working enough to demonstrate
-                entity.position = drag.convert(drag.translation3D, from: .local, to: spaceOrigin)
-
-                print("Dragging Anchor")
-            })
+        .task(priority: .low) {
+            await model.processReconstructionUpdates()
+        }
     }
 }

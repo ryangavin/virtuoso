@@ -39,6 +39,7 @@ struct MainMenu: View {
                     case .opened:
                         model.immersiveSpaceIsShown = true
                         openWindow(id: Module.pianoConfigurationMenu.name)
+                        openWindow(id: Module.anchorResetMenu.name)
                     case .error, .userCancelled:
                         fallthrough
                     @unknown default:
