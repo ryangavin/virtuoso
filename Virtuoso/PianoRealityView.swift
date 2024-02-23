@@ -32,9 +32,5 @@ struct PianoRealityView: View {
         .task {
             await model.handleHandTrackingUpdates()
         }
-
-        .task(priority: .low) {
-            await model.processReconstructionUpdates()
-        }
     }
 }
