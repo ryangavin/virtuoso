@@ -37,7 +37,7 @@ struct PianoConfigurationMenu: View {
                     Image(systemName: "arrow.counterclockwise")
                 })
                 Button(action: {
-                    model.moveUp()
+                    model.moveAway()
                 }, label: {
                     Image(systemName: "arrowshape.up.fill")
                 })
@@ -63,19 +63,23 @@ struct PianoConfigurationMenu: View {
                 })
             }
             HStack {
-                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {}, label: {
                     Image(systemName: "arrow.right.and.line.vertical.and.arrow.left")
                 })
-                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    model.moveUp()
+                }, label: {
                     Image(systemName: "square.3.layers.3d.top.filled")
+                })
+                Button(action: {
+                    model.moveClose()
+                }, label: {
+                    Image(systemName: "arrowshape.down.fill")
                 })
                 Button(action: {
                     model.moveDown()
                 }, label: {
-                    Image(systemName: "arrowshape.down.fill")
-                })
-                Button(action: /*@START_MENU_TOKEN@*/ {}/*@END_MENU_TOKEN@*/, label: {
-                    Image(systemName: "square.3.layers.3d.top.filled")
+                    Image(systemName: "square.3.layers.3d.bottom.filled")
                 })
             }
 

@@ -41,11 +41,19 @@ import SwiftUI
 
     // MARK: Piano Configuration
 
-    private var leftAnchor: Entity = createAnchorEntity(color: .blue)
-    private var rightAnchor: Entity = createAnchorEntity(color: .blue)
-    private var centerAnchor: Entity = createAnchorEntity(color: .green)
+    // Anchors to capture the intial positions in the world space
+    // TODO: maybe reparent these after we determine the position of the center
+    // TODO: we can recalculate the positions relative to the new center and reposition
+    private var leftAnchor: Entity
+    private var rightAnchor: Entity
 
-    private var width: Float = 0.0
+    // This is the  main anchor that all the piano anchors will be relatie to
+    private var centerAnchor: Entity
+
+    // These values will help when moving the piano around
+    // We need to understand our angle relative to the space origin
+    // When the user moves the piano forward, it should be relative to the user's perspective
+    // Otherwise the piano will move relative to world space and forward may be some random direction
     private var angle: Float = 0.0
 
     @Published var numberOfKeys: Int = 73
@@ -61,8 +69,15 @@ import SwiftUI
 
     /// Preload assets when the app launches to avoid pop-in during the game.
     init() {
-        Task { @MainActor in
-        }
+        centerAnchor = AppModel.createAnchorEntity()
+
+        leftAnchor = AppModel.createAnchorEntity()
+        rightAnchor = AppModel.createAnchorEntity()
+
+        centerAnchor.addChild(leftAnchor)
+        centerAnchor.addChild(rightAnchor)
+
+        spaceOrigin.addChild(centerAnchor)
     }
 
     func startARKitSession() async {
@@ -153,49 +168,71 @@ import SwiftUI
 
     // TODO: This probably needs to move to a custom PianoEntity
 
-    static func createAnchorEntity(color: UIColor) -> Entity {
-        let material = SimpleMaterial(color: color, isMetallic: false)
-        let entity = ModelEntity(mesh: .generateSphere(radius: 0.005), materials: [material])
-        spaceOrigin.addChild(entity)
+    private static func createAnchorEntity() -> Entity {
+        // Load the entity named "Debug Entity"
+        guard let entity = try? Entity.load(named: "Debug Anchor", in: realityKitContentBundle) else {
+            fatalError("Failed to load the Debug Anchor")
+        }
         return entity
     }
 
     func moveUp() {
-        let newPosition = centerAnchor.position + [0, 0.01, 0]
-        centerAnchor.position = newPosition
+        let translation = simd_float3(0, 0.01, 0)
+        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
     }
 
     func moveDown() {
-        let newPosition = centerAnchor.position + [0, -0.01, 0]
-        centerAnchor.position = newPosition
+        let translation = simd_float3(0, -0.01, 0)
+        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
     }
 
     func moveLeft() {
-        // Move the center anchor towards the left anchor
-
-        let newPosition = centerAnchor.position + [-0.01, 0, 0]
-        centerAnchor.position = newPosition
+        let translation = simd_float3(-0.01, 0, 0)
+        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
     }
 
     func moveRight() {
-        let newPosition = centerAnchor.position + [0.01, 0, 0]
-        centerAnchor.position = newPosition
+        let translation = simd_float3(0.01, 0, 0)
+        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
+    }
+
+    func moveClose() {
+        let translation = simd_float3(0, 0, 0.01)
+        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
+    }
+
+    func moveAway() {
+        let translation = simd_float3(0, 0, -0.01)
+        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
     }
 
     func captureIndexFingerPosition(chirality: HandAnchor.Chirality) {
         print("Updating fingertip position")
         let fingerTip = fingerEntities[chirality]![.indexFingerTip]!
-        var position = fingerTip.position(relativeTo: spaceOrigin)
+        let position = fingerTip.position(relativeTo: spaceOrigin)
+
+        var leftPosition = leftAnchor.position(relativeTo: spaceOrigin)
+        var rightPosition = rightAnchor.position(relativeTo: spaceOrigin)
+
         if chirality == .left {
-            leftAnchor.setPosition(position, relativeTo: spaceOrigin)
+            leftPosition = position
         } else {
-            // Force the right anchor to be at the same height as the left anchor
-            position.y = leftAnchor.position.y
-            rightAnchor.setPosition(position, relativeTo: spaceOrigin)
+            rightPosition = position
         }
 
-        // Find the center between the two anchors
-        let center = (leftAnchor.position + rightAnchor.position) / 2
+        // Angle between ignoring the y axis
+        let angleBetween = atan2(leftPosition.z - rightPosition.z, leftPosition.x - rightPosition.x) - .pi
+
+        // Rotate the debug anchor along the y axis to match the angle between the left and right anchors
+        // The debug anchor should be facing forward in the direction of the piano
+        centerAnchor.transform.rotation = simd_quatf(angle: angleBetween, axis: [0, -1, 0])
+
+        // Move everything to the new position
+        // Moving the center anchor will reposition the left and right anchors
+        // so they will need to be repositioned after the center anchor is moved
+        let center = (leftPosition + rightPosition) / 2
         centerAnchor.setPosition(center, relativeTo: spaceOrigin)
+        leftAnchor.setPosition(leftPosition, relativeTo: spaceOrigin)
+        rightAnchor.setPosition(rightPosition, relativeTo: spaceOrigin)
     }
 }
