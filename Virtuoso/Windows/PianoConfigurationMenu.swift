@@ -10,7 +10,7 @@ import RealityKitContent
 import SwiftUI
 
 struct PianoConfigurationMenu: View {
-    @Environment(AppModel.self) private var model
+    let appState: AppState
 
     // Constants
     let supportedKeys = [25, 37, 49, 73, 88]
@@ -18,7 +18,7 @@ struct PianoConfigurationMenu: View {
 
     var body: some View {
         @Bindable
-        var model = model
+        var model = appState
 
         VStack {
             Text("Piano Configuration")
@@ -107,5 +107,5 @@ struct PianoConfigurationMenu: View {
 }
 
 #Preview(windowStyle: .automatic) {
-    PianoConfigurationMenu().environment(AppModel())
+    PianoConfigurationMenu(appState: AppState())
 }

@@ -5,7 +5,8 @@ import SwiftUI
 /// A view that manages all the entities for the piano experience
 /// World interactions are managed here and updates are passed down to the entities
 struct PianoRealityView: View {
-    @Environment(AppModel.self) private var model
+    let appState: AppState
+    let handManager: HandManager
 
     var body: some View {
         RealityView { content in
@@ -21,15 +22,15 @@ struct PianoRealityView: View {
         // MARK: ARKit related setup
 
         .task {
-            await model.startARKitSession()
+            await handManager.startARKitSession()
         }
 
         .task {
-            await model.monitorSessionEvents()
+            await handManager.monitorSessionEvents()
         }
 
         .task {
-            await model.handleHandTrackingUpdates()
+            await handManager.handleHandTrackingUpdates()
         }
     }
 }

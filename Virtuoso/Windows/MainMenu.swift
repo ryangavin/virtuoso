@@ -11,7 +11,7 @@ import SwiftUI
 
 struct MainMenu: View {
     // All this stuff nees to be in a shared view model
-    @Environment(AppModel.self) private var model
+    let appState: AppState
 
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
@@ -20,7 +20,7 @@ struct MainMenu: View {
 
     var body: some View {
         @Bindable
-        var model = model
+        var model = appState
 
         VStack {
             Text("Welcome to Virtuoso XR")
@@ -68,5 +68,5 @@ struct MainMenu: View {
 }
 
 #Preview(windowStyle: .automatic) {
-    MainMenu().environment(AppModel())
+    MainMenu(appState: AppState())
 }

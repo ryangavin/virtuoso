@@ -17,9 +17,10 @@
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
-		9483F1DD2B88D63800B8E1BA /* PianoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoModel.swift */; };
+		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
-		94CD99682B7F151300BF09DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppModel.swift */; };
+		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
+		94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138C92B8BCD45007CEF45 /* HandManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,9 +47,10 @@
 		9480B7A82B7EAA3000DDB251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
-		9483F1DC2B88D63800B8E1BA /* PianoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoModel.swift; sourceTree = "<group>"; };
+		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
-		94CD99672B7F151300BF09DE /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		94D138C92B8BCD45007CEF45 /* HandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				9483F1DE2B88D89B00B8E1BA /* Extensions */,
-				9483F1DB2B88D5CD00B8E1BA /* Models */,
+				9483F1DB2B88D5CD00B8E1BA /* App */,
 				941B22DE2B844480006F114B /* Windows */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
 				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
@@ -140,13 +142,14 @@
 			path = VirtuosoTests;
 			sourceTree = "<group>";
 		};
-		9483F1DB2B88D5CD00B8E1BA /* Models */ = {
+		9483F1DB2B88D5CD00B8E1BA /* App */ = {
 			isa = PBXGroup;
 			children = (
-				94CD99672B7F151300BF09DE /* AppModel.swift */,
-				9483F1DC2B88D63800B8E1BA /* PianoModel.swift */,
+				94CD99672B7F151300BF09DE /* AppState.swift */,
+				9483F1DC2B88D63800B8E1BA /* PianoManager.swift */,
+				94D138C92B8BCD45007CEF45 /* HandManager.swift */,
 			);
-			path = Models;
+			path = App;
 			sourceTree = "<group>";
 		};
 		9483F1DE2B88D89B00B8E1BA /* Extensions */ = {
@@ -260,14 +263,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
-				9483F1DD2B88D63800B8E1BA /* PianoModel.swift in Sources */,
+				9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */,
+				94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */,
 				941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */,
 				941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				941B22D92B83E26B006F114B /* GlobalEntities.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
-				94CD99682B7F151300BF09DE /* AppModel.swift in Sources */,
+				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
