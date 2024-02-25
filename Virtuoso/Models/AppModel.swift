@@ -47,16 +47,18 @@ import SwiftUI
     private var leftAnchor: Entity
     private var rightAnchor: Entity
 
-    // This is the  main anchor that all the piano anchors will be relatie to
+    // This is the  main anchor that all the piano anchors will be relative to
     private var centerAnchor: Entity
 
-    // These values will help when moving the piano around
-    // We need to understand our angle relative to the space origin
-    // When the user moves the piano forward, it should be relative to the user's perspective
-    // Otherwise the piano will move relative to world space and forward may be some random direction
-    private var angle: Float = 0.0
+    private var keys: [Entity] = []
 
     @Published var numberOfKeys: Int = 73
+    private let numberOfWhiteKeys = [
+        73: 43
+    ]
+    private let startingKey = [
+        73: "F"
+    ]
 
     // MARK: UI
 
@@ -69,7 +71,7 @@ import SwiftUI
 
     /// Preload assets when the app launches to avoid pop-in during the game.
     init() {
-        centerAnchor = AppModel.createAnchorEntity()
+        centerAnchor = Entity()
 
         leftAnchor = AppModel.createAnchorEntity()
         rightAnchor = AppModel.createAnchorEntity()
@@ -176,38 +178,13 @@ import SwiftUI
         return entity
     }
 
-    func moveUp() {
-        let translation = simd_float3(0, 0.01, 0)
+    func moveAnchor(translation: SIMD3<Float>) {
         centerAnchor.setPosition(translation, relativeTo: centerAnchor)
     }
 
-    func moveDown() {
-        let translation = simd_float3(0, -0.01, 0)
-        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
-    }
-
-    func moveLeft() {
-        let translation = simd_float3(-0.01, 0, 0)
-        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
-    }
-
-    func moveRight() {
-        let translation = simd_float3(0.01, 0, 0)
-        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
-    }
-
-    func moveClose() {
-        let translation = simd_float3(0, 0, 0.01)
-        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
-    }
-
-    func moveAway() {
-        let translation = simd_float3(0, 0, -0.01)
-        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
-    }
+    func rotateAnchor(rotationOffsetInRadians: Float) {}
 
     func captureIndexFingerPosition(chirality: HandAnchor.Chirality) {
-        print("Updating fingertip position")
         let fingerTip = fingerEntities[chirality]![.indexFingerTip]!
         let position = fingerTip.position(relativeTo: spaceOrigin)
 
@@ -234,5 +211,27 @@ import SwiftUI
         centerAnchor.setPosition(center, relativeTo: spaceOrigin)
         leftAnchor.setPosition(leftPosition, relativeTo: spaceOrigin)
         rightAnchor.setPosition(rightPosition, relativeTo: spaceOrigin)
+
+        resetKeyAnchors()
+    }
+
+    func resetKeyAnchors() {
+        for key in keys {
+            key.removeFromParent()
+        }
+        keys.removeAll()
+
+        // Ditribute the keys evenly across the width of the piano
+        // Start from the left anchor and just offset from the previous key
+        for i in 0 ..< numberOfWhiteKeys[numberOfKeys]! {
+            let t = Float(i) / Float(numberOfWhiteKeys[numberOfKeys]! - 1)
+            let position = mix(leftAnchor.position, rightAnchor.position, t: t)
+            let key = AppModel.createAnchorEntity()
+
+            keys.append(key)
+            centerAnchor.addChild(key)
+
+            key.position = position
+        }
     }
 }

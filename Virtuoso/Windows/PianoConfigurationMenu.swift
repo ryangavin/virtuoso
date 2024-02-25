@@ -37,7 +37,7 @@ struct PianoConfigurationMenu: View {
                     Image(systemName: "arrow.counterclockwise")
                 })
                 Button(action: {
-                    model.moveAway()
+                    model.moveAnchor(translation: simd_float3(0, 0, 0.005))
                 }, label: {
                     Image(systemName: "arrowshape.up.fill")
                 })
@@ -49,7 +49,7 @@ struct PianoConfigurationMenu: View {
                 Button("X") {}
                     .tint(.red)
                 Button(action: {
-                    model.moveLeft()
+                    model.moveAnchor(translation: simd_float3(-0.005, 0, 0))
                 }, label: {
                     Image(systemName: "arrowshape.left.fill")
                 })
@@ -57,7 +57,7 @@ struct PianoConfigurationMenu: View {
                     Image(systemName: "tortoise.fill")
                 })
                 Button(action: {
-                    model.moveRight()
+                    model.moveAnchor(translation: simd_float3(0.005, 0, 0))
                 }, label: {
                     Image(systemName: "arrowshape.right.fill")
                 })
@@ -67,17 +67,17 @@ struct PianoConfigurationMenu: View {
                     Image(systemName: "arrow.right.and.line.vertical.and.arrow.left")
                 })
                 Button(action: {
-                    model.moveUp()
+                    model.moveAnchor(translation: simd_float3(0, 0.005, 0))
                 }, label: {
                     Image(systemName: "square.3.layers.3d.top.filled")
                 })
                 Button(action: {
-                    model.moveClose()
+                    model.moveAnchor(translation: simd_float3(0, 0, -0.005))
                 }, label: {
                     Image(systemName: "arrowshape.down.fill")
                 })
                 Button(action: {
-                    model.moveDown()
+                    model.moveAnchor(translation: simd_float3(0, -0.005, 0))
                 }, label: {
                     Image(systemName: "square.3.layers.3d.bottom.filled")
                 })
