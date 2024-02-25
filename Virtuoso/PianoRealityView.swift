@@ -5,7 +5,7 @@ import SwiftUI
 /// A view that manages all the entities for the piano experience
 /// World interactions are managed here and updates are passed down to the entities
 struct PianoRealityView: View {
-    @ObservedObject var model: AppModel
+    @Environment(AppModel.self) private var model
 
     var body: some View {
         RealityView { content in
@@ -14,8 +14,7 @@ struct PianoRealityView: View {
 
         // MARK: Respond to changes in the model
 
-        update: { _ in
-        }
+        update: { _ in }
 
         .upperLimbVisibility(.hidden)
 

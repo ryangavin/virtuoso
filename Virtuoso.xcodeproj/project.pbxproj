@@ -17,7 +17,6 @@
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
-		9483F1DA2B88049A00B8E1BA /* AnchorResetMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1D92B88049A00B8E1BA /* AnchorResetMenu.swift */; };
 		9483F1DD2B88D63800B8E1BA /* PianoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoModel.swift */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppModel.swift */; };
@@ -47,7 +46,6 @@
 		9480B7A82B7EAA3000DDB251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
-		9483F1D92B88049A00B8E1BA /* AnchorResetMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorResetMenu.swift; sourceTree = "<group>"; };
 		9483F1DC2B88D63800B8E1BA /* PianoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoModel.swift; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 			children = (
 				941B22DA2B83E69B006F114B /* MainMenu.swift */,
 				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
-				9483F1D92B88049A00B8E1BA /* AnchorResetMenu.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppModel.swift in Sources */,
-				9483F1DA2B88049A00B8E1BA /* AnchorResetMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,28 +14,12 @@ import SwiftUI
 /// These values are shared between different views
 /// Some views need to react to changes
 /// Some views need to make changes
-@MainActor class AppModel: ObservableObject {
+@Observable
+class AppModel {
     // MARK: ARKit
 
     private let session = ARKitSession()
     private let handTracking = HandTrackingProvider()
-
-    private let fingerEntities: [HandAnchor.Chirality: [HandSkeleton.JointName: ModelEntity]] = [
-        .left: [
-            HandSkeleton.JointName.indexFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.ringFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.middleFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.littleFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.thumbTip: createFingertipEntity()
-        ],
-        .right: [
-            HandSkeleton.JointName.indexFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.ringFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.middleFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.littleFingerTip: createFingertipEntity(),
-            HandSkeleton.JointName.thumbTip: createFingertipEntity()
-        ]
-    ]
 
     private var meshEntities = [UUID: ModelEntity]()
 
@@ -52,7 +36,7 @@ import SwiftUI
 
     private var keys: [Entity] = []
 
-    @Published var numberOfKeys: Int = 73
+    var numberOfKeys: Int = 73
     private let numberOfWhiteKeys = [
         73: 43
     ]
@@ -62,10 +46,10 @@ import SwiftUI
 
     // MARK: UI
 
-    @Published var showImmersiveSpace = false
-    @Published var immersiveSpaceIsShown = false
-    @Published var showConfigurationMenu = false
-    @Published var showAnchorMenu = false
+    var showImmersiveSpace = false
+    var immersiveSpaceIsShown = false
+    var showConfigurationMenu = false
+    var showAnchorMenu = false
 
     // Piano Configuration
 
@@ -80,6 +64,24 @@ import SwiftUI
         centerAnchor.addChild(rightAnchor)
 
         spaceOrigin.addChild(centerAnchor)
+
+        // Fingertip setup
+        fingertips = [
+            .left: [
+                HandSkeleton.JointName.indexFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.ringFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.middleFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.littleFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.thumbTip: AppModel.createFingertipEntity()
+            ],
+            .right: [
+                HandSkeleton.JointName.indexFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.ringFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.middleFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.littleFingerTip: AppModel.createFingertipEntity(),
+                HandSkeleton.JointName.thumbTip: AppModel.createFingertipEntity()
+            ]
+        ]
     }
 
     func startARKitSession() async {
@@ -95,6 +97,7 @@ import SwiftUI
 
     // MARK: Hand Tracking stuff
 
+    @MainActor
     func handleHandTrackingUpdates() async {
         for await update in handTracking.anchorUpdates {
             switch update.event {
@@ -134,11 +137,11 @@ import SwiftUI
                 let wristFromThumb = thumbTip.anchorFromJointTransform
                 let originFromThumb = originFromWrist * wristFromThumb
 
-                fingerEntities[anchor.chirality]?[.indexFingerTip]?.setTransformMatrix(originFromIndex, relativeTo: spaceOrigin)
-                fingerEntities[anchor.chirality]?[.middleFingerTip]?.setTransformMatrix(originFromMiddle, relativeTo: spaceOrigin)
-                fingerEntities[anchor.chirality]?[.ringFingerTip]?.setTransformMatrix(originFromRing, relativeTo: spaceOrigin)
-                fingerEntities[anchor.chirality]?[.littleFingerTip]?.setTransformMatrix(originFromLittle, relativeTo: spaceOrigin)
-                fingerEntities[anchor.chirality]?[.thumbTip]?.setTransformMatrix(originFromThumb, relativeTo: spaceOrigin)
+                fingertips[anchor.chirality]?[.indexFingerTip]?.setTransformMatrix(originFromIndex, relativeTo: spaceOrigin)
+                fingertips[anchor.chirality]?[.middleFingerTip]?.setTransformMatrix(originFromMiddle, relativeTo: spaceOrigin)
+                fingertips[anchor.chirality]?[.ringFingerTip]?.setTransformMatrix(originFromRing, relativeTo: spaceOrigin)
+                fingertips[anchor.chirality]?[.littleFingerTip]?.setTransformMatrix(originFromLittle, relativeTo: spaceOrigin)
+                fingertips[anchor.chirality]?[.thumbTip]?.setTransformMatrix(originFromThumb, relativeTo: spaceOrigin)
             default:
                 break
             }
@@ -157,7 +160,7 @@ import SwiftUI
         for await event in session.events {
             switch event {
             case .authorizationChanged(let type, let status):
-                if type == .handTracking && status != .allowed {
+                if type == .handTracking, status != .allowed {
                     // TODO: Stop the app, ask the user to grant hand tracking authorization again in Settings.
                 }
             default:
@@ -182,10 +185,19 @@ import SwiftUI
         centerAnchor.setPosition(translation, relativeTo: centerAnchor)
     }
 
-    func rotateAnchor(rotationOffsetInRadians: Float) {}
+    func rotateAnchor(offset: Float) {
+        centerAnchor.transform.rotation *= simd_quatf(angle: offset, axis: [0, 1, 0])
+    }
+
+    func stretchAnchor(stretchFactor: Float) {
+        // Move the left and right anchors a bit, and then redraw the keyboard
+        leftAnchor.setPosition([-stretchFactor, 0, 0], relativeTo: leftAnchor)
+        rightAnchor.setPosition([stretchFactor, 0, 0], relativeTo: rightAnchor)
+        resetKeyAnchors()
+    }
 
     func captureIndexFingerPosition(chirality: HandAnchor.Chirality) {
-        let fingerTip = fingerEntities[chirality]![.indexFingerTip]!
+        let fingerTip = fingertips[chirality]![.indexFingerTip]!
         let position = fingerTip.position(relativeTo: spaceOrigin)
 
         var leftPosition = leftAnchor.position(relativeTo: spaceOrigin)
