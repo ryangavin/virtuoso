@@ -5,3 +5,7 @@ import RealityKit
 let spaceOrigin = Entity()
 
 var fingertips = [HandAnchor.Chirality: [HandSkeleton.JointName: ModelEntity]]()
+
+var centerAnchor = Entity()
+
+var debugAnchorEntity: Entity?

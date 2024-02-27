@@ -10,22 +10,15 @@ import RealityKit
 import RealityKitContent
 import SwiftUI
 
-/// Holds the global runtime state
-/// These values are shared between different views
-/// Some views need to react to changes
-/// Some views need to make changes
 @Observable
+// TODO: This will eventually just house the actual app state
+// TODO: Most of this class will become the PianoManager
 class AppState {
     // MARK: Piano Configuration
 
     // Anchors to capture the intial positions in the world space
-    // TODO: maybe reparent these after we determine the position of the center
-    // TODO: we can recalculate the positions relative to the new center and reposition
     private var leftAnchor: Entity
     private var rightAnchor: Entity
-
-    // This is the  main anchor that all the piano anchors will be relative to
-    private var centerAnchor: Entity
 
     private var keys: [Entity] = []
 
@@ -34,8 +27,10 @@ class AppState {
         73: 43
     ]
     private let startingKey = [
-        73: "F"
+        73: "E"
     ]
+
+    private let noteNames = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
 
     // MARK: UI
 
@@ -49,8 +44,8 @@ class AppState {
     init() {
         centerAnchor = Entity()
 
-        leftAnchor = AppState.createAnchorEntity()
-        rightAnchor = AppState.createAnchorEntity()
+        leftAnchor = AppState.createDebugEntity()
+        rightAnchor = AppState.createDebugEntity()
 
         centerAnchor.addChild(leftAnchor)
         centerAnchor.addChild(rightAnchor)
@@ -58,12 +53,16 @@ class AppState {
         spaceOrigin.addChild(centerAnchor)
     }
 
-    private static func createAnchorEntity() -> Entity {
-        // Load the entity named "Debug Entity"
-        guard let entity = try? Entity.load(named: "Debug Anchor", in: realityKitContentBundle) else {
-            fatalError("Failed to load the Debug Anchor")
+    private static func createDebugEntity() -> Entity {
+        if debugAnchorEntity == nil {
+            // Load the entity named "Debug Entity"
+            guard let loadedEntity = try? Entity.load(named: "Debug Anchor", in: realityKitContentBundle) else {
+                fatalError("Failed to load the Debug Anchor")
+            }
+            debugAnchorEntity = loadedEntity
         }
-        return entity
+
+        return debugAnchorEntity!.clone(recursive: true)
     }
 
     func moveAnchor(translation: SIMD3<Float>) {
@@ -118,17 +117,65 @@ class AppState {
         }
         keys.removeAll()
 
-        // Ditribute the keys evenly across the width of the piano
-        // Start from the left anchor and just offset from the previous key
-        for i in 0 ..< numberOfWhiteKeys[numberOfKeys]! {
-            let t = Float(i) / Float(numberOfWhiteKeys[numberOfKeys]! - 1)
-            let position = mix(leftAnchor.position, rightAnchor.position, t: t)
-            let key = AppState.createAnchorEntity()
+        var noteIndex = noteNames.firstIndex(of: startingKey[numberOfKeys]!)!
 
-            keys.append(key)
-            centerAnchor.addChild(key)
+        // Spread all the white keys evenly between the two anchors
+        var whiteKeyWidth = (rightAnchor.position - leftAnchor.position) / Float(numberOfWhiteKeys[numberOfKeys]! - 1)
 
-            key.position = position
+        // Keep track of the last white key so we can offset black keys from it
+        var lastWhiteKeyPosition = leftAnchor.position
+        var whiteKeyCount = 0
+
+        for i in 0 ..< numberOfKeys {
+            let noteName = noteNames[(i + noteIndex) % noteNames.count]
+
+            // White keys
+            if !noteName.contains("#"), !noteName.contains("b") {
+                let position = leftAnchor.position + whiteKeyWidth * Float(whiteKeyCount)
+                let key = AppState.createDebugEntity()
+                lastWhiteKeyPosition = position
+
+                keys.append(key)
+                key.position = position
+                centerAnchor.addChild(key)
+
+                whiteKeyCount += 1
+            }
+
+            // Black Keys
+            else {
+                // For now just put the black key half way between the two white keys
+                // In real life the spread is a little wider than that.
+                // In the cluster of 3, the middle note is directly in the center of the two white keys
+                // In the cluster of 2, each is slightly offset from the center of their respective white keys
+                let blackKey = AppState.createDebugEntity()
+                var blackKeyPosition = lastWhiteKeyPosition + whiteKeyWidth / 2
+
+                // Set the black key back and up
+                blackKeyPosition.z -= 0.07
+                blackKeyPosition.y += 0.01
+
+                blackKey.position = blackKeyPosition
+                keys.append(blackKey)
+                centerAnchor.addChild(blackKey)
+            }
         }
+
+        // Create some dummy notes attached to the keys
+//        createNoteEntity(color: .systemBlue, forKey: keys[3], at: [0, 0, -0.1], length: 0.1)
+//        createNoteEntity(color: .systemBlue, forKey: keys[5], at: [0, 0, -0.1], length: 0.1)
+//        createNoteEntity(color: .systemBlue, forKey: keys[7], at: [0, 0, -0.1], length: 0.1)
+//
+//        createNoteEntity(color: .systemGreen, forKey: keys[10], at: [0, 0, -0.1], length: 0.01)
+//        createNoteEntity(color: .systemGreen, forKey: keys[12], at: [0, 0, -0.11], length: 0.01)
+//        createNoteEntity(color: .systemGreen, forKey: keys[14], at: [0, 0, -0.12], length: 0.01)
+    }
+
+    func createNoteEntity(color: UIColor, forKey: Entity, at: SIMD3<Float>, length: Float) {
+        let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: length, cornerRadius: 0.001)
+        let material = SimpleMaterial(color: color, isMetallic: false)
+        let entity = ModelEntity(mesh: box, materials: [material])
+        entity.position = at
+        forKey.addChild(entity)
     }
 }

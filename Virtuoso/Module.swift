@@ -8,7 +8,7 @@
 import Foundation
 
 enum Module: String, Identifiable, CaseIterable, Equatable {
-    case mainMenu, pianoConfigurationMenu, anchorResetMenu, immersiveSpace
+    case mainMenu, pianoConfigurationMenu, immersiveSpace
 
     var id: Self { self }
     var name: String { rawValue.capitalized }

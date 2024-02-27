@@ -21,6 +21,9 @@
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138C92B8BCD45007CEF45 /* HandManager.swift */; };
+		94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */; };
+		94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */; };
+		94E2E5F42B8CAE980096A41B /* peg.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94E2E5F32B8CAE980096A41B /* peg.mid */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94D138C92B8BCD45007CEF45 /* HandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandManager.swift; sourceTree = "<group>"; };
+		94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
+		94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackWidget.swift; sourceTree = "<group>"; };
+		94E2E5F32B8CAE980096A41B /* peg.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = peg.mid; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		941B22DE2B844480006F114B /* Windows */ = {
+		941B22DE2B844480006F114B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
 				941B22DA2B83E69B006F114B /* MainMenu.swift */,
 				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
+				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
 			);
-			path = Windows;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9480B78D2B7EAA2F00DDB251 = {
@@ -103,11 +111,11 @@
 		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
 			isa = PBXGroup;
 			children = (
+				94E2E5F32B8CAE980096A41B /* peg.mid */,
 				9483F1DE2B88D89B00B8E1BA /* Extensions */,
 				9483F1DB2B88D5CD00B8E1BA /* App */,
-				941B22DE2B844480006F114B /* Windows */,
+				941B22DE2B844480006F114B /* Views */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
-				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
 				941B22D82B83E26B006F114B /* GlobalEntities.swift */,
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
@@ -148,6 +156,7 @@
 				94CD99672B7F151300BF09DE /* AppState.swift */,
 				9483F1DC2B88D63800B8E1BA /* PianoManager.swift */,
 				94D138C92B8BCD45007CEF45 /* HandManager.swift */,
+				94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -243,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E2E5F42B8CAE980096A41B /* peg.mid in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
 			);
@@ -262,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */,
 				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
 				9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */,
 				94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */,
@@ -271,6 +282,7 @@
 				941B22D92B83E26B006F114B /* GlobalEntities.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
+				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
