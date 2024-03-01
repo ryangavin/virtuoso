@@ -1,10 +1,14 @@
 {
-  "advancedEditorSelectedIdentifier" : "ShaderGraphEditorPluginID",
+  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
-    "Debug Anchor.usda"
+    "Debug Anchor.usda",
+    "Note.usda"
   ],
   "recentIdentifiers" : {
     "8DD8B9AC-DD77-42FD-8453-469F62E87E91" : [
+
+    ],
+    "66B3E73B-5E29-4ACF-98C0-34C8B9E68AC3" : [
 
     ],
     "4858F0E6-DFC5-4E71-9869-6DF926180741" : [
@@ -279,6 +283,30 @@
           -0.14594874,
           1.9152911,
           2.3313637,
+          1
+        ]
+      }
+    ],
+    "66B3E73B-5E29-4ACF-98C0-34C8B9E68AC3" : [
+      {
+        "date" : 730581210.689778,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          -0,
+          0,
+          -0,
+          0.8660254,
+          -0.49999988,
+          0,
+          0,
+          0.49999988,
+          0.8660254,
+          0,
+          0,
+          0.2218789,
+          0.3843056,
           1
         ]
       }
@@ -776,5 +804,5 @@
       }
     ]
   },
-  "selectedSceneRelativePath" : "Debug Anchor.usda"
+  "selectedSceneRelativePath" : "Note.usda"
 }
