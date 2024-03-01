@@ -25,16 +25,24 @@ class PlaybackManager {
         }
         midi.load(data: data)
 
-        let pianoTrack = midi.noteTracks[0]
+        let tempoTrack = midi.tempoTrack
+        let timeResolution = tempoTrack.timeResolution
 
-        print(midi.tempoTrack.timeSignatures)
-        // [MidiParser.MidiTimeSignature(timeStamp: 0.0, numerator: 4, denominator: 2, cc: 24, bb: 8)]
-        print(midi.tempoTrack.extendedTempos)
-        // [MidiParser.MidiExtendedTempo(timeStamp: 0.0, bpm: 120.0)]
+        // TODO: It might be worth keeping track of the time signature
+        // TODO: Right now my understanding is that timeResolution is the number of ticks per denominator
+        // TODO: ie: in 4/4 ticks is quarter notes, in 2/2 its half notes, in 7/8 its eighth notes
+
+        // Print out all the tracks
+        let pianoTrack = midi.noteTracks[1]
 
         // Iterate over the events
-        for event in pianoTrack.makeIterator() {
-            print(event)
+        print(pianoTrack.count)
+        for i in 0 ..< pianoTrack.count {
+            let event = pianoTrack[i]
+            
+            // Draw the events at the right key based on the note value
+            // Offset the key depth based on the duration, scaling with the timeResolution
+            // That's kind of it.
         }
     }
 }

@@ -124,6 +124,8 @@ class AppState {
         // Without the -1, we can get the actual key width
         //
         // Both of these values are controlled by adjusting the anchors in the configuration menu
+        // TODO: whiteKeySpacing can be refactored to only use the x axis because the piano is flat
+        // TODO: the current implementation may be introducing slight placement rounding errors
         let whiteKeySpacing = (rightAnchor.position - leftAnchor.position) / Float(numberOfWhiteKeys[numberOfKeys]! - 1)
         let keyWidth = simd_length(rightAnchor.position - leftAnchor.position) / Float(numberOfWhiteKeys[numberOfKeys]!)
         let pianoWidth = keyWidth * Float(numberOfWhiteKeys[numberOfKeys]!)
@@ -177,11 +179,13 @@ class AppState {
         }
 
         // Draw the bar that sits just behind the keys
+        // TODO: the bar depth should be adjustable
+        // TODO: all the keys should really be relative to the bar depth
         createCollisionBarEntity(width: pianoWidth, offset: keyHeight)
     }
 
     func createCollisionBarEntity(width: Float, offset: Float) {
-        let box = MeshResource.generateBox(width: width, height: 0.005, depth: 0.005, cornerRadius: 0.001)
+        let box = MeshResource.generateBox(width: width, height: 0.005, depth: 0.005, cornerRadius: 0.005)
         let material = SimpleMaterial(color: .systemBlue, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
