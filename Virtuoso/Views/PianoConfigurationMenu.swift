@@ -101,8 +101,12 @@ struct PianoConfigurationMenu: View {
                     model.captureIndexFingerPosition(chirality: .right)
                 }
             }
-
-        }.padding()
+        }
+        .padding()
+        .onDisappear(perform: {
+            model.configurationMenuIsShown = false
+            model.showConfigurationMenu = false
+        })
     }
 }
 

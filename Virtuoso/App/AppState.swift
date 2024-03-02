@@ -39,29 +39,29 @@ class AppState {
 
     var showImmersiveSpace = false
     var immersiveSpaceIsShown = false
+
     var showConfigurationMenu = false
+    var configurationMenuIsShown = false
 
     // Piano Configuration
 
     /// Preload assets when the app launches to avoid pop-in during the game.
     init() {
-        centerAnchor = AppState.createDebugEntity()
-
         leftAnchor = AppState.createDebugEntity()
         rightAnchor = AppState.createDebugEntity()
 
-        centerAnchor.addChild(leftAnchor)
-        centerAnchor.addChild(rightAnchor)
+        pianoAnchor.addChild(leftAnchor)
+        pianoAnchor.addChild(rightAnchor)
 
-        spaceOrigin.addChild(centerAnchor)
+        spaceOrigin.addChild(pianoAnchor)
     }
 
     func moveAnchor(translation: SIMD3<Float>) {
-        centerAnchor.setPosition(translation, relativeTo: centerAnchor)
+        pianoAnchor.setPosition(translation, relativeTo: pianoAnchor)
     }
 
     func rotateAnchor(offset: Float) {
-        centerAnchor.transform.rotation *= simd_quatf(angle: offset, axis: [0, 1, 0])
+        pianoAnchor.transform.rotation *= simd_quatf(angle: offset, axis: [0, 1, 0])
     }
 
     func stretchAnchor(stretchFactor: Float) {
@@ -90,10 +90,10 @@ class AppState {
 
         // Move the center to the new position
         let center = (leftPosition + rightPosition) / 2
-        centerAnchor.setPosition(center, relativeTo: spaceOrigin)
+        pianoAnchor.setPosition(center, relativeTo: spaceOrigin)
 
         // Rotate the center so orientation is perpendicular to the line between the left and right anchors
-        centerAnchor.transform.rotation = simd_quatf(angle: angleBetween, axis: [0, -1, 0])
+        pianoAnchor.transform.rotation = simd_quatf(angle: angleBetween, axis: [0, -1, 0])
 
         // Now that we have factored in the roll of the center anchor,
         // we can set the left and right anchors to be the same height.
@@ -150,7 +150,7 @@ class AppState {
 
                 keys.append(key)
                 key.position = position
-                centerAnchor.addChild(key)
+                pianoAnchor.addChild(key)
 
                 whiteKeyCount += 1
             }
@@ -174,7 +174,7 @@ class AppState {
 
                 blackKey.position = blackKeyPosition
                 keys.append(blackKey)
-                centerAnchor.addChild(blackKey)
+                pianoAnchor.addChild(blackKey)
             }
         }
 
@@ -192,16 +192,14 @@ class AppState {
         entity.position = [0, 0, -offset]
 
         collisionBar = entity
-        centerAnchor.addChild(entity)
+        pianoAnchor.addChild(entity)
     }
 
-    func createNoteEntity(color: UIColor, forKey: Entity, at: SIMD3<Float>, length: Float) {
-        let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: length, cornerRadius: 0.001)
+    func createNoteEntity(color: UIColor) {
+        let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: 0.01, cornerRadius: 0.001)
         let material = SimpleMaterial(color: color, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
-        entity.position = at
-        forKey.addChild(entity)
     }
 
     private static func createDebugEntity() -> Entity {

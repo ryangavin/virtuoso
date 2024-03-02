@@ -11,6 +11,8 @@
 		941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DA2B83E69B006F114B /* MainMenu.swift */; };
 		941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */; };
 		941B22E02B844506006F114B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DF2B844506006F114B /* Extensions.swift */; };
+		941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; };
+		941CFC2F2B922BCF004414E1 /* MIKMIDI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		942D57A12B8397CE007C7327 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D57A02B8397CE007C7327 /* Module.swift */; };
 		9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9480B79B2B7EAA2F00DDB251 /* RealityKitContent */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
@@ -27,6 +29,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		941CFC242B922955004414E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D74EEA517A7129300BEE89F;
+			remoteInfo = MIKMIDI;
+		};
+		941CFC262B922955004414E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9DAF8B061A7AFF1100F46528;
+			remoteInfo = "MIKMIDI-iOS";
+		};
+		941CFC282B922955004414E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D4DF13A1AAB57430065F004;
+			remoteInfo = "MIKMIDI Tests";
+		};
 		9480B7AE2B7EAA3000DDB251 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9480B78E2B7EAA2F00DDB251 /* Project object */;
@@ -36,11 +59,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		941CFC302B922BCF004414E1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				941CFC2F2B922BCF004414E1 /* MIKMIDI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		941B22D82B83E26B006F114B /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
 		941B22DA2B83E69B006F114B /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoConfigurationMenu.swift; sourceTree = "<group>"; };
 		941B22DF2B844506006F114B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MIKMIDI.xcodeproj; path = Frameworks/MIKMIDI/Framework/MIKMIDI.xcodeproj; sourceTree = "<group>"; };
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B79A2B7EAA2F00DDB251 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -65,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */,
+				941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,13 +128,32 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		941CFC1E2B922955004414E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				941CFC252B922955004414E1 /* MIKMIDI.framework */,
+				941CFC272B922955004414E1 /* MIKMIDI.framework */,
+				941CFC292B922955004414E1 /* MIKMIDI Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		941CFC2A2B922A04004414E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9480B78D2B7EAA2F00DDB251 = {
 			isa = PBXGroup;
 			children = (
+				941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */,
 				9480B7982B7EAA2F00DDB251 /* Virtuoso */,
 				9480B7992B7EAA2F00DDB251 /* Packages */,
 				9480B7B02B7EAA3000DDB251 /* VirtuosoTests */,
 				9480B7972B7EAA2F00DDB251 /* Products */,
+				941CFC2A2B922A04004414E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +236,7 @@
 				9480B7922B7EAA2F00DDB251 /* Sources */,
 				9480B7932B7EAA2F00DDB251 /* Frameworks */,
 				9480B7942B7EAA2F00DDB251 /* Resources */,
+				941CFC302B922BCF004414E1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +298,12 @@
 			mainGroup = 9480B78D2B7EAA2F00DDB251;
 			productRefGroup = 9480B7972B7EAA2F00DDB251 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 941CFC1E2B922955004414E1 /* Products */;
+					ProjectRef = 941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9480B7952B7EAA2F00DDB251 /* Virtuoso */,
@@ -246,6 +311,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		941CFC252B922955004414E1 /* MIKMIDI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MIKMIDI.framework;
+			remoteRef = 941CFC242B922955004414E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		941CFC272B922955004414E1 /* MIKMIDI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MIKMIDI.framework;
+			remoteRef = 941CFC262B922955004414E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		941CFC292B922955004414E1 /* MIKMIDI Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "MIKMIDI Tests.xctest";
+			remoteRef = 941CFC282B922955004414E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9480B7942B7EAA2F00DDB251 /* Resources */ = {

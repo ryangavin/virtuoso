@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlaybackWidget: View {
-    static let attachmentId = "PlaybackWidget"
+    @Environment(PlaybackManager.self) var playbackManager
 
     var body: some View {
         HStack {
@@ -16,10 +16,14 @@ struct PlaybackWidget: View {
             Button(action: {}, label: {
                 Image(systemName: "backward")
             })
-            Button(action: {}, label: {
+            Button(action: {
+                playbackManager.stopPlayback()
+            }, label: {
                 Image(systemName: "stop")
             })
-            Button(action: {}, label: {
+            Button(action: {
+                playbackManager.startPlayback()
+            }, label: {
                 Image(systemName: "play")
             })
             Button(action: {}, label: {
@@ -47,5 +51,5 @@ struct PlaybackWidget: View {
 }
 
 #Preview {
-    PlaybackWidget()
+    PlaybackWidget().environment(PlaybackManager())
 }

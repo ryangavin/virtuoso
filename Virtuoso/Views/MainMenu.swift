@@ -10,13 +10,12 @@ import RealityKitContent
 import SwiftUI
 
 struct MainMenu: View {
-    // All this stuff nees to be in a shared view model
-    let appState: AppState
-
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
+
+    @Environment(AppState.self) var appState
 
     var body: some View {
         @Bindable
@@ -29,10 +28,19 @@ struct MainMenu: View {
             Text("Immersive Piano Trainer")
                 .padding(.top, 10)
 
-            Toggle("Begin Training", isOn: $model.showImmersiveSpace)
-                .toggleStyle(.button)
-                .tint(.blue)
-                .padding(.top, 10)
+            HStack {
+                Toggle("Configuration", isOn: $model.showConfigurationMenu)
+                    .toggleStyle(.button)
+                    .padding(.top, 10)
+                Toggle("Begin Training", isOn: $model.showImmersiveSpace)
+                    .toggleStyle(.button)
+                    .tint(.blue)
+                    .padding(.top, 10)
+            }
+
+            Spacer()
+
+            PlaybackWidget()
         }
         .padding()
         .onChange(of: model.showImmersiveSpace) { _, newValue in
@@ -58,8 +66,9 @@ struct MainMenu: View {
             Task {
                 if newValue {
                     openWindow(id: Module.pianoConfigurationMenu.name)
-                } else {
+                } else if model.configurationMenuIsShown {
                     dismissWindow(id: Module.pianoConfigurationMenu.name)
+                    model.configurationMenuIsShown = false
                 }
             }
         }
@@ -67,5 +76,5 @@ struct MainMenu: View {
 }
 
 #Preview(windowStyle: .automatic) {
-    MainMenu(appState: AppState())
+    MainMenu().environment(AppState())
 }

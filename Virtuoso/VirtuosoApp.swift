@@ -9,8 +9,9 @@ import SwiftUI
 
 @main
 struct VirtuosoApp: App {
-    @State private var model = AppState()
+    @State private var appState = AppState()
     @State private var handManager = HandManager()
+    @State private var playbackManager = PlaybackManager()
 
     @State private var immersionStyle: ImmersionStyle = .mixed
 
@@ -20,15 +21,17 @@ struct VirtuosoApp: App {
 
     var body: some Scene {
         WindowGroup("Main Menu", id: Module.mainMenu.name) {
-            MainMenu(appState: model)
-        }.defaultSize(width: 400, height: 300)
+            MainMenu()
+                .environment(appState)
+                .environment(playbackManager)
+        }.defaultSize(width: 600, height: 280)
 
         WindowGroup("Piano Configuration Menu", id: Module.pianoConfigurationMenu.name) {
-            PianoConfigurationMenu(appState: model)
+            PianoConfigurationMenu(appState: appState)
         }.defaultSize(width: 500, height: 350)
 
         ImmersiveSpace(id: Module.immersiveSpace.name) {
-            PianoRealityView(appState: model, handManager: handManager)
+            PianoRealityView(appState: appState, handManager: handManager)
         }.immersionStyle(selection: $immersionStyle, in: .mixed)
     }
 }
