@@ -66,7 +66,7 @@ struct MainMenu: View {
             Task {
                 if newValue {
                     openWindow(id: Module.pianoConfigurationMenu.name)
-                } else if model.configurationMenuIsShown {
+                } else {
                     dismissWindow(id: Module.pianoConfigurationMenu.name)
                     model.configurationMenuIsShown = false
                 }

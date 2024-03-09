@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		941B22D92B83E26B006F114B /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22D82B83E26B006F114B /* GlobalEntities.swift */; };
+		941B22D92B83E26B006F114B /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22D82B83E26B006F114B /* Globals.swift */; };
 		941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DA2B83E69B006F114B /* MainMenu.swift */; };
 		941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */; };
 		941B22E02B844506006F114B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DF2B844506006F114B /* Extensions.swift */; };
@@ -74,7 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		941B22D82B83E26B006F114B /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
+		941B22D82B83E26B006F114B /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		941B22DA2B83E69B006F114B /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoConfigurationMenu.swift; sourceTree = "<group>"; };
 		941B22DF2B844506006F114B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				9483F1DB2B88D5CD00B8E1BA /* App */,
 				941B22DE2B844480006F114B /* Views */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
-				941B22D82B83E26B006F114B /* GlobalEntities.swift */,
+				941B22D82B83E26B006F114B /* Globals.swift */,
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
@@ -368,7 +368,7 @@
 				941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */,
 				941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
-				941B22D92B83E26B006F114B /* GlobalEntities.swift in Sources */,
+				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,

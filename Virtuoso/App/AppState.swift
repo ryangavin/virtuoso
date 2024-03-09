@@ -6,6 +6,7 @@
 //
 
 import ARKit
+import MIKMIDI
 import RealityKit
 import RealityKitContent
 import SwiftUI
@@ -23,17 +24,25 @@ class AppState {
     // Collision bar for the notes to hit
     private var collisionBar = Entity()
 
+    // The anchors for the actual piano keys
     private var keys: [Entity] = []
 
+    // The notes drawn from the sequence
+    private var notes: [MIKMIDINoteEvent: Entity] = [:]
+
     var numberOfKeys: Int = 73
-    private let numberOfWhiteKeys = [
+
+    private let NUMBER_OF_WHITE_KEYS = [
         73: 43
     ]
-    private let startingKey = [
+    private let STARTING_KEYS = [
         73: "E"
     ]
+    private let STARTING_MIDI_NOTE = [
+        73: 28
+    ]
 
-    private let noteNames = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+    private let NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
 
     // MARK: UI
 
@@ -43,15 +52,21 @@ class AppState {
     var showConfigurationMenu = false
     var configurationMenuIsShown = false
 
-    // Piano Configuration
-
-    /// Preload assets when the app launches to avoid pop-in during the game.
     init() {
         leftAnchor = AppState.createDebugEntity()
         rightAnchor = AppState.createDebugEntity()
 
         pianoAnchor.addChild(leftAnchor)
         pianoAnchor.addChild(rightAnchor)
+
+        // Load the saved positions
+        if let leftPosition = UserDefaults.standard.value(forKey: "leftAnchorSavedPosition") as? Data,
+           let rightPosition = UserDefaults.standard.value(forKey: "rightAnchorSavedPosition") as? Data
+        {
+            let leftPositionData = try? propertyListDecoder.decode(SIMD3<Float>.self, from: leftPosition)
+            let rightPositionData = try? propertyListDecoder.decode(SIMD3<Float>.self, from: rightPosition)
+            repositionAnchors(leftPosition: leftPositionData!, rightPosition: rightPositionData!)
+        }
 
         spaceOrigin.addChild(pianoAnchor)
     }
@@ -85,6 +100,16 @@ class AppState {
             leftPosition.y = rightPosition.y
         }
 
+        let leftPositionData = try? propertyListEncoder.encode(leftPosition)
+        let rightPositionData = try? propertyListEncoder.encode(rightPosition)
+
+        UserDefaults.standard.set(leftPositionData, forKey: "leftAnchorSavedPosition")
+        UserDefaults.standard.set(rightPositionData, forKey: "rightAnchorSavedPosition")
+
+        repositionAnchors(leftPosition: leftPosition, rightPosition: rightPosition)
+    }
+
+    func repositionAnchors(leftPosition: SIMD3<Float>, rightPosition: SIMD3<Float>) {
         // Angle between ignoring the y axis
         let angleBetween = atan2(leftPosition.z - rightPosition.z, leftPosition.x - rightPosition.x) - .pi
 
@@ -107,14 +132,17 @@ class AppState {
         redrawEnvironment()
     }
 
-    func redrawEnvironment() {
+    private func redrawEnvironment() {
+        // Remove the old entities
+        // TODO: don't recreate the entities every time, just move them
+        // TODO: only change the entities when we change the number of keys
         for key in keys {
             key.removeFromParent()
         }
         keys.removeAll()
         collisionBar.removeFromParent()
 
-        let noteIndex = noteNames.firstIndex(of: startingKey[numberOfKeys]!)!
+        let noteIndex = NOTE_NAMES.firstIndex(of: STARTING_KEYS[numberOfKeys]!)!
 
         // Spread all the white keys evenly between the two anchors
         // We are measuring the number of gaps between keys, not the number of keys
@@ -126,9 +154,9 @@ class AppState {
         // Both of these values are controlled by adjusting the anchors in the configuration menu
         // TODO: whiteKeySpacing can be refactored to only use the x axis because the piano is flat
         // TODO: the current implementation may be introducing slight placement rounding errors
-        let whiteKeySpacing = (rightAnchor.position - leftAnchor.position) / Float(numberOfWhiteKeys[numberOfKeys]! - 1)
-        let keyWidth = simd_length(rightAnchor.position - leftAnchor.position) / Float(numberOfWhiteKeys[numberOfKeys]!)
-        let pianoWidth = keyWidth * Float(numberOfWhiteKeys[numberOfKeys]!)
+        let whiteKeySpacing = (rightAnchor.position - leftAnchor.position) / Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]! - 1)
+        let keyWidth = simd_length(rightAnchor.position - leftAnchor.position) / Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]!)
+        let pianoWidth = keyWidth * Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]!)
 
         // The key width can be used to figure out the key height, which is about 6 times the width
         // Not sure if this holds up on micro keyboards
@@ -140,7 +168,7 @@ class AppState {
         var whiteKeyCount = 0
 
         for i in 0 ..< numberOfKeys {
-            let noteName = noteNames[(i + noteIndex) % noteNames.count]
+            let noteName = NOTE_NAMES[(i + noteIndex) % NOTE_NAMES.count]
 
             // White keys
             if !noteName.contains("#"), !noteName.contains("b") {
@@ -184,22 +212,67 @@ class AppState {
         createCollisionBarEntity(width: pianoWidth, offset: keyHeight)
     }
 
-    func createCollisionBarEntity(width: Float, offset: Float) {
+    @MainActor
+    func drawTrack(track: MIKMIDITrack, targetTimestamp: MusicTimeStamp) {
+        // Figure out which notes in the sequence we need to draw
+        // We want to see 8 bars ahead, as well as whatever is currently playing
+        let trackNotes = track.notes(fromTimeStamp: targetTimestamp, toTimeStamp: targetTimestamp + 16)
+        print("Drawing \(trackNotes.count) notes from \(targetTimestamp) to \(targetTimestamp + 16)")
+
+        var notesSeen = [Entity]()
+        for trackNote in trackNotes {
+            if notes[trackNote] == nil {
+                print("Creating note for \(trackNote) at \(trackNote.timeStamp)")
+                let noteEntity = createNoteEntity(depth: trackNote.duration / 10, color: .systemBlue)
+                notes[trackNote] = noteEntity
+                collisionBar.addChild(noteEntity)
+            }
+
+            let noteEntity = notes[trackNote]!
+
+            // Position the note above the right key
+            let noteIndex = Int(trackNote.note) - STARTING_MIDI_NOTE[numberOfKeys]!
+
+            // Get the key position relative to the collision bar
+            // TODO: this calculation is probably expensive to do every time
+            // TODO: we should have a chache of x offsets
+            let keyAnchorPosition = keys[noteIndex].position(relativeTo: collisionBar)
+
+            // Move the note anchor relative to the collision bar
+            let zOffset = Float(trackNote.timeStamp - targetTimestamp) / 10
+            let targetPosition = SIMD3<Float>(keyAnchorPosition.x, 0, -zOffset)
+            noteEntity.setPosition(targetPosition, relativeTo: collisionBar)
+
+            notesSeen.append(noteEntity)
+        }
+
+        // Remove any entities that we haven't seen
+        for note in notes {
+            // TODO: make sure not to remove anything that's still playing
+            if !notesSeen.contains(note.value) {
+                note.value.removeFromParent()
+                notes.removeValue(forKey: note.key)
+            }
+        }
+    }
+
+    private func createCollisionBarEntity(width: Float, offset: Float) {
         let box = MeshResource.generateBox(width: width, height: 0.005, depth: 0.005, cornerRadius: 0.005)
         let material = SimpleMaterial(color: .systemBlue, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
-        entity.position = [0, 0, -offset]
+        entity.position = [0, 0.01, -offset]
 
         collisionBar = entity
         pianoAnchor.addChild(entity)
     }
 
-    func createNoteEntity(color: UIColor) {
-        let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: 0.01, cornerRadius: 0.001)
+    private func createNoteEntity(depth: Float, color: UIColor) -> Entity {
+        let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: depth, cornerRadius: 0.001)
         let material = SimpleMaterial(color: color, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
+        return entity
     }
 
     private static func createDebugEntity() -> Entity {

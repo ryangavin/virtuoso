@@ -31,7 +31,10 @@ struct VirtuosoApp: App {
         }.defaultSize(width: 500, height: 350)
 
         ImmersiveSpace(id: Module.immersiveSpace.name) {
-            PianoRealityView(appState: appState, handManager: handManager)
+            PianoRealityView()
+                .environment(appState)
+                .environment(handManager)
+                .environment(playbackManager)
         }.immersionStyle(selection: $immersionStyle, in: .mixed)
     }
 }
