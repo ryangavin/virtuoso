@@ -30,6 +30,9 @@ class AppState {
     // The notes drawn from the sequence
     private var notes: [MIKMIDINoteEvent: Entity] = [:]
 
+    // The main anchor for the notes
+    private var noteAnchor = Entity()
+
     var numberOfKeys: Int = 73
 
     private let NUMBER_OF_WHITE_KEYS = [
@@ -58,6 +61,10 @@ class AppState {
 
         pianoAnchor.addChild(leftAnchor)
         pianoAnchor.addChild(rightAnchor)
+        pianoAnchor.addChild(noteAnchor)
+
+        // TODO: this will need to be more dynamic to handle changes to number of keys
+        createKeyAnchors()
 
         // Load the saved positions
         if let leftPosition = UserDefaults.standard.value(forKey: "leftAnchorSavedPosition") as? Data,
@@ -83,7 +90,7 @@ class AppState {
         // Move the left and right anchors a bit, and then redraw the keyboard
         leftAnchor.setPosition([-stretchFactor, 0, 0], relativeTo: leftAnchor)
         rightAnchor.setPosition([stretchFactor, 0, 0], relativeTo: rightAnchor)
-        redrawEnvironment()
+        redrawKeys()
     }
 
     func captureIndexFingerPosition(chirality: HandAnchor.Chirality) {
@@ -96,7 +103,8 @@ class AppState {
         // Keep the height the same, using the height of the last selected anchor
         if chirality == .left {
             rightPosition.y = leftPosition.y
-        } else {
+        }
+        else {
             leftPosition.y = rightPosition.y
         }
 
@@ -129,10 +137,10 @@ class AppState {
         leftAnchor.position = [-width / 2, 0, 0]
         rightAnchor.position = [width / 2, 0, 0]
 
-        redrawEnvironment()
+        redrawKeys()
     }
 
-    private func redrawEnvironment() {
+    private func createKeyAnchors() {
         // Remove the old entities
         // TODO: don't recreate the entities every time, just move them
         // TODO: only change the entities when we change the number of keys
@@ -140,8 +148,16 @@ class AppState {
             key.removeFromParent()
         }
         keys.removeAll()
-        collisionBar.removeFromParent()
 
+        // TODO: move this into a hash of MIDI note number to entity
+        for _ in 0 ..< numberOfKeys {
+            let key = AppState.createDebugEntity()
+            keys.append(key)
+            pianoAnchor.addChild(key)
+        }
+    }
+
+    private func redrawKeys() {
         let noteIndex = NOTE_NAMES.firstIndex(of: STARTING_KEYS[numberOfKeys]!)!
 
         // Spread all the white keys evenly between the two anchors
@@ -168,18 +184,14 @@ class AppState {
         var whiteKeyCount = 0
 
         for i in 0 ..< numberOfKeys {
+            let keyAnchor = keys[i]
             let noteName = NOTE_NAMES[(i + noteIndex) % NOTE_NAMES.count]
 
             // White keys
             if !noteName.contains("#"), !noteName.contains("b") {
                 let position = leftAnchor.position + whiteKeySpacing * Float(whiteKeyCount)
-                let key = AppState.createDebugEntity()
                 lastWhiteKeyPosition = position
-
-                keys.append(key)
-                key.position = position
-                pianoAnchor.addChild(key)
-
+                keyAnchor.position = position
                 whiteKeyCount += 1
             }
 
@@ -189,7 +201,6 @@ class AppState {
                 // In real life the spread is a little wider than that.
                 // In the cluster of 3, the middle note is directly in the center of the two white keys
                 // In the cluster of 2, each is slightly offset from the center of their respective white keys
-                let blackKey = AppState.createDebugEntity()
                 var blackKeyPosition = lastWhiteKeyPosition + whiteKeySpacing / 2
 
                 // Set the black key back and up
@@ -199,17 +210,16 @@ class AppState {
                 // TODO: we also need to derive the height of the white key
                 blackKeyPosition.z -= 0.07
                 blackKeyPosition.y += 0.01
-
-                blackKey.position = blackKeyPosition
-                keys.append(blackKey)
-                pianoAnchor.addChild(blackKey)
+                keyAnchor.position = blackKeyPosition
             }
         }
 
-        // Draw the bar that sits just behind the keys
-        // TODO: the bar depth should be adjustable
-        // TODO: all the keys should really be relative to the bar depth
-        createCollisionBarEntity(width: pianoWidth, offset: keyHeight)
+        // Redraw the collison bar with the correct width
+        collisionBar.removeFromParent()
+        collisionBar = createCollisionBarEntity(width: pianoWidth, offset: keyHeight)
+        pianoAnchor.addChild(collisionBar)
+
+        noteAnchor.setPosition([0.0, 0.0, 0.0], relativeTo: collisionBar)
     }
 
     @MainActor
@@ -217,15 +227,19 @@ class AppState {
         // Figure out which notes in the sequence we need to draw
         // We want to see 8 bars ahead, as well as whatever is currently playing
         let trackNotes = track.notes(fromTimeStamp: targetTimestamp, toTimeStamp: targetTimestamp + 16)
-        print("Drawing \(trackNotes.count) notes from \(targetTimestamp) to \(targetTimestamp + 16)")
 
         var notesSeen = [Entity]()
         for trackNote in trackNotes {
+            // Track depth up front so it can be used to create the note if necessary
+            // It will get used again later to offset the positions of the notes further
+            // This is because the center of the note is the anchor point
+            // So we need to move things by the depth/2 to get the notes to line up
+            let depth = trackNote.duration / 10
+
             if notes[trackNote] == nil {
-                print("Creating note for \(trackNote) at \(trackNote.timeStamp)")
-                let noteEntity = createNoteEntity(depth: trackNote.duration / 10, color: .systemBlue)
+                let noteEntity = createNoteEntity(depth: depth, color: .systemBlue)
                 notes[trackNote] = noteEntity
-                collisionBar.addChild(noteEntity)
+                noteAnchor.addChild(noteEntity)
             }
 
             let noteEntity = notes[trackNote]!
@@ -233,15 +247,16 @@ class AppState {
             // Position the note above the right key
             let noteIndex = Int(trackNote.note) - STARTING_MIDI_NOTE[numberOfKeys]!
 
-            // Get the key position relative to the collision bar
+            // Get the key position relative to the main anchor
             // TODO: this calculation is probably expensive to do every time
             // TODO: we should have a chache of x offsets
-            let keyAnchorPosition = keys[noteIndex].position(relativeTo: collisionBar)
+            let keyAnchorPosition = keys[noteIndex].position(relativeTo: noteAnchor)
 
-            // Move the note anchor relative to the collision bar
-            let zOffset = Float(trackNote.timeStamp - targetTimestamp) / 10
+            // Move the note anchor relative to the main anchor
+            let durationOffset = Float(trackNote.timeStamp - targetTimestamp) / 10
+            let zOffset = durationOffset + (depth / 2)
             let targetPosition = SIMD3<Float>(keyAnchorPosition.x, 0, -zOffset)
-            noteEntity.setPosition(targetPosition, relativeTo: collisionBar)
+            noteEntity.setPosition(targetPosition, relativeTo: noteAnchor)
 
             notesSeen.append(noteEntity)
         }
@@ -256,15 +271,13 @@ class AppState {
         }
     }
 
-    private func createCollisionBarEntity(width: Float, offset: Float) {
+    private func createCollisionBarEntity(width: Float, offset: Float) -> Entity {
         let box = MeshResource.generateBox(width: width, height: 0.005, depth: 0.005, cornerRadius: 0.005)
         let material = SimpleMaterial(color: .systemBlue, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
         entity.position = [0, 0.01, -offset]
-
-        collisionBar = entity
-        pianoAnchor.addChild(entity)
+        return entity
     }
 
     private func createNoteEntity(depth: Float, color: UIColor) -> Entity {
