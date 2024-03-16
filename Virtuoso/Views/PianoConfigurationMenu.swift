@@ -10,7 +10,8 @@ import RealityKitContent
 import SwiftUI
 
 struct PianoConfigurationMenu: View {
-    let appState: AppState
+    @Environment(PianoManager.self) var pianoManager
+    @Environment(AppState.self) var appState
 
     // Constants
     let supportedKeys = [25, 37, 49, 73, 88]
@@ -18,14 +19,14 @@ struct PianoConfigurationMenu: View {
 
     var body: some View {
         @Bindable
-        var model = appState
+        var bindablePianoManager = pianoManager
 
         VStack {
             Text("Piano Configuration")
                 .font(.title)
 
             Form {
-                Picker("Number of Keys", selection: $model.numberOfKeys) {
+                Picker("Number of Keys", selection: $bindablePianoManager.numberOfKeys) {
                     ForEach(supportedKeys, id: \.self) { key in
                         Text("\(key)")
                     }
@@ -34,22 +35,22 @@ struct PianoConfigurationMenu: View {
 
             HStack {
                 Button(action: {
-                    model.stretchAnchor(stretchFactor: 0.005)
+                    pianoManager.stretchAnchor(stretchFactor: 0.005)
                 }, label: {
                     Image(systemName: "arrow.left.and.line.vertical.and.arrow.right")
                 })
                 Button(action: {
-                    model.rotateAnchor(offset: 0.01)
+                    pianoManager.rotateAnchor(offset: 0.01)
                 }, label: {
                     Image(systemName: "arrow.counterclockwise")
                 })
                 Button(action: {
-                    model.moveAnchor(translation: simd_float3(0, 0, -0.005))
+                    pianoManager.moveAnchor(translation: simd_float3(0, 0, -0.005))
                 }, label: {
                     Image(systemName: "arrowshape.up.fill")
                 })
                 Button(action: {
-                    model.rotateAnchor(offset: -0.01)
+                    pianoManager.rotateAnchor(offset: -0.01)
                 }, label: {
                     Image(systemName: "arrow.clockwise")
                 })
@@ -58,7 +59,7 @@ struct PianoConfigurationMenu: View {
                 Button("X") {}
                     .tint(.red)
                 Button(action: {
-                    model.moveAnchor(translation: simd_float3(-0.005, 0, 0))
+                    pianoManager.moveAnchor(translation: simd_float3(-0.005, 0, 0))
                 }, label: {
                     Image(systemName: "arrowshape.left.fill")
                 })
@@ -66,50 +67,50 @@ struct PianoConfigurationMenu: View {
                     Image(systemName: "tortoise.fill")
                 })
                 Button(action: {
-                    model.moveAnchor(translation: simd_float3(0.005, 0, 0))
+                    pianoManager.moveAnchor(translation: simd_float3(0.005, 0, 0))
                 }, label: {
                     Image(systemName: "arrowshape.right.fill")
                 })
             }
             HStack {
                 Button(action: {
-                    model.stretchAnchor(stretchFactor: -0.005)
+                    pianoManager.stretchAnchor(stretchFactor: -0.005)
                 }, label: {
                     Image(systemName: "arrow.right.and.line.vertical.and.arrow.left")
                 })
                 Button(action: {
-                    model.moveAnchor(translation: simd_float3(0, 0.005, 0))
+                    pianoManager.moveAnchor(translation: simd_float3(0, 0.005, 0))
                 }, label: {
                     Image(systemName: "square.3.layers.3d.top.filled")
                 })
                 Button(action: {
-                    model.moveAnchor(translation: simd_float3(0, 0, 0.005))
+                    pianoManager.moveAnchor(translation: simd_float3(0, 0, 0.005))
                 }, label: {
                     Image(systemName: "arrowshape.down.fill")
                 })
                 Button(action: {
-                    model.moveAnchor(translation: simd_float3(0, -0.005, 0))
+                    pianoManager.moveAnchor(translation: simd_float3(0, -0.005, 0))
                 }, label: {
                     Image(systemName: "square.3.layers.3d.bottom.filled")
                 })
             }
             HStack {
                 Button("Capture left") {
-                    model.captureIndexFingerPosition(chirality: .left)
+                    pianoManager.captureIndexFingerPosition(chirality: .left)
                 }
                 Button("Capture right") {
-                    model.captureIndexFingerPosition(chirality: .right)
+                    pianoManager.captureIndexFingerPosition(chirality: .right)
                 }
             }
         }
         .padding()
         .onDisappear(perform: {
-            model.configurationMenuIsShown = false
-            model.showConfigurationMenu = false
+            appState.configurationMenuIsShown = false
+            appState.showConfigurationMenu = false
         })
     }
 }
 
 #Preview(windowStyle: .automatic) {
-    PianoConfigurationMenu(appState: AppState())
+    PianoConfigurationMenu().environment(PianoManager())
 }

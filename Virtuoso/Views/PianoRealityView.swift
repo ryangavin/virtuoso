@@ -7,6 +7,7 @@ import SwiftUI
 struct PianoRealityView: View {
     @Environment(AppState.self) var appState
     @Environment(HandManager.self) var handManager
+    @Environment(PianoManager.self) var pianoManager
     @Environment(PlaybackManager.self) var playbackManager
 
     var body: some View {
@@ -37,21 +38,22 @@ struct PianoRealityView: View {
         .onChange(of: playbackManager.targetDisplayTimestamp) { _, _ in
             guard let track = playbackManager.sequence?.tracks[1],
                   let sequencer = playbackManager.sequencer else { return }
-            appState.drawTrack(track: track, targetTimestamp: sequencer.currentTimeStamp)
+            pianoManager.drawTrack(track: track, targetTimestamp: sequencer.currentTimeStamp)
         }
     }
 }
 
 struct PianoRealityView_Previews: PreviewProvider {
-    static let appState = AppState()
+    static let pianoManager = PianoManager()
 
     static var previews: some View {
         PianoRealityView()
-            .environment(appState)
+            .environment(AppState())
+            .environment(pianoManager)
             .environment(HandManager())
             .environment(PlaybackManager())
             .onAppear {
-                appState.repositionAnchors(leftPosition: [1, 0, 0], rightPosition: [1, 0, 0])
+                pianoManager.repositionAnchors(leftPosition: [-1, 0, 0], rightPosition: [1, 0, 0])
             }
     }
 }

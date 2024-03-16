@@ -6,6 +6,7 @@
 //
 
 import RealityKit
+import RealityKitContent
 import SwiftUI
 
 extension Entity {
@@ -19,5 +20,17 @@ extension Entity {
         }
 
         return nextParent[parentMatching: targetName]
+    }
+
+    static func createDebugEntity() -> Entity {
+        if debugAnchorEntity == nil {
+            // Load the entity named "Debug Entity"
+            guard let loadedEntity = try? Entity.load(named: "Debug Anchor", in: realityKitContentBundle) else {
+                fatalError("Failed to load the Debug Anchor")
+            }
+            debugAnchorEntity = loadedEntity
+        }
+
+        return debugAnchorEntity!.clone(recursive: true)
     }
 }
