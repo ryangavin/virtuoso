@@ -20,11 +20,16 @@ struct VirtuosoApp: App {
     }
 
     var body: some Scene {
-        WindowGroup("Main Menu", id: Module.mainMenu.name) {
-            MainMenu()
+//        WindowGroup("Main Menu", id: Module.mainMenu.name) {
+//            MainMenu()
+//                .environment(appState)
+//                .environment(playbackManager)
+//        }.defaultSize(width: 600, height: 280)
+
+        WindowGroup("Browser", id: Module.browser.name) {
+            BrowserView()
                 .environment(appState)
-                .environment(playbackManager)
-        }.defaultSize(width: 600, height: 280)
+        }
 
         WindowGroup("Piano Configuration Menu", id: Module.pianoConfigurationMenu.name) {
             PianoConfigurationMenu(appState: appState)

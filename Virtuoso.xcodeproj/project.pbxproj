@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		941B22D92B83E26B006F114B /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22D82B83E26B006F114B /* Globals.swift */; };
-		941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DA2B83E69B006F114B /* MainMenu.swift */; };
 		941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */; };
 		941B22E02B844506006F114B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DF2B844506006F114B /* Extensions.swift */; };
 		941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; };
@@ -80,7 +79,6 @@
 
 /* Begin PBXFileReference section */
 		941B22D82B83E26B006F114B /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		941B22DA2B83E69B006F114B /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoConfigurationMenu.swift; sourceTree = "<group>"; };
 		941B22DF2B844506006F114B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MIKMIDI.xcodeproj; path = Frameworks/MIKMIDI/Framework/MIKMIDI.xcodeproj; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
-				941B22DA2B83E69B006F114B /* MainMenu.swift */,
 				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
 				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
 				946350442B9E11A3006CFA88 /* BrowserView.swift */,
@@ -384,7 +381,6 @@
 				9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */,
 				94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */,
 				941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */,
-				941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
 				946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */,
