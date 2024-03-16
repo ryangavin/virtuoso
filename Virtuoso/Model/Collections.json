@@ -1,0 +1,26 @@
+{
+    "collections": [
+        {
+            "id": 1,
+            "name": "Best of Steely Dan",
+            "songs": [
+                {
+                    "id": 1,
+                    "title": "Do It Again",
+                    "artist": "Steely Dan"
+                },
+                {
+                    "id": 2,
+                    "title": "Reelin' in the Years",
+                    "artist": "Steely Dan"
+                },
+                {
+                    "id": 3,
+                    "title": "Peg",
+                    "artist": "Steely Dan",
+                    "filename": "peg.midi"
+                }
+            ]
+        }
+    ]
+}

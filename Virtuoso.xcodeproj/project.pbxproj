@@ -14,6 +14,11 @@
 		941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; };
 		941CFC2F2B922BCF004414E1 /* MIKMIDI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		942D57A12B8397CE007C7327 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D57A02B8397CE007C7327 /* Module.swift */; };
+		946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350442B9E11A3006CFA88 /* BrowserView.swift */; };
+		946350492B9E18EA006CFA88 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350482B9E18EA006CFA88 /* Song.swift */; };
+		9463504B2B9E1A2F006CFA88 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463504A2B9E1A2F006CFA88 /* Course.swift */; };
+		9463504F2B9E1ACF006CFA88 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 9463504E2B9E1ACF006CFA88 /* Courses.json */; };
+		946350532B9E1D6D006CFA88 /* Collections.json in Resources */ = {isa = PBXBuildFile; fileRef = 946350522B9E1D6D006CFA88 /* Collections.json */; };
 		9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9480B79B2B7EAA2F00DDB251 /* RealityKitContent */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
@@ -80,6 +85,11 @@
 		941B22DF2B844506006F114B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MIKMIDI.xcodeproj; path = Frameworks/MIKMIDI/Framework/MIKMIDI.xcodeproj; sourceTree = "<group>"; };
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		946350442B9E11A3006CFA88 /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
+		946350482B9E18EA006CFA88 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		9463504A2B9E1A2F006CFA88 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		9463504E2B9E1ACF006CFA88 /* Courses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		946350522B9E1D6D006CFA88 /* Collections.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Collections.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B79A2B7EAA2F00DDB251 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoApp.swift; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 				941B22DA2B83E69B006F114B /* MainMenu.swift */,
 				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
 				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
+				946350442B9E11A3006CFA88 /* BrowserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +154,17 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		946350472B9E1776006CFA88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				946350482B9E18EA006CFA88 /* Song.swift */,
+				9463504A2B9E1A2F006CFA88 /* Course.swift */,
+				9463504E2B9E1ACF006CFA88 /* Courses.json */,
+				946350522B9E1D6D006CFA88 /* Collections.json */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9480B78D2B7EAA2F00DDB251 = {
@@ -170,8 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				94E2E5F32B8CAE980096A41B /* peg.mid */,
-				9483F1DE2B88D89B00B8E1BA /* Extensions */,
 				9483F1DB2B88D5CD00B8E1BA /* App */,
+				946350472B9E1776006CFA88 /* Model */,
 				941B22DE2B844480006F114B /* Views */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
 				941B22D82B83E26B006F114B /* Globals.swift */,
@@ -217,13 +239,6 @@
 				94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		9483F1DE2B88D89B00B8E1BA /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,9 +356,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9463504F2B9E1ACF006CFA88 /* Courses.json in Resources */,
 				94E2E5F42B8CAE980096A41B /* peg.mid in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
+				946350532B9E1D6D006CFA88 /* Collections.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				946350492B9E18EA006CFA88 /* Song.swift in Sources */,
 				94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */,
 				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
 				9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */,
@@ -369,8 +387,10 @@
 				941B22DC2B83E69B006F114B /* MainMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
+				946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
+				9463504B2B9E1A2F006CFA88 /* Course.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
 			);
@@ -536,7 +556,7 @@
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 7;
 			};
 			name = Debug;
 		};
@@ -562,7 +582,7 @@
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 7;
 			};
 			name = Release;
 		};

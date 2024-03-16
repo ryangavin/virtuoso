@@ -15,6 +15,16 @@ import SwiftUI
 // TODO: This will eventually just house the actual app state
 // TODO: Most of this class will become the PianoManager
 class AppState {
+    // MARK: Actual App State
+
+    var libraryDetailShown = false
+    
+    var showImmersiveSpace = false
+    var immersiveSpaceIsShown = false
+
+    var showConfigurationMenu = false
+    var configurationMenuIsShown = false
+
     // MARK: Piano Configuration
 
     // Anchors to capture the intial positions in the world space
@@ -46,14 +56,6 @@ class AppState {
     ]
 
     private let NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
-
-    // MARK: UI
-
-    var showImmersiveSpace = false
-    var immersiveSpaceIsShown = false
-
-    var showConfigurationMenu = false
-    var configurationMenuIsShown = false
 
     init() {
         leftAnchor = AppState.createDebugEntity()

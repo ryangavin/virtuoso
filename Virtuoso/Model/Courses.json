@@ -1,0 +1,18 @@
+{
+    "courses": [
+        {
+            "id": 1,
+            "title": "New Player",
+            "description": "This is a new player course. Covers your first few weeks as a piano player",
+            "difficulty": 1,
+            "lessons": [
+                {
+                    "id": 4,
+                    "title": "Middle C",
+                    "description": "This is the first note you will learn to play. Covers posture and hand position.",
+                    "difficulty": 1
+                }
+            ]
+        }
+    ]
+}
