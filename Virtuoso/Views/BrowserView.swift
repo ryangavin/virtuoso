@@ -51,11 +51,6 @@ struct BrowserSection: View {
 }
 
 struct BrowserItemDetail: View {
-    @Environment(\.openImmersiveSpace) var openImmersiveSpace
-    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
-    @Environment(\.openWindow) var openWindow
-    @Environment(\.dismissWindow) var dismissWindow
-
     @Environment(AppState.self) var appState
 
     var body: some View {
@@ -83,7 +78,7 @@ struct BrowserItemDetail: View {
                 Spacer()
 
                 VStack {
-                    Text("Description of the lesson. Explain to the user what's going on.Maybe bullet points for what we will learn. Be as descriptive as possible")
+                    Text("Description of the lesson. Explain to the user what's going on. Maybe bullet points for what we will learn. Be as descriptive as possible.")
                         .font(.subheadline)
                     Spacer()
                     Button("Start Training") {
@@ -103,34 +98,6 @@ struct BrowserItemDetail: View {
                 .blur(radius: 50)
                 .brightness(-0.4)
                 .opacity(0.4)
-        }.onChange(of: appState.showImmersiveSpace) { _, newValue in
-            Task {
-                if newValue {
-                    switch await openImmersiveSpace(id: Module.immersiveSpace.name) {
-                    case .opened:
-                        appState.immersiveSpaceIsShown = true
-                        openWindow(id: Module.pianoConfigurationMenu.name)
-                    case .error, .userCancelled:
-                        fallthrough
-                    @unknown default:
-                        appState.immersiveSpaceIsShown = false
-                        appState.showImmersiveSpace = false
-                    }
-                } else if appState.immersiveSpaceIsShown {
-                    await dismissImmersiveSpace()
-                    appState.immersiveSpaceIsShown = false
-                }
-            }
-        }
-        .onChange(of: appState.showConfigurationMenu) { _, newValue in
-            Task {
-                if newValue {
-                    openWindow(id: Module.pianoConfigurationMenu.name)
-                } else {
-                    dismissWindow(id: Module.pianoConfigurationMenu.name)
-                    appState.configurationMenuIsShown = false
-                }
-            }
         }
     }
 }
@@ -207,5 +174,5 @@ struct BrowserView: View {
 #Preview("Browser Detail Sheet") {
     BrowserItemDetail().environment(AppState())
         .glassBackgroundEffect()
-        .frame(width: 500, height: 300)
+        .frame(width: 700, height: 300)
 }

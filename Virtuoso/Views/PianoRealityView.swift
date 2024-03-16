@@ -38,7 +38,16 @@ struct PianoRealityView: View {
         .onChange(of: playbackManager.targetDisplayTimestamp) { _, _ in
             guard let track = playbackManager.sequence?.tracks[1],
                   let sequencer = playbackManager.sequencer else { return }
+
             pianoManager.drawTrack(track: track, targetTimestamp: sequencer.currentTimeStamp)
+        }
+
+        .onAppear {
+            appState.immersiveSpaceIsShown = true
+        }
+
+        .onDisappear {
+            appState.immersiveSpaceIsShown = false
         }
     }
 }

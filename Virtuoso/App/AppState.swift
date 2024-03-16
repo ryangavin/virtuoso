@@ -18,4 +18,7 @@ class AppState {
 
     var showConfigurationMenu = false
     var configurationMenuIsShown = false
+
+    var showTrainerWindow = false
+    var trainerWindowIsShown = false
 }
