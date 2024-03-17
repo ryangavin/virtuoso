@@ -15,9 +15,7 @@
 		942D57A12B8397CE007C7327 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D57A02B8397CE007C7327 /* Module.swift */; };
 		946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350442B9E11A3006CFA88 /* BrowserView.swift */; };
 		946350492B9E18EA006CFA88 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350482B9E18EA006CFA88 /* Song.swift */; };
-		9463504B2B9E1A2F006CFA88 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463504A2B9E1A2F006CFA88 /* Course.swift */; };
-		9463504F2B9E1ACF006CFA88 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 9463504E2B9E1ACF006CFA88 /* Courses.json */; };
-		946350532B9E1D6D006CFA88 /* Collections.json in Resources */ = {isa = PBXBuildFile; fileRef = 946350522B9E1D6D006CFA88 /* Collections.json */; };
+		9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463504A2B9E1A2F006CFA88 /* SongCollection.swift */; };
 		9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9480B79B2B7EAA2F00DDB251 /* RealityKitContent */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
@@ -25,6 +23,7 @@
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
 		9486048D2BA6339E00519884 /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048C2BA6339E00519884 /* TrainerView.swift */; };
+		9486048F2BA704E600519884 /* DefaultSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* DefaultSongs.swift */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138C92B8BCD45007CEF45 /* HandManager.swift */; };
@@ -86,9 +85,7 @@
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		946350442B9E11A3006CFA88 /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
 		946350482B9E18EA006CFA88 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		9463504A2B9E1A2F006CFA88 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
-		9463504E2B9E1ACF006CFA88 /* Courses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
-		946350522B9E1D6D006CFA88 /* Collections.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Collections.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		9463504A2B9E1A2F006CFA88 /* SongCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollection.swift; sourceTree = "<group>"; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B79A2B7EAA2F00DDB251 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoApp.swift; sourceTree = "<group>"; };
@@ -99,6 +96,7 @@
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
 		9486048C2BA6339E00519884 /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
+		9486048E2BA704E600519884 /* DefaultSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSongs.swift; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94D138C92B8BCD45007CEF45 /* HandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandManager.swift; sourceTree = "<group>"; };
@@ -160,9 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				946350482B9E18EA006CFA88 /* Song.swift */,
-				9463504A2B9E1A2F006CFA88 /* Course.swift */,
-				9463504E2B9E1ACF006CFA88 /* Courses.json */,
-				946350522B9E1D6D006CFA88 /* Collections.json */,
+				9463504A2B9E1A2F006CFA88 /* SongCollection.swift */,
+				9486048E2BA704E600519884 /* DefaultSongs.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,11 +353,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9463504F2B9E1ACF006CFA88 /* Courses.json in Resources */,
 				94E2E5F42B8CAE980096A41B /* peg.mid in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
-				946350532B9E1D6D006CFA88 /* Collections.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +385,8 @@
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
 				9486048D2BA6339E00519884 /* TrainerView.swift in Sources */,
-				9463504B2B9E1A2F006CFA88 /* Course.swift in Sources */,
+				9486048F2BA704E600519884 /* DefaultSongs.swift in Sources */,
+				9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
 			);

@@ -5,6 +5,7 @@
 //  Created by Ryan Gavin on 2/15/24.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -25,12 +26,42 @@ struct VirtuosoApp: App {
         print("Starting up!")
     }
 
+    @MainActor
+    func songCollectionModelContainer() -> ModelContainer {
+        do {
+            let container = try ModelContainer(for: SongCollection.self)
+
+            // Make sure the persistent store is empty. If it's not, return the non-empty container.
+            var itemFetchDescriptor = FetchDescriptor<SongCollection>()
+            itemFetchDescriptor.fetchLimit = 1
+
+            guard try container.mainContext.fetch(itemFetchDescriptor).count == 0 else { return container }
+
+            // Set up the defaults
+            container.mainContext.insert(SongCollection.defaultSongs)
+
+            return container
+        } catch {
+            fatalError("Failed to create container")
+        }
+    }
+
     var body: some Scene {
         // MARK: The main menu, which is a browser for selecting songs
 
         WindowGroup("Browser", id: Module.browser.name) {
             BrowserView()
                 .environment(appState)
+                .modelContainer(songCollectionModelContainer())
+        }
+        .onChange(of: appState.showBrowserWindow) { _, newValue in
+            Task {
+                if newValue {
+                    openWindow(id: Module.browser.name)
+                } else {
+                    dismissWindow(id: Module.browser.name)
+                }
+            }
         }
 
         // MARK: The floating menu to help configure the virtual piano
@@ -64,6 +95,8 @@ struct VirtuosoApp: App {
                     openWindow(id: Module.trainer.name)
                 } else {
                     dismissWindow(id: Module.trainer.name)
+
+                    appState.showImmersiveSpace = false
                 }
             }
         }
@@ -83,6 +116,8 @@ struct VirtuosoApp: App {
                     case .opened:
                         appState.showConfigurationMenu = true
                         appState.showTrainerWindow = true
+
+                        appState.showBrowserWindow = false
                     case .error, .userCancelled:
                         fallthrough
                     @unknown default:
@@ -91,6 +126,11 @@ struct VirtuosoApp: App {
                     }
                 } else if appState.immersiveSpaceIsShown {
                     await dismissImmersiveSpace()
+
+                    // TODO: replace all these calls with a shared toggle method on the app state
+                    appState.showTrainerWindow = false
+                    appState.showConfigurationMenu = false
+                    appState.showBrowserWindow = true
                 }
             }
         }

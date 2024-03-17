@@ -64,6 +64,9 @@ class PianoManager {
             let rightPositionData = try? propertyListDecoder.decode(SIMD3<Float>.self, from: rightPosition)
             repositionAnchors(leftPosition: leftPositionData!, rightPosition: rightPositionData!)
         }
+        else {
+            repositionAnchors(leftPosition: [-0.2, 0.7, 0], rightPosition: [0.2, 0.7, 0])
+        }
 
         spaceOrigin.addChild(pianoAnchor)
     }

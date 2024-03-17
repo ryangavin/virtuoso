@@ -12,7 +12,7 @@ struct BrowserListItem: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Image(systemName: "star")
+            //Image(systemName: "star")
             Spacer()
             Text("Lesson Title")
                 .font(.title3)
@@ -126,6 +126,8 @@ struct BrowserListView: View {
 }
 
 struct BrowserView: View {
+    @Environment(AppState.self) var appState
+
     var body: some View {
         NavigationSplitView {
             List {
@@ -163,6 +165,12 @@ struct BrowserView: View {
         }
         detail: {
             BrowserListView()
+        }
+        .onAppear {
+            appState.browserWindowIsShown = true
+        }
+        .onDisappear {
+            appState.browserWindowIsShown = false
         }
     }
 }

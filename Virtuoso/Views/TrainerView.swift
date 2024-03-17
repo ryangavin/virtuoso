@@ -17,7 +17,6 @@ struct TrainerView: View {
                 Image("PlaceholderMusic")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: .infinity)
             }
             .toolbar {
                 ToolbarItem(placement: .bottomOrnament) {

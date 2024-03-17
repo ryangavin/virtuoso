@@ -21,4 +21,7 @@ class AppState {
 
     var showTrainerWindow = false
     var trainerWindowIsShown = false
+
+    var showBrowserWindow = true
+    var browserWindowIsShown = false
 }
