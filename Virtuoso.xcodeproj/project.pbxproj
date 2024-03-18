@@ -30,6 +30,7 @@
 		94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */; };
 		94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */; };
 		94E2E5F42B8CAE980096A41B /* peg.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94E2E5F32B8CAE980096A41B /* peg.mid */; };
+		94EE84802BA7F2880014B06A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE847F2BA7F2880014B06A /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
 		94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackWidget.swift; sourceTree = "<group>"; };
 		94E2E5F32B8CAE980096A41B /* peg.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = peg.mid; sourceTree = "<group>"; };
+		94EE847F2BA7F2880014B06A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				946350482B9E18EA006CFA88 /* Song.swift */,
 				9463504A2B9E1A2F006CFA88 /* SongCollection.swift */,
 				9486048E2BA704E600519884 /* DefaultSongs.swift */,
+				94EE847F2BA7F2880014B06A /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */,
 				941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
+				94EE84802BA7F2880014B06A /* DataController.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
 				946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,

@@ -12,6 +12,7 @@ class AppState {
     // MARK: Actual App State
 
     var libraryDetailShown = false
+    var selectedSong: Song?
 
     var showImmersiveSpace = false
     var immersiveSpaceIsShown = false

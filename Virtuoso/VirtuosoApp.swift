@@ -26,33 +26,13 @@ struct VirtuosoApp: App {
         print("Starting up!")
     }
 
-    @MainActor
-    func songCollectionModelContainer() -> ModelContainer {
-        do {
-            let container = try ModelContainer(for: SongCollection.self)
-
-            // Make sure the persistent store is empty. If it's not, return the non-empty container.
-            var itemFetchDescriptor = FetchDescriptor<SongCollection>()
-            itemFetchDescriptor.fetchLimit = 1
-
-            guard try container.mainContext.fetch(itemFetchDescriptor).count == 0 else { return container }
-
-            // Set up the defaults
-            container.mainContext.insert(SongCollection.defaultSongs)
-
-            return container
-        } catch {
-            fatalError("Failed to create container")
-        }
-    }
-
     var body: some Scene {
         // MARK: The main menu, which is a browser for selecting songs
 
         WindowGroup("Browser", id: Module.browser.name) {
             BrowserView()
                 .environment(appState)
-                .modelContainer(songCollectionModelContainer())
+                .modelContainer(DataController.modelContainer)
         }
         .onChange(of: appState.showBrowserWindow) { _, newValue in
             Task {

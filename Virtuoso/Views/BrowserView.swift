@@ -5,19 +5,20 @@
 //  Created by Ryan Gavin on 3/10/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct BrowserListItem: View {
     @Environment(AppState.self) var appState
 
+    let song: Song
+
     var body: some View {
         VStack(alignment: .leading) {
-            //Image(systemName: "star")
+            Image(systemName: "star")
             Spacer()
-            Text("Lesson Title")
-                .font(.title3)
-            Text("Lesson Subtitle")
-                .font(.callout)
+            Text(song.title).font(.title2)
+            Text(song.artist).font(.title3)
         }
         .padding(15)
         .frame(width: 300, height: 200, alignment: .leading)
@@ -25,6 +26,7 @@ struct BrowserListItem: View {
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .hoverEffect(.lift)
         .onTapGesture {
+            appState.selectedSong = song
             appState.libraryDetailShown.toggle()
         }
     }
@@ -32,6 +34,7 @@ struct BrowserListItem: View {
 
 struct BrowserSection: View {
     let title: String
+    let collection: SongCollection
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -40,9 +43,9 @@ struct BrowserSection: View {
                 .padding(.bottom, 10)
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
-                    BrowserListItem()
-                    BrowserListItem()
-                    BrowserListItem()
+                    ForEach(collection.songs) { song in
+                        BrowserListItem(song: song)
+                    }
                 }
                 .padding(.bottom, 40)
             }
@@ -59,7 +62,7 @@ struct BrowserItemDetail: View {
         VStack {
             // Title bar and close button
             HStack {
-                Text("Lesson Title")
+                Text(appState.selectedSong!.title)
                     .font(.title)
                 Spacer()
                 Button(action: { appState.libraryDetailShown.toggle() }, label: {
@@ -105,13 +108,15 @@ struct BrowserItemDetail: View {
 struct BrowserListView: View {
     @Environment(AppState.self) var appState
 
+    @Query private var allSongCollections: [SongCollection]
+
     var body: some View {
         @Bindable var appStateBindable = appState
 
         ScrollView {
-            BrowserSection(title: "Beginner")
-            BrowserSection(title: "Intermediate")
-            BrowserSection(title: "Advanced")
+            ForEach(allSongCollections) { songCollection in
+                BrowserSection(title: songCollection.title, collection: songCollection)
+            }
 
             Spacer()
         }
@@ -176,7 +181,9 @@ struct BrowserView: View {
 }
 
 #Preview("Browser") {
-    BrowserView().environment(AppState())
+    BrowserView()
+        .environment(AppState())
+        .modelContainer(DataController.previewContainer)
 }
 
 #Preview("Browser Detail Sheet") {

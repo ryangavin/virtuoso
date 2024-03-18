@@ -14,11 +14,14 @@ final class Song {
     var artist: String
     var details: String
     var difficulty: Int
+    
+    var favorite: Bool
 
-    init(title: String, artist: String, details: String, difficulty: Int) {
+    init(title: String, artist: String, details: String, difficulty: Int, favorite: Bool = false) {
         self.title = title
         self.artist = artist
         self.details = details
         self.difficulty = difficulty
+        self.favorite = favorite
     }
 }
