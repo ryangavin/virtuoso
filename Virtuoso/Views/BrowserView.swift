@@ -20,8 +20,8 @@ struct BrowserListItem: View {
             Text(song.title).font(.title2)
             Text(song.artist).font(.title3)
         }
-        .padding(15)
         .frame(width: 300, height: 200, alignment: .leading)
+        .padding(15)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
         .contentShape(RoundedRectangle(cornerRadius: 20))
         .hoverEffect(.lift)
@@ -77,12 +77,12 @@ struct BrowserItemDetail: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 200)
                     .clipShape(RoundedRectangle(cornerRadius: 20.0))
-
-                Spacer()
+                    .padding(.trailing, 20)
 
                 VStack {
-                    Text("Description of the lesson. Explain to the user what's going on. Maybe bullet points for what we will learn. Be as descriptive as possible.")
+                    Text(appState.selectedSong!.details)
                         .font(.subheadline)
+                        .frame(width: 300, alignment: .leading)
                     Spacer()
                     Button("Start Training") {
                         appState.showImmersiveSpace = true
@@ -90,11 +90,8 @@ struct BrowserItemDetail: View {
                     .tint(.blue)
                 }
             }
-
-            Spacer()
         }
         .padding(20)
-        .frame(width: 700, alignment: .leading)
         .background {
             Image("Placeholder")
                 .resizable()
@@ -180,14 +177,8 @@ struct BrowserView: View {
     }
 }
 
-#Preview("Browser") {
+#Preview {
     BrowserView()
         .environment(AppState())
         .modelContainer(DataController.previewContainer)
-}
-
-#Preview("Browser Detail Sheet") {
-    BrowserItemDetail().environment(AppState())
-        .glassBackgroundEffect()
-        .frame(width: 700, height: 300)
 }

@@ -65,7 +65,7 @@ class PianoManager {
             repositionAnchors(leftPosition: leftPositionData!, rightPosition: rightPositionData!)
         }
         else {
-            repositionAnchors(leftPosition: [-0.2, 0.7, 0], rightPosition: [0.2, 0.7, 0])
+            repositionAnchors(leftPosition: [-0.3, 0.9, -0.3], rightPosition: [0.3, 0.9, -0.3])
         }
 
         spaceOrigin.addChild(pianoAnchor)
@@ -212,6 +212,9 @@ class PianoManager {
         collisionBar = createCollisionBarEntity(width: pianoWidth, offset: keyHeight)
         pianoAnchor.addChild(collisionBar)
 
+        // The note anchor is the parent for all the notes
+        // It has the same origin as the collision bar, but it's not parented to the collision bar
+        // This is because we have to replace the bar from time to time
         noteAnchor.setPosition([0.0, 0.0, 0.0], relativeTo: collisionBar)
     }
 
@@ -229,6 +232,8 @@ class PianoManager {
             // So we need to move things by the depth/2 to get the notes to line up
             let depth = trackNote.duration / 10
 
+            // TODO: adding these entities is expensive, we should add them in an async task
+            // TODO: they won't be available in this draw cycle, but they'll be available shortly
             if notes[trackNote] == nil {
                 let noteEntity = createNoteEntity(depth: depth, color: .systemBlue)
                 notes[trackNote] = noteEntity

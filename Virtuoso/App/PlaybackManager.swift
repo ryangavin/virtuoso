@@ -8,6 +8,12 @@
 import MIKMIDI
 import SwiftUI
 
+enum SequencerScrubState {
+    case reset
+    case scrubStarted
+    case scrubEnded(Double)
+}
+
 /// Responsible for managing the playback of the music and the synchronization of the display
 @Observable
 class PlaybackManager {
@@ -15,11 +21,24 @@ class PlaybackManager {
     var sequence: MIKMIDISequence?
     var sequencer: MIKMIDISequencer?
 
-    // Transport Controls
-    var isPlaying = false
-
     // Display sync
     var targetDisplayTimestamp = 0.0
+
+    // Expose some stuff for the transport widget
+    var currentTempo = 120.0
+    var currentTime = 0.0
+    var maxLength = 0.0
+    var isPlaying = false
+
+    var scrubState: SequencerScrubState = .reset {
+        didSet {
+            switch scrubState {
+            case .reset: return
+            case .scrubStarted: return
+            case .scrubEnded(let seekTime): setPlaybackPosition(seekTime)
+            }
+        }
+    }
 
     init() {
         createDisplayLink()
@@ -28,6 +47,8 @@ class PlaybackManager {
     func loadSequence() async {
         sequence = try! MIKMIDISequence(fileAt: Bundle.main.url(forResource: "peg", withExtension: "mid")!)
         sequencer = MIKMIDISequencer(sequence: sequence!)
+        currentTempo = sequence!.tempo(atTimeStamp: 0.0)
+        maxLength = sequence!.length
     }
 
     func startPlayback() {
@@ -37,8 +58,32 @@ class PlaybackManager {
     }
 
     func stopPlayback() {
+        guard sequencer != nil else { return }
         sequencer!.stop()
         isPlaying = false
+    }
+
+    func increaseTempo() {
+        guard sequencer != nil else { return }
+        currentTempo += 1
+        sequencer!.tempo = currentTempo
+    }
+
+    func decreaseTempo() {
+        guard sequencer != nil else { return }
+        currentTempo -= 1
+        sequencer!.tempo = currentTempo
+    }
+
+    func resetTempo() {
+        guard sequencer != nil else { return }
+        currentTempo = sequence!.tempo(atTimeStamp: 0.0)
+        sequencer!.tempo = currentTempo
+    }
+
+    func setPlaybackPosition(_ position: Double) {
+        guard sequencer != nil else { return }
+        sequencer!.currentTimeStamp = position
     }
 
     func createDisplayLink() {
@@ -48,5 +93,19 @@ class PlaybackManager {
 
     @objc func step(displaylink: CADisplayLink) {
         targetDisplayTimestamp = displaylink.targetTimestamp
+        guard sequencer != nil else { return }
+
+        // Only update the current time if we aren't scrubbing
+        switch scrubState {
+        case .reset:
+            currentTime = sequencer!.currentTimeStamp
+        case .scrubStarted:
+            // When scrubbing, the displayTime is bound to the Slider view, so
+            // do not update it here.
+            break
+        case .scrubEnded(let seekTime):
+            scrubState = .reset
+            sequencer!.currentTimeStamp = seekTime
+        }
     }
 }

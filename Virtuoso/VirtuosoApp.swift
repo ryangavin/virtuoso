@@ -32,7 +32,7 @@ struct VirtuosoApp: App {
         WindowGroup("Browser", id: Module.browser.name) {
             BrowserView()
                 .environment(appState)
-                .modelContainer(DataController.modelContainer)
+                .modelContainer(DataController.previewContainer)
         }
         .onChange(of: appState.showBrowserWindow) { _, newValue in
             Task {
