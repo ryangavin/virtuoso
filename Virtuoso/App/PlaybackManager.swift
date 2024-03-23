@@ -30,6 +30,7 @@ class PlaybackManager {
     var maxLength = 0.0
     var isPlaying = false
 
+    // Scrubbing
     var scrubState: SequencerScrubState = .reset {
         didSet {
             switch scrubState {
@@ -39,6 +40,9 @@ class PlaybackManager {
             }
         }
     }
+
+    // Internal state
+    private var timestampToResumeAt = 0.0
 
     init() {
         createDisplayLink()
@@ -61,6 +65,7 @@ class PlaybackManager {
     func startPlayback() {
         guard sequencer != nil else { return }
         sequencer!.startPlayback()
+        sequencer!.currentTimeStamp = timestampToResumeAt
         isPlaying = true
     }
 
@@ -73,6 +78,7 @@ class PlaybackManager {
 
     func pausePlayback() {
         guard sequencer != nil else { return }
+        timestampToResumeAt = sequencer!.currentTimeStamp
         sequencer!.stop()
         isPlaying = false
     }

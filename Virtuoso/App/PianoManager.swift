@@ -221,8 +221,12 @@ class PianoManager {
     @MainActor
     func drawTrack(track: MIKMIDITrack, targetTimestamp: MusicTimeStamp) {
         // Figure out which notes in the sequence we need to draw
-        // We want to see 8 bars ahead, as well as whatever is currently playing
-        let trackNotes = track.notes(fromTimeStamp: targetTimestamp, toTimeStamp: targetTimestamp + 16)
+        // We want to see 16 bars ahead, as well as whatever is currently playing (4 bars behind)
+        var fromTimeStamp = targetTimestamp - 4
+        if fromTimeStamp < 0 {
+            fromTimeStamp = 0
+        }
+        let trackNotes = track.notes(fromTimeStamp: fromTimeStamp, toTimeStamp: targetTimestamp + 16)
 
         var notesSeen = [Entity]()
         for trackNote in trackNotes {
@@ -262,7 +266,7 @@ class PianoManager {
         // Remove any entities that we haven't seen
         for note in notes {
             // TODO: make sure not to remove anything that's still playing
-            if !notesSeen.contains(note.value) {
+            if note.key.timeStamp + Double(note.key.duration) < targetTimestamp, !notesSeen.contains(note.value) {
                 note.value.removeFromParent()
                 notes.removeValue(forKey: note.key)
             }
