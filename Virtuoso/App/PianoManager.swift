@@ -239,7 +239,7 @@ class PianoManager {
             // TODO: adding these entities is expensive, we should add them in an async task
             // TODO: they won't be available in this draw cycle, but they'll be available shortly
             if notes[trackNote] == nil {
-                let noteEntity = createNoteEntity(depth: depth, color: .systemBlue)
+                let noteEntity = createNoteEntity(depth: depth, note: trackNote.noteLetter, color: .systemBlue)
                 notes[trackNote] = noteEntity
                 noteAnchor.addChild(noteEntity)
             }
@@ -282,11 +282,27 @@ class PianoManager {
         return entity
     }
 
-    private func createNoteEntity(depth: Float, color: UIColor) -> Entity {
+    private func createNoteEntity(depth: Float, note: String, color: UIColor) -> Entity {
+        // Build the main note entity, a colored box with slight corner radius
         let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: depth, cornerRadius: 0.001)
         let material = SimpleMaterial(color: color, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
+
+        // Set the note name
+        let textMesh = MeshResource.generateText(note, extrusionDepth: 0.005, font: .boldSystemFont(ofSize: 0.007))
+        let textMaterial = SimpleMaterial(color: .white, isMetallic: false)
+        let textEntity = ModelEntity(mesh: textMesh, materials: [textMaterial])
+
+        // Position the text above the note towards the front of the note
+        textEntity.position = [textMesh.bounds.max.x / -2, 0.004, (depth / 2) - 0.004]
+
+        // rotate 90 degress up
+        textEntity.transform.rotation = simd_quatf(angle: .pi / -2, axis: [1, 0, 0])
+
+        // Anchor to the note
+        entity.addChild(textEntity)
+
         return entity
     }
 }
