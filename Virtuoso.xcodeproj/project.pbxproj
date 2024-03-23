@@ -24,6 +24,7 @@
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
 		9486048D2BA6339E00519884 /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048C2BA6339E00519884 /* TrainerView.swift */; };
 		9486048F2BA704E600519884 /* DefaultSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* DefaultSongs.swift */; };
+		949F2CAA2BABD8DF00FCB8C8 /* rhodes.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* rhodes.sf2 */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138C92B8BCD45007CEF45 /* HandManager.swift */; };
@@ -98,6 +99,7 @@
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
 		9486048C2BA6339E00519884 /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
 		9486048E2BA704E600519884 /* DefaultSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSongs.swift; sourceTree = "<group>"; };
+		949F2CA92BABD8DF00FCB8C8 /* rhodes.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rhodes.sf2; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94D138C92B8BCD45007CEF45 /* HandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandManager.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
 			isa = PBXGroup;
 			children = (
+				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
 				94E2E5F32B8CAE980096A41B /* peg.mid */,
 				9483F1DB2B88D5CD00B8E1BA /* App */,
 				946350472B9E1776006CFA88 /* Model */,
@@ -239,6 +242,14 @@
 				94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		949F2CA82BABD8CF00FCB8C8 /* Soundfonts */ = {
+			isa = PBXGroup;
+			children = (
+				949F2CA92BABD8DF00FCB8C8 /* rhodes.sf2 */,
+			);
+			path = Soundfonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949F2CAA2BABD8DF00FCB8C8 /* rhodes.sf2 in Resources */,
 				94E2E5F42B8CAE980096A41B /* peg.mid in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,

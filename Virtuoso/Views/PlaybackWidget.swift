@@ -36,7 +36,9 @@ struct PlaybackWidget: View {
                 })
                 Button(action: {}, label: {
                     Image(systemName: "forward")
-                }).padding(.trailing, 20)
+                })
+
+                Spacer()
 
                 // MARK: Tempo Stuff
 
@@ -54,7 +56,9 @@ struct PlaybackWidget: View {
                     playbackManager.increaseTempo()
                 }, label: {
                     Image(systemName: "plus")
-                }).padding(.trailing, 20)
+                })
+
+                Spacer()
 
                 // MARK: TODO: Looper
 
@@ -62,18 +66,26 @@ struct PlaybackWidget: View {
                     Image(systemName: "arrow.counterclockwise")
                 })
 
-                Divider()
-                    .frame(height: 50)
-                    .padding([.leading, .trailing], 5)
+                Spacer()
 
                 Button(action: {}, label: {
                     Image(systemName: "gearshape")
                 })
             }
+
             HStack {
+                // Progress Beats
+                Text("\(Int(playbackManager.currentTime) / 4)")
+                    .frame(width: 30, alignment: .trailing)
+                Text(".")
+                Text("\(Int(playbackManager.currentTime) % 4)")
+                    .frame(width: 10)
+                Text(".")
+                Text("\(Int(playbackManager.currentTime * 4) % 4)")
+                    .frame(width: 10)
+                    .padding(.trailing, 10)
+
                 // Progress Bar
-                Text("\(String(format: "%5.2f", playbackManager.currentTime))")
-                    .frame(width: 60)
                 Slider(value: $bindablePlaybackManager.currentTime, in: 0.0 ... playbackManager.maxLength) { scrubStarted in
                     if scrubStarted {
                         playbackManager.scrubState = .scrubStarted
@@ -81,10 +93,19 @@ struct PlaybackWidget: View {
                         playbackManager.scrubState = .scrubEnded(bindablePlaybackManager.currentTime)
                     }
                 }
-                Text("\(String(format: "%5.2f", playbackManager.maxLength))")
-                    .frame(width: 60)
-            }.frame(width: 650)
+
+                // Total Beats
+                Text("\(Int(playbackManager.maxLength) / 4)")
+                Text(".")
+                Text("\(Int(playbackManager.maxLength) % 4)")
+                    .frame(width: 10)
+                Text(".")
+                Text("\(Int(playbackManager.maxLength * 4) % 4)")
+                    .frame(width: 10)
+            }
         }
+        .padding([.leading, .trailing], 10)
+        .frame(width: 800)
     }
 }
 

@@ -47,6 +47,13 @@ class PlaybackManager {
     func loadSequence() async {
         sequence = try! MIKMIDISequence(fileAt: Bundle.main.url(forResource: "peg", withExtension: "mid")!)
         sequencer = MIKMIDISequencer(sequence: sequence!)
+
+        // Set up the synthesizers for the tracks
+        for track in sequence!.tracks {
+            let synth = sequencer?.builtinSynthesizer(for: track)
+            try! synth?.loadSoundfontFromFile(at: Bundle.main.url(forResource: "rhodes", withExtension: "sf2")!)
+        }
+
         currentTempo = sequence!.tempo(atTimeStamp: 0.0)
         maxLength = sequence!.length
     }
