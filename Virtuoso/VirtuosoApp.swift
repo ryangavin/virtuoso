@@ -75,7 +75,6 @@ struct VirtuosoApp: App {
                     openWindow(id: Module.trainer.name)
                 } else {
                     dismissWindow(id: Module.trainer.name)
-
                     appState.showImmersiveSpace = false
                 }
             }
@@ -94,7 +93,6 @@ struct VirtuosoApp: App {
                 if newValue {
                     switch await openImmersiveSpace(id: Module.immersiveSpace.name) {
                     case .opened:
-                        appState.showConfigurationMenu = true
                         appState.showTrainerWindow = true
 
                         appState.showBrowserWindow = false

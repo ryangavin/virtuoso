@@ -67,6 +67,13 @@ class PlaybackManager {
     func stopPlayback() {
         guard sequencer != nil else { return }
         sequencer!.stop()
+        sequencer?.currentTimeStamp = 0
+        isPlaying = false
+    }
+
+    func pausePlayback() {
+        guard sequencer != nil else { return }
+        sequencer!.stop()
         isPlaying = false
     }
 
@@ -96,7 +103,7 @@ class PlaybackManager {
             sequencer!.currentTimeStamp -= 4
         }
     }
-    
+
     func jumpFour() {
         guard sequencer != nil else { return }
         if sequencer!.currentTimeStamp + 4 > maxLength {
