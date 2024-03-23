@@ -88,6 +88,24 @@ class PlaybackManager {
         sequencer!.tempo = currentTempo
     }
 
+    func backFour() {
+        guard sequencer != nil else { return }
+        if sequencer!.currentTimeStamp < 4 {
+            sequencer!.currentTimeStamp = 0
+        } else {
+            sequencer!.currentTimeStamp -= 4
+        }
+    }
+    
+    func jumpFour() {
+        guard sequencer != nil else { return }
+        if sequencer!.currentTimeStamp + 4 > maxLength {
+            sequencer!.currentTimeStamp = maxLength
+        } else {
+            sequencer!.currentTimeStamp += 4
+        }
+    }
+
     func setPlaybackPosition(_ position: Double) {
         guard sequencer != nil else { return }
         sequencer!.currentTimeStamp = position

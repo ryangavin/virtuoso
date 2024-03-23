@@ -17,8 +17,10 @@ struct PlaybackWidget: View {
             HStack {
                 // MARK: Transport
 
-                Button(action: {}, label: {
-                    Image(systemName: "backward")
+                Button(action: {
+                    playbackManager.backFour()
+                }, label: {
+                    Image(systemName: "arrow.counterclockwise")
                 })
                 Button(action: {
                     playbackManager.stopPlayback()
@@ -34,8 +36,10 @@ struct PlaybackWidget: View {
                 }, label: {
                     Image(systemName: playbackManager.isPlaying ? "pause" : "play")
                 })
-                Button(action: {}, label: {
-                    Image(systemName: "forward")
+                Button(action: {
+                    playbackManager.jumpFour()
+                }, label: {
+                    Image(systemName: "arrow.clockwise")
                 })
 
                 Spacer()
@@ -58,13 +62,7 @@ struct PlaybackWidget: View {
                     Image(systemName: "plus")
                 })
 
-                Spacer()
-
                 // MARK: TODO: Looper
-
-                Button(action: {}, label: {
-                    Image(systemName: "arrow.counterclockwise")
-                })
 
                 Spacer()
 
@@ -75,13 +73,12 @@ struct PlaybackWidget: View {
 
             HStack {
                 // Progress Beats
-                Text("\(Int(playbackManager.currentTime) / 4)")
-                    .frame(width: 30, alignment: .trailing)
+                Text("\((Int(playbackManager.currentTime) / 4) + 1)")
                 Text(".")
-                Text("\(Int(playbackManager.currentTime) % 4)")
+                Text("\((Int(playbackManager.currentTime) % 4) + 1)")
                     .frame(width: 10)
                 Text(".")
-                Text("\(Int(playbackManager.currentTime * 4) % 4)")
+                Text("\((Int(playbackManager.currentTime * 4) % 4) + 1)")
                     .frame(width: 10)
                     .padding(.trailing, 10)
 
@@ -95,12 +92,12 @@ struct PlaybackWidget: View {
                 }
 
                 // Total Beats
-                Text("\(Int(playbackManager.maxLength) / 4)")
+                Text("\((Int(playbackManager.maxLength) / 4) + 1)")
                 Text(".")
-                Text("\(Int(playbackManager.maxLength) % 4)")
+                Text("\((Int(playbackManager.maxLength) % 4) + 1)")
                     .frame(width: 10)
                 Text(".")
-                Text("\(Int(playbackManager.maxLength * 4) % 4)")
+                Text("\((Int(playbackManager.maxLength * 4) % 4) + 1)")
                     .frame(width: 10)
             }
         }
