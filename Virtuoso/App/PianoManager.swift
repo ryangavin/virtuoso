@@ -67,8 +67,6 @@ class PianoManager {
         else {
             repositionAnchors(leftPosition: [-0.3, 0.9, -0.3], rightPosition: [0.3, 0.9, -0.3])
         }
-
-        spaceOrigin.addChild(pianoAnchor)
     }
 
     func moveAnchor(translation: SIMD3<Float>) {
@@ -88,7 +86,7 @@ class PianoManager {
 
     func captureIndexFingerPosition(chirality: HandAnchor.Chirality) {
         let fingerTip = fingertips[chirality]![.indexFingerTip]!
-        let measuredPosition = fingerTip.position(relativeTo: spaceOrigin)
+        let measuredPosition = fingerTip.position
 
         var leftPosition = chirality == .left ? measuredPosition : leftAnchor.position(relativeTo: spaceOrigin)
         var rightPosition = chirality == .right ? measuredPosition : rightAnchor.position(relativeTo: spaceOrigin)

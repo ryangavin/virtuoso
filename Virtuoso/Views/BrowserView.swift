@@ -130,6 +130,38 @@ struct BrowserListView: View {
 struct BrowserView: View {
     @Environment(AppState.self) var appState
 
+    @State var selectedHeader = "Lessons"
+
+    enum BrowserHeader: CaseIterable, Identifiable {
+        var id: Self { return self }
+
+        var title: String {
+            switch self {
+            case .lessons: return "Lessons"
+            case .songs: return "Songs"
+            case .exercises: return "Exercises"
+            case .stats: return "Stats"
+            case .settings: return "Settings"
+            }
+        }
+
+        var icon: String {
+            switch self {
+            case .lessons: return "graduationcap.fill"
+            case .songs: return "music.note.list"
+            case .exercises: return "brain.filled.head.profile"
+            case .stats: return "chart.bar"
+            case .settings: return "gear"
+            }
+        }
+
+        case lessons
+        case songs
+        case exercises
+        case stats
+        case settings
+    }
+
     var body: some View {
         NavigationSplitView {
             List {

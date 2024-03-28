@@ -9,7 +9,7 @@ let spaceOrigin = Entity()
 
 var fingertips = [HandAnchor.Chirality: [HandSkeleton.JointName: ModelEntity]]()
 
-var pianoAnchor = Entity()
+var pianoAnchor = AnchorEntity()
 
 // MARK: Preloaded entities to be reused
 

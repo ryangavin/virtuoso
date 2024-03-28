@@ -15,6 +15,7 @@ struct PianoRealityView: View {
             // Load everything in
             // TODO: this might be causing pop-in because things load asynchronously
             content.add(spaceOrigin)
+            content.add(pianoAnchor)
         }
 
         // MARK: Background Tasks
@@ -35,6 +36,7 @@ struct PianoRealityView: View {
             await playbackManager.loadSequence()
         }
 
+        // TODO: should we just be using the targetDisplayTimestamp?
         .onChange(of: playbackManager.targetDisplayTimestamp) { _, _ in
             guard let track = playbackManager.sequence?.tracks[1],
                   let sequencer = playbackManager.sequencer else { return }
