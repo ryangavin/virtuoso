@@ -127,81 +127,61 @@ struct BrowserListView: View {
     }
 }
 
+enum BrowserHeader: CaseIterable, Identifiable {
+    var id: Self { return self }
+
+    var title: String {
+        switch self {
+        case .lessons: return "Lessons"
+        case .songs: return "Songs"
+        case .exercises: return "Exercises"
+        case .stats: return "Stats"
+        case .settings: return "Settings"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .lessons: return "graduationcap.fill"
+        case .songs: return "music.note.list"
+        case .exercises: return "brain.filled.head.profile"
+        case .stats: return "chart.bar"
+        case .settings: return "gear"
+        }
+    }
+
+    case lessons
+    case songs
+    case exercises
+    case stats
+    case settings
+}
+
 struct BrowserView: View {
     @Environment(AppState.self) var appState
 
-    @State var selectedHeader = "Lessons"
-
-    enum BrowserHeader: CaseIterable, Identifiable {
-        var id: Self { return self }
-
-        var title: String {
-            switch self {
-            case .lessons: return "Lessons"
-            case .songs: return "Songs"
-            case .exercises: return "Exercises"
-            case .stats: return "Stats"
-            case .settings: return "Settings"
-            }
-        }
-
-        var icon: String {
-            switch self {
-            case .lessons: return "graduationcap.fill"
-            case .songs: return "music.note.list"
-            case .exercises: return "brain.filled.head.profile"
-            case .stats: return "chart.bar"
-            case .settings: return "gear"
-            }
-        }
-
-        case lessons
-        case songs
-        case exercises
-        case stats
-        case settings
-    }
+    @State var selectedHeader: BrowserHeader?
 
     var body: some View {
         NavigationSplitView {
-            List {
-                Button(action: {}, label: {
-                    HStack {
-                        Image(systemName: "graduationcap.fill")
-                        Text("Lessons")
+            List(selection: $selectedHeader) {
+                ForEach(BrowserHeader.allCases) { header in
+                    NavigationLink(destination: BrowserListView()) {
+                        Label(header.title, systemImage: header.icon)
                     }
-                })
-                Button(action: {}, label: {
-                    HStack {
-                        Image(systemName: "music.note.list")
-                        Text("Songs")
-                    }
-                })
-                Button(action: {}, label: {
-                    HStack {
-                        Image(systemName: "brain.filled.head.profile")
-                        Text("Exercises")
-                    }
-                })
-                Button(action: {}, label: {
-                    HStack {
-                        Image(systemName: "chart.bar")
-                        Text("Stats")
-                    }
-                })
-                Button(action: {}, label: {
-                    HStack {
-                        Image(systemName: "gear")
-                        Text("Settings")
-                    }
-                })
+                }
             }.navigationTitle("Virtuoso")
         }
         detail: {
-            BrowserListView()
+            if selectedHeader == .lessons {
+                BrowserListView()
+            } else {
+                Text("Coming soon!")
+            }
         }
         .onAppear {
             appState.browserWindowIsShown = true
+            selectedHeader = .lessons
         }
         .onDisappear {
             appState.browserWindowIsShown = false
