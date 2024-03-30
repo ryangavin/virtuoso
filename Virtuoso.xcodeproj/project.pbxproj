@@ -23,23 +23,17 @@
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
 		9486048D2BA6339E00519884 /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048C2BA6339E00519884 /* TrainerView.swift */; };
-		9486048F2BA704E600519884 /* DefaultSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* DefaultSongs.swift */; };
+		9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* ClassicRockSongs.swift */; };
 		949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
-		94CEB0912BB7A4D40088EF8C /* twinkle_little_star.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0892BB7A4D40088EF8C /* twinkle_little_star.mid */; };
-		94CEB0922BB7A4D40088EF8C /* jack_and_jill.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB08A2BB7A4D40088EF8C /* jack_and_jill.mid */; };
-		94CEB0932BB7A4D40088EF8C /* old_mac_donald.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB08B2BB7A4D40088EF8C /* old_mac_donald.mid */; };
-		94CEB0942BB7A4D40088EF8C /* baabaablacksheep.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB08C2BB7A4D40088EF8C /* baabaablacksheep.mid */; };
-		94CEB0952BB7A4D40088EF8C /* ants_go_marching.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB08D2BB7A4D40088EF8C /* ants_go_marching.mid */; };
-		94CEB0962BB7A4D40088EF8C /* london_bridge.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB08E2BB7A4D40088EF8C /* london_bridge.mid */; };
-		94CEB0972BB7A4D40088EF8C /* mary_had_lamb.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB08F2BB7A4D40088EF8C /* mary_had_lamb.mid */; };
-		94CEB0982BB7A4D40088EF8C /* itsy-bitsy-spider.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0902BB7A4D40088EF8C /* itsy-bitsy-spider.mid */; };
 		94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0992BB7A5150088EF8C /* piano.sf2 */; };
 		94CEB0A22BB8521E0088EF8C /* drums.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A12BB8521E0088EF8C /* drums.sf2 */; };
 		94CEB0A42BB8536A0088EF8C /* bass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A32BB8536A0088EF8C /* bass.sf2 */; };
 		94CEB0A62BB853A10088EF8C /* guitar.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A52BB853A10088EF8C /* guitar.sf2 */; };
 		94CEB0A82BB854E50088EF8C /* brass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A72BB854E50088EF8C /* brass.sf2 */; };
+		94CEB0AA2BB8C5070088EF8C /* itsy_bitsy_spider.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A92BB8C5060088EF8C /* itsy_bitsy_spider.mid */; };
+		94CEB0AE2BB8C5CE0088EF8C /* ChildrensSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CEB0AD2BB8C5CE0088EF8C /* ChildrensSongs.swift */; };
 		94D138CA2B8BCD45007CEF45 /* HandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138C92B8BCD45007CEF45 /* HandManager.swift */; };
 		94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */; };
 		94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */; };
@@ -111,23 +105,18 @@
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
 		9486048C2BA6339E00519884 /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
-		9486048E2BA704E600519884 /* DefaultSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSongs.swift; sourceTree = "<group>"; };
+		9486048E2BA704E600519884 /* ClassicRockSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicRockSongs.swift; sourceTree = "<group>"; };
 		949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = electricPiano.sf2; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		94CEB0892BB7A4D40088EF8C /* twinkle_little_star.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = twinkle_little_star.mid; sourceTree = "<group>"; };
-		94CEB08A2BB7A4D40088EF8C /* jack_and_jill.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = jack_and_jill.mid; sourceTree = "<group>"; };
-		94CEB08B2BB7A4D40088EF8C /* old_mac_donald.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = old_mac_donald.mid; sourceTree = "<group>"; };
-		94CEB08C2BB7A4D40088EF8C /* baabaablacksheep.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = baabaablacksheep.mid; sourceTree = "<group>"; };
-		94CEB08D2BB7A4D40088EF8C /* ants_go_marching.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = ants_go_marching.mid; sourceTree = "<group>"; };
-		94CEB08E2BB7A4D40088EF8C /* london_bridge.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = london_bridge.mid; sourceTree = "<group>"; };
-		94CEB08F2BB7A4D40088EF8C /* mary_had_lamb.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = mary_had_lamb.mid; sourceTree = "<group>"; };
-		94CEB0902BB7A4D40088EF8C /* itsy-bitsy-spider.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "itsy-bitsy-spider.mid"; sourceTree = "<group>"; };
 		94CEB0992BB7A5150088EF8C /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
 		94CEB0A12BB8521E0088EF8C /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = drums.sf2; path = ../../../../Downloads/realacousticdrums_5/drums.sf2; sourceTree = "<group>"; };
 		94CEB0A32BB8536A0088EF8C /* bass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass.sf2; sourceTree = "<group>"; };
 		94CEB0A52BB853A10088EF8C /* guitar.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = guitar.sf2; sourceTree = "<group>"; };
 		94CEB0A72BB854E50088EF8C /* brass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = brass.sf2; sourceTree = "<group>"; };
+		94CEB0A92BB8C5060088EF8C /* itsy_bitsy_spider.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = itsy_bitsy_spider.mid; sourceTree = "<group>"; };
+		94CEB0AB2BB8C5380088EF8C /* LICENSES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSES.md; sourceTree = "<group>"; };
+		94CEB0AD2BB8C5CE0088EF8C /* ChildrensSongs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildrensSongs.swift; sourceTree = "<group>"; };
 		94D138C92B8BCD45007CEF45 /* HandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandManager.swift; sourceTree = "<group>"; };
 		94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
 		94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackWidget.swift; sourceTree = "<group>"; };
@@ -189,7 +178,6 @@
 			children = (
 				946350482B9E18EA006CFA88 /* Song.swift */,
 				9463504A2B9E1A2F006CFA88 /* SongCollection.swift */,
-				9486048E2BA704E600519884 /* DefaultSongs.swift */,
 				94EE847F2BA7F2880014B06A /* DataController.swift */,
 			);
 			path = Model;
@@ -219,6 +207,7 @@
 		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
 			isa = PBXGroup;
 			children = (
+				94CEB0AC2BB8C59B0088EF8C /* Songs */,
 				94CEB0862BB77E1B0088EF8C /* MIDI */,
 				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
 				9483F1DB2B88D5CD00B8E1BA /* App */,
@@ -231,6 +220,7 @@
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
 				9480B7A82B7EAA3000DDB251 /* Info.plist */,
 				9480B7A52B7EAA3000DDB251 /* Preview Content */,
+				94CEB0AB2BB8C5380088EF8C /* LICENSES.md */,
 			);
 			path = Virtuoso;
 			sourceTree = "<group>";
@@ -295,14 +285,7 @@
 		94CEB0872BB7A4BB0088EF8C /* ChildrensSongs */ = {
 			isa = PBXGroup;
 			children = (
-				94CEB08D2BB7A4D40088EF8C /* ants_go_marching.mid */,
-				94CEB08C2BB7A4D40088EF8C /* baabaablacksheep.mid */,
-				94CEB0902BB7A4D40088EF8C /* itsy-bitsy-spider.mid */,
-				94CEB08A2BB7A4D40088EF8C /* jack_and_jill.mid */,
-				94CEB08E2BB7A4D40088EF8C /* london_bridge.mid */,
-				94CEB08F2BB7A4D40088EF8C /* mary_had_lamb.mid */,
-				94CEB08B2BB7A4D40088EF8C /* old_mac_donald.mid */,
-				94CEB0892BB7A4D40088EF8C /* twinkle_little_star.mid */,
+				94CEB0A92BB8C5060088EF8C /* itsy_bitsy_spider.mid */,
 			);
 			path = ChildrensSongs;
 			sourceTree = "<group>";
@@ -313,6 +296,15 @@
 				94E2E5F32B8CAE980096A41B /* peg.mid */,
 			);
 			path = ClassicRock;
+			sourceTree = "<group>";
+		};
+		94CEB0AC2BB8C59B0088EF8C /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				9486048E2BA704E600519884 /* ClassicRockSongs.swift */,
+				94CEB0AD2BB8C5CE0088EF8C /* ChildrensSongs.swift */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,22 +422,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94CEB0922BB7A4D40088EF8C /* jack_and_jill.mid in Resources */,
 				949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */,
 				94CEB0A62BB853A10088EF8C /* guitar.sf2 in Resources */,
-				94CEB0952BB7A4D40088EF8C /* ants_go_marching.mid in Resources */,
 				94E2E5F42B8CAE980096A41B /* peg.mid in Resources */,
 				94CEB0A82BB854E50088EF8C /* brass.sf2 in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
-				94CEB0962BB7A4D40088EF8C /* london_bridge.mid in Resources */,
-				94CEB0972BB7A4D40088EF8C /* mary_had_lamb.mid in Resources */,
-				94CEB0912BB7A4D40088EF8C /* twinkle_little_star.mid in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
+				94CEB0AA2BB8C5070088EF8C /* itsy_bitsy_spider.mid in Resources */,
 				94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */,
-				94CEB0942BB7A4D40088EF8C /* baabaablacksheep.mid in Resources */,
-				94CEB0982BB7A4D40088EF8C /* itsy-bitsy-spider.mid in Resources */,
 				94CEB0A42BB8536A0088EF8C /* bass.sf2 in Resources */,
-				94CEB0932BB7A4D40088EF8C /* old_mac_donald.mid in Resources */,
 				94CEB0A22BB8521E0088EF8C /* drums.sf2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				946350492B9E18EA006CFA88 /* Song.swift in Sources */,
+				94CEB0AE2BB8C5CE0088EF8C /* ChildrensSongs.swift in Sources */,
 				94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */,
 				9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */,
 				9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */,
@@ -477,7 +463,7 @@
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
 				9486048D2BA6339E00519884 /* TrainerView.swift in Sources */,
-				9486048F2BA704E600519884 /* DefaultSongs.swift in Sources */,
+				9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */,
 				9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,

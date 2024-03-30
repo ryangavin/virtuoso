@@ -57,6 +57,7 @@ class PlaybackManager {
         // Process the tracks
         lessonTracks = []
         for track in song.midiTracks {
+            // TODO: support mute
             // Set up the syntehsizers for the tracks using the configuration on the song
             let synth = sequencer?.builtinSynthesizer(for: sequence!.tracks[track.trackNumber])
             let url = Bundle.main.url(forResource: track.sound.rawValue, withExtension: "sf2")!
