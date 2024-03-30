@@ -228,6 +228,13 @@ class PianoManager {
 
         var notesSeen = [Entity]()
         for trackNote in trackNotes {
+            let noteIndex = Int(trackNote.note) - STARTING_MIDI_NOTE[numberOfKeys]!
+
+            // Skip notes that are out of range
+            if noteIndex < 0 || noteIndex >= keys.count {
+                continue
+            }
+
             // Track depth up front so it can be used to create the note if necessary
             // It will get used again later to offset the positions of the notes further
             // This is because the center of the note is the anchor point
@@ -245,8 +252,6 @@ class PianoManager {
             let noteEntity = notes[trackNote]!
 
             // Position the note above the right key
-            let noteIndex = Int(trackNote.note) - STARTING_MIDI_NOTE[numberOfKeys]!
-
             // Get the key position relative to the main anchor
             // TODO: this calculation is probably expensive to do every time
             // TODO: we should have a chache of x offsets

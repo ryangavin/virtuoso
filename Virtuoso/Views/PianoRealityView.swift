@@ -33,7 +33,7 @@ struct PianoRealityView: View {
         }
 
         .task {
-            await playbackManager.loadSong(SongCollection.peg)
+            await playbackManager.loadSong(SongCollection.childrensSongs.songs[0])
         }
 
         // TODO: it seems weird that we listen to this var instead of the current timestamp

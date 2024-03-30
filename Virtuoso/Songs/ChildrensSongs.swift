@@ -19,15 +19,15 @@ extension SongCollection {
                     details: "A jazz arrangement of the classic nursery rhyme",
                     midiFile: "itsy_bitsy_spider",
                     midiTracks: [
-                        Song.Track(trackNumber: 1, sound: .electricPiano),
-                        Song.Track(trackNumber: 2, sound: .electricPiano, hand: .right, lessonTrack: true),
-                        Song.Track(trackNumber: 3, sound: .electricPiano, hand: .left, lessonTrack: true),
-                        Song.Track(trackNumber: 4, sound: .bass),
+                        Song.Track(trackNumber: 0, sound: .electricPiano),
+                        Song.Track(trackNumber: 1, sound: .electricPiano, hand: .right, lessonTrack: true),
+                        Song.Track(trackNumber: 2, sound: .electricPiano, hand: .left, lessonTrack: true),
+                        Song.Track(trackNumber: 3, sound: .bass),
+                        Song.Track(trackNumber: 4, sound: .brass),
                         Song.Track(trackNumber: 5, sound: .brass),
-                        Song.Track(trackNumber: 6, sound: .brass),
+                        Song.Track(trackNumber: 6, sound: .piano),
                         Song.Track(trackNumber: 7, sound: .piano),
-                        Song.Track(trackNumber: 8, sound: .piano),
-                        Song.Track(trackNumber: 9, sound: .drums),
+                        Song.Track(trackNumber: 8, sound: .drums),
                     ]),
             ])
 }
