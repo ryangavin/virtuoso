@@ -21,6 +21,8 @@ class PlaybackManager {
     var sequence: MIKMIDISequence?
     var sequencer: MIKMIDISequencer?
 
+    var lessonTracks: [Song.Track] = []
+
     // Display sync
     var targetDisplayTimestamp = 0.0
 
@@ -48,14 +50,23 @@ class PlaybackManager {
         createDisplayLink()
     }
 
-    func loadSequence() async {
-        sequence = try! MIKMIDISequence(fileAt: Bundle.main.url(forResource: "peg", withExtension: "mid")!)
+    func loadSong(_ song: Song) async {
+        sequence = try! MIKMIDISequence(fileAt: Bundle.main.url(forResource: song.midiFile, withExtension: "mid")!)
         sequencer = MIKMIDISequencer(sequence: sequence!)
 
-        // Set up the synthesizers for the tracks
-        for track in sequence!.tracks {
-            let synth = sequencer?.builtinSynthesizer(for: track)
-            try! synth?.loadSoundfontFromFile(at: Bundle.main.url(forResource: "rhodes", withExtension: "sf2")!)
+        // Process the tracks
+        lessonTracks = []
+        for track in song.midiTracks {
+            // Set up the syntehsizers for the tracks using the configuration on the song
+            let synth = sequencer?.builtinSynthesizer(for: sequence!.tracks[track.trackNumber])
+            let url = Bundle.main.url(forResource: track.sound.rawValue, withExtension: "sf2")!
+            try! synth?.loadSoundfontFromFile(at: url)
+
+            // Identify which tracks are the actual lesson tracks
+            // There can be up to two lesson tracks (one for each hand)
+            if track.lessonTrack {
+                lessonTracks.append(track)
+            }
         }
 
         currentTempo = sequence!.tempo(atTimeStamp: 0.0)

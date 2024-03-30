@@ -33,15 +33,20 @@ struct PianoRealityView: View {
         }
 
         .task {
-            await playbackManager.loadSequence()
+            await playbackManager.loadSong(SongCollection.peg)
         }
 
-        // TODO: should we just be using the targetDisplayTimestamp?
+        // TODO: it seems weird that we listen to this var instead of the current timestamp
+        // TODO: should we just publish that instead of the target display timestamp?
         .onChange(of: playbackManager.targetDisplayTimestamp) { _, _ in
-            guard let track = playbackManager.sequence?.tracks[1],
-                  let sequencer = playbackManager.sequencer else { return }
+            guard let sequencer = playbackManager.sequencer else { return }
+            for track in playbackManager.lessonTracks {
+                guard let midiTrack = playbackManager.sequence?.tracks[track.trackNumber] else { continue }
 
-            pianoManager.drawTrack(track: track, targetTimestamp: sequencer.currentTimeStamp)
+                // TODO: need to calculate the diff by the time you get here
+                // TODO: by the time you get to the second track, we could be a little off
+                pianoManager.drawTrack(track: midiTrack, targetTimestamp: sequencer.currentTimeStamp, color: track.hand == .left ? .green : .blue)
+            }
         }
 
         .onAppear {

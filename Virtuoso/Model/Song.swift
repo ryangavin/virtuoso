@@ -10,18 +10,56 @@ import SwiftData
 
 @Model
 final class Song {
+    @Model
+    final class Track {
+        enum Hand: Codable {
+            case left
+            case right
+            case both
+        }
+
+        enum Sound: String, CaseIterable, Codable {
+            case piano
+            case electricPiano
+            case guitar
+            case bass
+            case drums
+            case strings
+            case synthesizer
+            case brass
+            case vocals
+        }
+
+        var trackNumber: Int
+        var lessonTrack: Bool
+        var hand: Hand
+        var sound: Sound
+
+        init(trackNumber: Int, sound: Sound = .piano, hand: Hand = .both, lessonTrack: Bool = false) {
+            self.trackNumber = trackNumber
+            self.lessonTrack = lessonTrack
+            self.hand = hand
+            self.sound = sound
+        }
+    }
+
     var title: String
     var artist: String
     var details: String
     var difficulty: Int
-    
+
     var favorite: Bool
 
-    init(title: String, artist: String, details: String, difficulty: Int, favorite: Bool = false) {
+    var midiFile: String
+    var midiTracks: [Track]
+
+    init(title: String, artist: String, details: String, difficulty: Int = 1, favorite: Bool = false, midiFile: String, midiTracks: [Track] = []) {
         self.title = title
         self.artist = artist
         self.details = details
         self.difficulty = difficulty
         self.favorite = favorite
+        self.midiFile = midiFile
+        self.midiTracks = midiTracks
     }
 }

@@ -217,7 +217,7 @@ class PianoManager {
     }
 
     @MainActor
-    func drawTrack(track: MIKMIDITrack, targetTimestamp: MusicTimeStamp) {
+    func drawTrack(track: MIKMIDITrack, targetTimestamp: MusicTimeStamp, color: UIColor) {
         // Figure out which notes in the sequence we need to draw
         // We want to see 16 bars ahead, as well as whatever is currently playing (4 bars behind)
         var fromTimeStamp = targetTimestamp - 4
@@ -237,7 +237,7 @@ class PianoManager {
             // TODO: adding these entities is expensive, we should add them in an async task
             // TODO: they won't be available in this draw cycle, but they'll be available shortly
             if notes[trackNote] == nil {
-                let noteEntity = createNoteEntity(depth: depth, note: trackNote.noteLetter, color: .systemBlue)
+                let noteEntity = createNoteEntity(depth: depth, note: trackNote.noteLetter, color: color)
                 notes[trackNote] = noteEntity
                 noteAnchor.addChild(noteEntity)
             }

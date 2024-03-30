@@ -180,8 +180,8 @@ struct BrowserView: View {
             }
         }
         .onAppear {
-            appState.browserWindowIsShown = true
             selectedHeader = .lessons
+            appState.browserWindowIsShown = true
         }
         .onDisappear {
             appState.browserWindowIsShown = false
