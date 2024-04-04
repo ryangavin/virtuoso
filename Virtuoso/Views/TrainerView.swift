@@ -12,23 +12,22 @@ struct TrainerView: View {
     @Environment(AppState.self) var appState
 
     var body: some View {
-        NavigationStack {
-            VStack {
-                Image("PlaceholderMusic")
-                    .resizable()
-                    .scaledToFit()
+        VStack {
+            Image("PlaceholderMusic")
+                .resizable()
+                .scaledToFit()
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomOrnament) {
+                PlaybackWidget()
             }
-            .toolbar {
-                ToolbarItem(placement: .bottomOrnament) {
-                    PlaybackWidget()
-                }
-            }
-        }.onAppear {
-            appState.trainerWindowIsShown = true
-        }.onDisappear {
-            appState.trainerWindowIsShown = false
         }
     }
+}
+
+@MainActor
+func onDismiss() {
+    print("Dismissing")
 }
 
 #Preview(windowStyle: .automatic) {

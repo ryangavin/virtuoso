@@ -87,6 +87,12 @@ struct PlaybackWidget: View {
                 }, label: {
                     Image(systemName: "gearshape")
                 }).tint(appState.showConfigurationMenu ? .accentColor : .none)
+
+                Button(action: {
+                    appState.returnFromImmersiveSpace()
+                }, label: {
+                    Image(systemName: "pip.exit")
+                })
             }
 
             HStack {

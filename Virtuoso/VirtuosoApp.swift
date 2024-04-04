@@ -15,6 +15,8 @@ struct VirtuosoApp: App {
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissWindow) var dismissWindow
 
+    @Environment(\.scenePhase) var scenePhase
+
     @State private var appState = AppState()
     @State private var handManager = HandManager()
     @State private var pianoManager = PianoManager()
@@ -34,8 +36,9 @@ struct VirtuosoApp: App {
                 .environment(appState)
                 .modelContainer(DataController.previewContainer)
         }
-        .onChange(of: appState.showBrowserWindow) { _, newValue in
+        .onChange(of: appState.showBrowserWindow) { oldValue, newValue in
             Task {
+                print("Responding to showBrowserWindow change from \(oldValue) to \(newValue)")
                 if newValue {
                     openWindow(id: Module.browser.name)
                 } else {
@@ -52,8 +55,9 @@ struct VirtuosoApp: App {
                 .environment(pianoManager)
         }
         .defaultSize(width: 500, height: 350)
-        .onChange(of: appState.showConfigurationMenu) { _, newValue in
+        .onChange(of: appState.showConfigurationMenu) { oldValue, newValue in
             Task {
+                print("Responding to showConfigurationMenu change from \(oldValue) to \(newValue)")
                 if newValue {
                     openWindow(id: Module.pianoConfigurationMenu.name)
                 } else {
@@ -69,14 +73,19 @@ struct VirtuosoApp: App {
                 .environment(appState)
                 .environment(playbackManager)
         }
-        .onChange(of: appState.showTrainerWindow) { _, newValue in
+        .onChange(of: appState.showTrainerWindow) { oldValue, newValue in
             Task {
+                print("Responding to showTrainerWindow change from \(oldValue) to \(newValue)")
                 if newValue {
                     openWindow(id: Module.trainer.name)
                 } else {
                     dismissWindow(id: Module.trainer.name)
-                    appState.showImmersiveSpace = false
                 }
+            }
+        }
+        .onChange(of: scenePhase) { _, newValue in
+            if newValue == .background {
+                // appState.showTrainerWindow = false
             }
         }
 
@@ -88,9 +97,11 @@ struct VirtuosoApp: App {
                 .environment(playbackManager)
         }
         .immersionStyle(selection: $immersionStyle, in: .mixed)
-        .onChange(of: appState.showImmersiveSpace) { _, newValue in
+        .onChange(of: appState.showImmersiveSpace) { oldValue, newValue in
             Task {
+                print("Responding to showImmersiveSpace change from \(oldValue) to \(newValue)")
                 if newValue {
+                    print("Opening immersive space")
                     switch await openImmersiveSpace(id: Module.immersiveSpace.name) {
                     case .opened:
                         appState.showTrainerWindow = true
@@ -103,13 +114,16 @@ struct VirtuosoApp: App {
                         appState.showImmersiveSpace = false
                     }
                 } else if appState.immersiveSpaceIsShown {
+                    print("Dismissing immersive space")
                     await dismissImmersiveSpace()
-
-                    // TODO: replace all these calls with a shared toggle method on the app state
-                    appState.showTrainerWindow = false
-                    appState.showConfigurationMenu = false
-                    appState.showBrowserWindow = true
                 }
+            }
+        }
+        .onChange(of: scenePhase) { oldValue, newValue in
+            print("Scene phase changed from \(oldValue) to \(newValue)")
+            if appState.immersiveSpaceIsShown && newValue == .background {
+                // print("Closing immersive space due to backgrounding")
+                // appState.showImmersiveSpace = false
             }
         }
     }

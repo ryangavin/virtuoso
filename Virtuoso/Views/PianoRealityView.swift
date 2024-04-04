@@ -33,9 +33,12 @@ struct PianoRealityView: View {
         }
 
         .task {
-            await playbackManager.loadSong(SongCollection.childrensSongs.songs[0])
+            // TODO: should this really be async?
+            guard let selectedSong = appState.selectedSong else { return }
+            await playbackManager.loadSong(selectedSong)
         }
 
+        // TODO: BIG: Consider rewriting this whole idea as a system or component
         // TODO: it seems weird that we listen to this var instead of the current timestamp
         // TODO: should we just publish that instead of the target display timestamp?
         .onChange(of: playbackManager.targetDisplayTimestamp) { _, _ in
@@ -49,10 +52,13 @@ struct PianoRealityView: View {
             }
         }
 
+        // TODO: consider reolcating all tracking of the window state to the toplevel app
         .onAppear {
+            print("PianoRealityView appeared!")
             appState.immersiveSpaceIsShown = true
         }
 
+        // This might not really be working
         .onDisappear {
             appState.immersiveSpaceIsShown = false
         }

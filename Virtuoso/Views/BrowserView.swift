@@ -65,7 +65,9 @@ struct BrowserItemDetail: View {
                 Text(appState.selectedSong!.title)
                     .font(.title)
                 Spacer()
-                Button(action: { appState.libraryDetailShown.toggle() }, label: {
+                Button(action: {
+                    appState.libraryDetailShown.toggle()
+                }, label: {
                     Image(systemName: "xmark")
                 })
             }
@@ -181,10 +183,6 @@ struct BrowserView: View {
         }
         .onAppear {
             selectedHeader = .lessons
-            appState.browserWindowIsShown = true
-        }
-        .onDisappear {
-            appState.browserWindowIsShown = false
         }
     }
 }

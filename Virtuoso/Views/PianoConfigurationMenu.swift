@@ -104,10 +104,6 @@ struct PianoConfigurationMenu: View {
             }
         }
         .padding()
-        .onDisappear(perform: {
-            appState.configurationMenuIsShown = false
-            appState.showConfigurationMenu = false
-        })
     }
 }
 

@@ -18,11 +18,12 @@ class AppState {
     var immersiveSpaceIsShown = false
 
     var showConfigurationMenu = false
-    var configurationMenuIsShown = false
-
     var showTrainerWindow = false
-    var trainerWindowIsShown = false
-
     var showBrowserWindow = true
-    var browserWindowIsShown = false
+
+    func returnFromImmersiveSpace() {
+        showImmersiveSpace = false
+        showTrainerWindow = false
+        showBrowserWindow = true
+    }
 }
