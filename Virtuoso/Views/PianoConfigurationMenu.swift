@@ -56,8 +56,12 @@ struct PianoConfigurationMenu: View {
                 })
             }
             HStack {
-                Button("X") {}
-                    .tint(.red)
+                Button(action: {
+                    appState.showAnchors.toggle()
+                }, label: {
+                    Image(systemName: "eye")
+                }).tint(appState.showAnchors ? .blue : nil)
+
                 Button(action: {
                     pianoManager.moveAnchor(translation: simd_float3(-0.005, 0, 0))
                 }, label: {
@@ -104,9 +108,14 @@ struct PianoConfigurationMenu: View {
             }
         }
         .padding()
+        .onChange(of: appState.showAnchors) { _, newValue in
+            pianoManager.setKeyAnchorVisiblity(newValue)
+        }
     }
 }
 
 #Preview(windowStyle: .automatic) {
-    PianoConfigurationMenu().environment(PianoManager())
+    PianoConfigurationMenu()
+        .environment(PianoManager())
+        .environment(AppState())
 }

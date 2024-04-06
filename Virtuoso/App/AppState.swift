@@ -21,6 +21,8 @@ class AppState {
     var showTrainerWindow = false
     var showBrowserWindow = true
 
+    var showAnchors = false
+
     func returnFromImmersiveSpace() {
         showImmersiveSpace = false
         showTrainerWindow = false

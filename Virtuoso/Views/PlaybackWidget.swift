@@ -89,7 +89,9 @@ struct PlaybackWidget: View {
                 }).tint(appState.showConfigurationMenu ? .accentColor : .none)
 
                 Button(action: {
-                    appState.returnFromImmersiveSpace()
+                    appState.showImmersiveSpace = false
+                    appState.showTrainerWindow = false
+                    appState.showBrowserWindow = true
                 }, label: {
                     Image(systemName: "pip.exit")
                 })

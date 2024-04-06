@@ -17,6 +17,7 @@ extension Entity {
                 fatalError("Failed to load the Debug Anchor")
             }
             debugAnchorEntity = loadedEntity
+            debugAnchorEntity?.components[OpacityComponent.self] = .init(opacity: 0.0)
         }
 
         return debugAnchorEntity!.clone(recursive: true)

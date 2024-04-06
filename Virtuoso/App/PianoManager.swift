@@ -143,8 +143,15 @@ class PianoManager {
         // TODO: move this into a hash of MIDI note number to entity
         for _ in 0 ..< numberOfKeys {
             let key = Entity.createDebugEntity()
+            key.components[OpacityComponent.self] = .init(opacity: 0.0)
             keys.append(key)
             pianoAnchor.addChild(key)
+        }
+    }
+
+    func setKeyAnchorVisiblity(_ visible: Bool) {
+        for key in keys {
+            key.components[OpacityComponent.self] = .init(opacity: visible ? 1 : 0.0)
         }
     }
 

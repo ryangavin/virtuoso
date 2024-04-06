@@ -119,12 +119,5 @@ struct VirtuosoApp: App {
                 }
             }
         }
-        .onChange(of: scenePhase) { oldValue, newValue in
-            print("Scene phase changed from \(oldValue) to \(newValue)")
-            if appState.immersiveSpaceIsShown && newValue == .background {
-                // print("Closing immersive space due to backgrounding")
-                // appState.showImmersiveSpace = false
-            }
-        }
     }
 }
