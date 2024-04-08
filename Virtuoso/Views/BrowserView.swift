@@ -27,7 +27,7 @@ struct BrowserListItem: View {
         .hoverEffect(.lift)
         .onTapGesture {
             appState.selectedSong = song
-            appState.libraryDetailShown.toggle()
+            appState.songDetailShown.toggle()
         }
     }
 }
@@ -66,7 +66,7 @@ struct BrowserItemDetail: View {
                     .font(.title)
                 Spacer()
                 Button(action: {
-                    appState.libraryDetailShown.toggle()
+                    appState.songDetailShown.toggle()
                 }, label: {
                     Image(systemName: "xmark")
                 })
@@ -123,7 +123,7 @@ struct BrowserListView: View {
         .padding(25)
 
         // Popover centered in the middle of the screen
-        .sheet(isPresented: $appStateBindable.libraryDetailShown) {
+        .sheet(isPresented: $appStateBindable.songDetailShown) {
             BrowserItemDetail()
         }
     }

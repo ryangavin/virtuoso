@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-struct LibraryItemDetail: View {
+struct LibraryEditView: View {
     @Environment(AppState.self) var appState
 
     var body: some View {
@@ -22,10 +22,14 @@ struct LibraryItemDetail: View {
                     .font(.title2)
                     .padding(.bottom, 40)
 
-                Button {
-                    appState.showSongEditor = false
-                } label: {
-                    Label("Close", systemImage: "xmark")
+                HStack {
+                    Button("Discard Changes", action: {
+                        appState.closeLibraryEditor()
+                    })
+
+                    Button("Save", action: {
+                        appState.closeLibraryEditor()
+                    }).tint(.blue)
                 }
             }
         } else {
@@ -46,21 +50,24 @@ struct LibraryView: View {
 
         List {
             ForEach(userSongs, id: \.self) { song in
-                Text(song.title)
-                    .swipeActions {
-                        // Destructive role seems to automatically add a red background and remove the label
-                        Button(role: .destructive) {} label: {
-                            // TODO: does this actually delete from the database
-                            Label("Delete", systemImage: "trash")
-                        }
-
-                        Button {
-                            appState.editingSong = song
-                            appState.showSongEditor = true
-                        } label: {
-                            Label("Edit", systemImage: "pencil")
-                        }
+                Button(song.title, action: {
+                    appState.selectedSong = song
+                    appState.songDetailShown.toggle()
+                })
+                .swipeActions {
+                    // Destructive role seems to automatically add a red background and remove the label
+                    Button(role: .destructive) {} label: {
+                        // TODO: does this actually delete from the database
+                        Label("Delete", systemImage: "trash")
                     }
+
+                    Button {
+                        appState.editingSong = song
+                        appState.showSongEditor = true
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                }
             }
         }
         .navigationTitle("My Song Library")
@@ -73,15 +80,27 @@ struct LibraryView: View {
                 }
             }
         }
+        // Edit View
         .sheet(isPresented: $appStateBindable.showSongEditor) {
-            LibraryItemDetail()
+            LibraryEditView()
+        }
+        // Popover centered in the middle of the screen
+        .sheet(isPresented: $appStateBindable.songDetailShown) {
+            BrowserItemDetail()
         }
     }
 }
 
-#Preview {
-    LibraryView()
-        .environment(AppState())
-        .modelContainer(DataController.previewContainer)
-        .navigationTitle("My Song Library")
+struct LibraryView_Previews: PreviewProvider {
+    static let dataController = DataController.previewContainer
+
+    static var previews: some View {
+        NavigationSplitView {} detail: {
+            LibraryView()
+                .environment(AppState())
+                .modelContainer(dataController)
+                .navigationTitle("My Song Library")
+        }
+        .glassBackgroundEffect()
+    }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 class AppState {
     // MARK: Actual App State
 
-    var libraryDetailShown = false
+    var songDetailShown = false
     var selectedSong: Song?
 
     var showSongEditor = false
@@ -30,5 +30,10 @@ class AppState {
         showImmersiveSpace = false
         showTrainerWindow = false
         showBrowserWindow = true
+    }
+
+    func closeLibraryEditor() {
+        showSongEditor = false
+        editingSong = nil
     }
 }
