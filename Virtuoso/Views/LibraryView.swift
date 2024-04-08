@@ -10,16 +10,26 @@ import SwiftData
 import SwiftUI
 
 struct LibraryItemDetail: View {
-    let selectedSong: Song
+    @Environment(AppState.self) var appState
 
     var body: some View {
-        VStack {
-            Text(selectedSong.title)
-                .font(.title)
-                .padding(.bottom, 10)
-            Text(selectedSong.artist)
-                .font(.title2)
-                .padding(.bottom, 40)
+        if let editingSong = appState.editingSong {
+            VStack {
+                Text(editingSong.title)
+                    .font(.title)
+                    .padding(.bottom, 10)
+                Text(editingSong.artist)
+                    .font(.title2)
+                    .padding(.bottom, 40)
+
+                Button {
+                    appState.showSongEditor = false
+                } label: {
+                    Label("Close", systemImage: "xmark")
+                }
+            }
+        } else {
+            Text("No song selected")
         }
     }
 }
@@ -29,18 +39,24 @@ struct LibraryView: View {
         song.belongsToUser == true
     }, sort: \Song.title) private var userSongs: [Song]
 
+    @Environment(AppState.self) var appState
+
     var body: some View {
+        @Bindable var appStateBindable = appState
+
         List {
             ForEach(userSongs, id: \.self) { song in
                 Text(song.title)
                     .swipeActions {
                         // Destructive role seems to automatically add a red background and remove the label
                         Button(role: .destructive) {} label: {
+                            // TODO: does this actually delete from the database
                             Label("Delete", systemImage: "trash")
                         }
 
                         Button {
-                            print("Edit button tapped for \(song)")
+                            appState.editingSong = song
+                            appState.showSongEditor = true
                         } label: {
                             Label("Edit", systemImage: "pencil")
                         }
@@ -57,15 +73,15 @@ struct LibraryView: View {
                 }
             }
         }
+        .sheet(isPresented: $appStateBindable.showSongEditor) {
+            LibraryItemDetail()
+        }
     }
 }
 
 #Preview {
-    NavigationSplitView {} detail: {
-        NavigationStack {
-            LibraryView()
-                .modelContainer(DataController.previewContainer)
-                .navigationTitle("My Song Library")
-        }
-    }
+    LibraryView()
+        .environment(AppState())
+        .modelContainer(DataController.previewContainer)
+        .navigationTitle("My Song Library")
 }

@@ -14,6 +14,9 @@ class AppState {
     var libraryDetailShown = false
     var selectedSong: Song?
 
+    var showSongEditor = false
+    var editingSong: Song?
+
     var showImmersiveSpace = false
     var immersiveSpaceIsShown = false
 
