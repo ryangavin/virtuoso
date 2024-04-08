@@ -38,6 +38,7 @@
 		94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */; };
 		94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */; };
 		94E2E5F42B8CAE980096A41B /* peg.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94E2E5F32B8CAE980096A41B /* peg.mid */; };
+		94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */; };
 		94EE84802BA7F2880014B06A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE847F2BA7F2880014B06A /* DataController.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
 		94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackWidget.swift; sourceTree = "<group>"; };
 		94E2E5F32B8CAE980096A41B /* peg.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = peg.mid; sourceTree = "<group>"; };
+		94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		94EE847F2BA7F2880014B06A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
 				946350442B9E11A3006CFA88 /* BrowserView.swift */,
 				9486048C2BA6339E00519884 /* TrainerView.swift */,
+				94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				9486048D2BA6339E00519884 /* TrainerView.swift in Sources */,
 				9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */,
 				9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */,
+				94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
 			);

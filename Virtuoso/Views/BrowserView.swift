@@ -137,8 +137,9 @@ enum BrowserHeader: CaseIterable, Identifiable {
         case .lessons: return "Lessons"
         case .songs: return "Songs"
         case .exercises: return "Exercises"
-        case .stats: return "Stats"
-        case .settings: return "Settings"
+        case .library: return "My Library"
+            // case .stats: return "Stats"
+            // case .settings: return "Settings"
         }
     }
 
@@ -147,16 +148,18 @@ enum BrowserHeader: CaseIterable, Identifiable {
         case .lessons: return "graduationcap.fill"
         case .songs: return "music.note.list"
         case .exercises: return "brain.filled.head.profile"
-        case .stats: return "chart.bar"
-        case .settings: return "gear"
+        case .library: return "book.fill"
+            // case .stats: return "chart.bar"
+            // case .settings: return "gear"
         }
     }
 
-    case lessons
     case songs
+    case lessons
     case exercises
-    case stats
-    case settings
+    case library
+    // case stats
+    // case settings
 }
 
 struct BrowserView: View {
@@ -168,21 +171,34 @@ struct BrowserView: View {
         NavigationSplitView {
             List(selection: $selectedHeader) {
                 ForEach(BrowserHeader.allCases) { header in
-                    NavigationLink(destination: BrowserListView()) {
+                    NavigationLink(destination: {
+                        switch selectedHeader {
+                        case .songs:
+                            BrowserListView()
+                        case .lessons:
+                            Text("Lessons")
+                        case .exercises:
+                            Text("Exercises")
+                        case .library:
+                            LibraryView()
+                        // case .stats:
+                        //     Text("Stats")
+                        // case .settings:
+                        //     Text("Settings")
+                        case .none:
+                            Text("None")
+                        }
+                    }) {
                         Label(header.title, systemImage: header.icon)
                     }
                 }
             }.navigationTitle("Virtuoso")
         }
         detail: {
-            if selectedHeader == .lessons {
-                BrowserListView()
-            } else {
-                Text("Coming soon!")
-            }
+            BrowserListView()
         }
         .onAppear {
-            selectedHeader = .lessons
+            selectedHeader = .songs
         }
     }
 }

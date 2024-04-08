@@ -48,7 +48,7 @@ struct PianoRealityView: View {
 
                 // TODO: need to calculate the diff by the time you get here
                 // TODO: by the time you get to the second track, we could be a little off
-                pianoManager.drawTrack(track: midiTrack, targetTimestamp: sequencer.currentTimeStamp, color: track.hand == .left ? .green : .blue)
+                pianoManager.drawTrack(track: midiTrack, targetTimestamp: sequencer.currentTimeStamp, color: track.hand == .left ? .systemGreen : .systemBlue)
             }
         }
 

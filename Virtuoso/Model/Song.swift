@@ -43,6 +43,8 @@ final class Song {
         }
     }
 
+    var belongsToUser: Bool
+
     var title: String
     var artist: String
     var details: String
@@ -53,7 +55,17 @@ final class Song {
     var midiFile: String
     var midiTracks: [Track]
 
-    init(title: String, artist: String, details: String, difficulty: Int = 1, favorite: Bool = false, midiFile: String, midiTracks: [Track] = []) {
+    init(
+        belongsToUser: Bool = false,
+        title: String,
+        artist: String,
+        details: String = "",
+        difficulty: Int = 1,
+        favorite: Bool = false,
+        midiFile: String = "",
+        midiTracks: [Track] = []
+    ) {
+        self.belongsToUser = belongsToUser
         self.title = title
         self.artist = artist
         self.details = details

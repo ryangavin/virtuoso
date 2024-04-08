@@ -284,18 +284,25 @@ class PianoManager {
     }
 
     private func createCollisionBarEntity(width: Float, offset: Float) -> Entity {
-        let box = MeshResource.generateBox(width: width, height: 0.005, depth: 0.005, cornerRadius: 0.005)
-        let material = SimpleMaterial(color: .systemBlue, isMetallic: false)
+        // The mesh for the visual bar and it's material
+        let box = MeshResource.generateBox(width: width, height: 0.01, depth: 0.01, cornerRadius: 0.005)
+        let material = SimpleMaterial(color: .systemGray6, isMetallic: false)
+
+        // Main visual bar entity
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
         entity.position = [0, 0.01, -offset]
+
         return entity
     }
 
     private func createNoteEntity(depth: Float, note: String, color: UIColor) -> Entity {
-        // Build the main note entity, a colored box with slight corner radius
+        // Generate the main note model, a colored box with slight corner radius
         let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: depth, cornerRadius: 0.001)
         let material = SimpleMaterial(color: color, isMetallic: false)
+
+        // Build up the actual entity - attaching the materials and the mesh
+        // Also attach a GroundingShadowComponent so the notes cast shadows
         let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
 
