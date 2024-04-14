@@ -35,6 +35,16 @@ class AppState {
         showBrowserWindow = true
     }
 
+    func openSongDetail(with song: Song) {
+        selectedSong = song
+        songDetailShown = true
+    }
+
+    func closeSongDetail() {
+        songDetailShown = false
+        selectedSong = nil
+    }
+
     func openLibraryEditor(with song: Song) {
         editingSong = song
         showSongEditor = true

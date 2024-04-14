@@ -26,7 +26,7 @@ struct LibraryEditView: View {
 
         // Set the MIDI file name
         guard let editingSong = appState.editingSong else { return }
-        editingSong.midiFile = url.lastPathComponent
+        editingSong.midiFile = url.relativePath
     }
 
     var body: some View {
@@ -36,7 +36,7 @@ struct LibraryEditView: View {
             VStack {
                 Form {
                     Section {
-                        TextField("Title", text: $bindableEditingSong.title)
+                        TextField("Title *", text: $bindableEditingSong.title)
                         TextField("Artist", text: $bindableEditingSong.artist)
                         TextField("Details", text: $bindableEditingSong.details)
                         Stepper("Difficulty: \(editingSong.difficulty)", value: $bindableEditingSong.difficulty, in: 1 ... 10)
@@ -124,6 +124,14 @@ struct LibraryEditView: View {
             }
             .frame(minWidth: 800, minHeight: 600)
             .padding([.top, .bottom], 25)
+            .onAppear {
+                // If we're editing a song, load the MIDI file
+                if let editingSong = appState.editingSong {
+                    if !editingSong.midiFile.isEmpty {
+                        loadMidiFile(URL(fileURLWithPath: editingSong.midiFile))
+                    }
+                }
+            }
         } else {
             Text("No song selected")
         }
@@ -143,7 +151,7 @@ struct LibraryView: View {
         List {
             ForEach(userSongs, id: \.self) { song in
                 Button(song.title, action: {
-                    appState.openLibraryEditor(with: song)
+                    appState.openSongDetail(with: song)
                 })
                 .swipeActions {
                     // Destructive role seems to automatically add a red background and remove the label
@@ -153,7 +161,7 @@ struct LibraryView: View {
                     }
 
                     Button {
-                        appState.closeLibraryEditor()
+                        appState.openLibraryEditor(with: song)
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }
