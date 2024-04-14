@@ -57,8 +57,8 @@ final class Song {
 
     init(
         belongsToUser: Bool = false,
-        title: String,
-        artist: String,
+        title: String = "",
+        artist: String = "",
         details: String = "",
         difficulty: Int = 1,
         favorite: Bool = false,

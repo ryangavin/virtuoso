@@ -6,21 +6,106 @@
 //
 
 import Foundation
+import MIKMIDI
 import SwiftData
 import SwiftUI
 
 struct LibraryEditView: View {
+    @Environment(\.modelContext) var modelContext
     @Environment(AppState.self) var appState
+
+    @State var selectingMidiFile = false
+    @State var tracks: [Song.Track] = []
+
+    func loadMidiFile(_ url: URL) {
+        let sequence = try! MIKMIDISequence(fileAt: url)
+        tracks.removeAll()
+        for track in sequence.tracks {
+            tracks.append(Song.Track(trackNumber: track.trackNumber))
+        }
+
+        // Set the MIDI file name
+        guard let editingSong = appState.editingSong else { return }
+        editingSong.midiFile = url.lastPathComponent
+    }
 
     var body: some View {
         if let editingSong = appState.editingSong {
+            @Bindable var bindableEditingSong = editingSong
+
             VStack {
-                Text(editingSong.title)
-                    .font(.title)
-                    .padding(.bottom, 10)
-                Text(editingSong.artist)
-                    .font(.title2)
-                    .padding(.bottom, 40)
+                Form {
+                    Section {
+                        TextField("Title", text: $bindableEditingSong.title)
+                        TextField("Artist", text: $bindableEditingSong.artist)
+                        TextField("Details", text: $bindableEditingSong.details)
+                        Stepper("Difficulty: \(editingSong.difficulty)", value: $bindableEditingSong.difficulty, in: 1 ... 10)
+                    }
+
+                    Section {
+                        HStack {
+                            Text("MIDI File: \(editingSong.midiFile)")
+
+                            Button("Browse") {
+                                selectingMidiFile = true
+                            }
+                            .tint(.accentColor)
+                        }
+                        .fileImporter(
+                            isPresented: $selectingMidiFile,
+                            allowedContentTypes: [.midi],
+                            allowsMultipleSelection: false
+                        ) { result in
+                            switch result {
+                            case .success(let url):
+                                loadMidiFile(url.first!)
+                            case .failure(let error):
+                                print("Error selecting MIDI file: \(error)")
+                            }
+                        }
+                    }
+
+                    Section {
+                        if appState.editingSong?.midiFile.isEmpty == true {
+                            Text("Please select a MIDI file")
+                        } else if tracks.isEmpty {
+                            Text("No tracks found in MIDI file")
+                        }
+
+                        ForEach($tracks, id: \.self) { $track in
+                            HStack {
+                                // Always show the track number
+                                Text("\(track.trackNumber)")
+                                    .padding(.trailing, 20)
+
+                                // Toggle for whether or not this track is a lesson track
+                                Toggle("Trainer", isOn: $track.lessonTrack)
+                                    .frame(width: 120)
+                                    .padding(.trailing, 20)
+
+                                // Only enable the hand picker if this is a lesson track
+                                Picker("Hand", selection: $track.hand) {
+                                    Text("Left").tag(Song.Track.Hand.left)
+                                    Text("Right").tag(Song.Track.Hand.right)
+                                    Text("Both").tag(Song.Track.Hand.both)
+                                }
+                                .disabled(!track.lessonTrack)
+                                .frame(width: 160)
+
+                                Spacer()
+
+                                // Sound picker for the sequencer
+                                Picker("Sound", selection: $track.sound) {
+                                    ForEach(Song.Track.Sound.allCases, id: \.self) { sound in
+                                        Text(sound.rawValue.capitalized).tag(sound)
+                                    }
+                                }
+                                .frame(width: 200)
+                            }
+                        }
+                    }
+                }
+                .padding(.bottom, 20)
 
                 HStack {
                     Button("Discard Changes", action: {
@@ -28,10 +113,17 @@ struct LibraryEditView: View {
                     })
 
                     Button("Save", action: {
+                        modelContext.insert(editingSong)
                         appState.closeLibraryEditor()
-                    }).tint(.blue)
+                    })
+                    .tint(.blue)
+                    .disabled(
+                        editingSong.midiFile.isEmpty || tracks.isEmpty || editingSong.title.isEmpty
+                    )
                 }
             }
+            .frame(minWidth: 800, minHeight: 600)
+            .padding([.top, .bottom], 25)
         } else {
             Text("No song selected")
         }
@@ -51,8 +143,7 @@ struct LibraryView: View {
         List {
             ForEach(userSongs, id: \.self) { song in
                 Button(song.title, action: {
-                    appState.selectedSong = song
-                    appState.songDetailShown.toggle()
+                    appState.openLibraryEditor(with: song)
                 })
                 .swipeActions {
                     // Destructive role seems to automatically add a red background and remove the label
@@ -62,8 +153,7 @@ struct LibraryView: View {
                     }
 
                     Button {
-                        appState.editingSong = song
-                        appState.showSongEditor = true
+                        appState.closeLibraryEditor()
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }
@@ -74,7 +164,7 @@ struct LibraryView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    print("Add button tapped")
+                    appState.openLibraryEditor(with: Song(belongsToUser: true))
                 }) {
                     Image(systemName: "plus")
                 }
@@ -100,6 +190,25 @@ struct LibraryView_Previews: PreviewProvider {
                 .environment(AppState())
                 .modelContainer(dataController)
                 .navigationTitle("My Song Library")
+        }
+        .glassBackgroundEffect()
+    }
+}
+
+struct LibraryViewEdit_Previews: PreviewProvider {
+    static let appState = AppState()
+    static let dataController = DataController.previewContainer
+
+    static var previews: some View {
+        NavigationSplitView {} detail: {
+            LibraryView()
+                .environment(appState)
+                .modelContainer(dataController)
+                .navigationTitle("My Song Library")
+                .onAppear {
+                    appState.editingSong = Song(belongsToUser: true, title: "Test Song", artist: "Test Artist", details: "Test Details", difficulty: 5)
+                    appState.showSongEditor = true
+                }
         }
         .glassBackgroundEffect()
     }

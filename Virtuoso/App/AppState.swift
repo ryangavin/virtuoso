@@ -1,6 +1,9 @@
 //
-//  ViewModel.swift
+//  AppState.swift
 //  Virtuoso
+//
+//  TODO: starting to wonder if this entire class should be dismantled
+//  TODO: the thinking is that in so many places, this could actually be local state
 //
 //  Created by Ryan Gavin on 2/15/24.
 //
@@ -30,6 +33,11 @@ class AppState {
         showImmersiveSpace = false
         showTrainerWindow = false
         showBrowserWindow = true
+    }
+
+    func openLibraryEditor(with song: Song) {
+        editingSong = song
+        showSongEditor = true
     }
 
     func closeLibraryEditor() {
