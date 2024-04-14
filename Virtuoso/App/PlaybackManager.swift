@@ -51,7 +51,8 @@ class PlaybackManager {
     }
 
     func loadSong(_ song: Song) async {
-        sequence = try! MIKMIDISequence(fileAt: Bundle.main.url(forResource: song.midiFile, withExtension: "mid")!)
+        let url = song.belongsToUser ? URL(fileURLWithPath: song.midiFile) : Bundle.main.url(forResource: song.midiFile, withExtension: "mid")!
+        sequence = try! MIKMIDISequence(fileAt: url)
         sequencer = MIKMIDISequencer(sequence: sequence!)
 
         // Process the tracks
