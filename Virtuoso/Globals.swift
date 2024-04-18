@@ -14,3 +14,7 @@ var pianoAnchor = AnchorEntity()
 // MARK: Preloaded entities to be reused
 
 var debugAnchorEntity: Entity?
+
+// MARK: Preloaded materials to be reused
+
+var collisionMaterial: ShaderGraphMaterial?

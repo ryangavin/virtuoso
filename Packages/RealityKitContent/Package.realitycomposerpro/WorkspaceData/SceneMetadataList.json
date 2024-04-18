@@ -15,8 +15,7 @@
     "objectMetadataList" : [
       [
         "8DD8B9AC-DD77-42FD-8453-469F62E87E91",
-        "Root",
-        "Piano_Keyboard"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -24,6 +23,49 @@
       },
       [
         "8DD8B9AC-DD77-42FD-8453-469F62E87E91",
+        "Root",
+        "Piano_Keyboard"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "9B498449-1512-4FC6-8164-29B86D250F79" : {
+    "objectMetadataList" : [
+      [
+        "9B498449-1512-4FC6-8164-29B86D250F79",
+        "Root",
+        "CollisionMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "9B498449-1512-4FC6-8164-29B86D250F79",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "9B498449-1512-4FC6-8164-29B86D250F79",
+        "Root",
+        "Material"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "61B95177-8B01-4A49-9F1C-274BDE1A346A" : {
+    "objectMetadataList" : [
+      [
+        "61B95177-8B01-4A49-9F1C-274BDE1A346A",
         "Root"
       ],
       {
@@ -61,7 +103,24 @@
       [
         "4858F0E6-DFC5-4E71-9869-6DF926180741",
         "Root",
-        "Cone_2"
+        "Cone_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "4858F0E6-DFC5-4E71-9869-6DF926180741",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "4858F0E6-DFC5-4E71-9869-6DF926180741",
+        "Root",
+        "Sphere"
       ],
       {
         "isExpanded" : true,
@@ -79,24 +138,7 @@
       [
         "4858F0E6-DFC5-4E71-9869-6DF926180741",
         "Root",
-        "Cone_1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "4858F0E6-DFC5-4E71-9869-6DF926180741",
-        "Root",
-        "Sphere"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "4858F0E6-DFC5-4E71-9869-6DF926180741",
-        "Root"
+        "Cone_2"
       ],
       {
         "isExpanded" : true,
@@ -141,7 +183,8 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
+        "Root",
+        "Sphere_Right"
       ],
       {
         "isExpanded" : true,
@@ -149,13 +192,17 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Sphere_Right"
+        "Root"
       ],
       {
         "isExpanded" : true,
         "isLocked" : false
       }
+    ]
+  },
+  "C3644974-8367-4D6F-8932-3AC0971D7A27" : {
+    "objectMetadataList" : [
+
     ]
   },
   "CB766F92-EE55-4A63-9401-E7B8C009764D" : {
@@ -188,9 +235,7 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -198,7 +243,70 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "E8B5DB6C-C2A9-4BA6-B49A-358FDB940C78" : {
+    "objectMetadataList" : [
+      [
+        "E8B5DB6C-C2A9-4BA6-B49A-358FDB940C78",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E8B5DB6C-C2A9-4BA6-B49A-358FDB940C78",
+        "Root",
+        "TestNote"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E8B5DB6C-C2A9-4BA6-B49A-358FDB940C78",
+        "Root",
+        "NoteCollision"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "F5762ACE-4638-42E2-982B-A3889A67C61B" : {
+    "objectMetadataList" : [
+      [
+        "F5762ACE-4638-42E2-982B-A3889A67C61B",
+        "Root",
+        "Cube"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "F5762ACE-4638-42E2-982B-A3889A67C61B",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "F5762ACE-4638-42E2-982B-A3889A67C61B",
+        "Root",
+        "Materials",
+        "NoteCollision"
       ],
       {
         "isExpanded" : true,

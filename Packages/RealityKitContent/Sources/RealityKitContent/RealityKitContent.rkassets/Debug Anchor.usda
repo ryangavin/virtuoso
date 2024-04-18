@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere", "Cone", "Cone_1", "Cone_2", "DefaultMaterial"]
+    reorder nameChildren = ["Sphere", "Cone", "Cone_1", "Cone_2", "HierarchicalFade", "CollisionMaterial"]
     float3 xformOp:scale = (0.05, 0.05, 0.05)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -145,6 +145,74 @@ def Xform "Root"
     {
         uniform token info:id = "RealityKit.HierarchicalFade"
         float opacity = 0.66
+    }
+
+    def Material "CollisionMaterial"
+    {
+        float inputs:ClippingThreshold = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-517.02454, 121.08203)
+                    float2 sizeInSubgraph = (182, 53)
+                    int stackingOrderInSubgraph = 62
+                }
+            }
+        )
+        prepend token outputs:mtlx:surface.connect = </Root/CollisionMaterial/PreviewSurface.outputs:out>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (402.67422, 61.988388)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 51
+
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            color3f inputs:diffuseColor
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:opacity.connect = </Root/CollisionMaterial/IfGreaterOrEqual.outputs:out>
+            float inputs:roughness
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (124.56, 34.067554)
+            float2 ui:nodegraph:node:size = (148.5, 199)
+            int ui:nodegraph:node:stackingOrder = 61
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:diffuseColor"]
+        }
+
+        def Shader "Position"
+        {
+            uniform token info:id = "ND_position_vector3"
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (-562.49097, -26.234375)
+            float2 ui:nodegraph:node:size = (133.5, 40)
+            int ui:nodegraph:node:stackingOrder = 66
+        }
+
+        def Shader "Separate3"
+        {
+            uniform token info:id = "ND_separate3_vector3"
+            float3 inputs:in.connect = </Root/CollisionMaterial/Position.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float outputs:outz
+            float2 ui:nodegraph:node:pos = (-376.92685, -20.951618)
+            float2 ui:nodegraph:node:size = (115.5, 145)
+            int ui:nodegraph:node:stackingOrder = 64
+        }
+
+        def Shader "IfGreaterOrEqual"
+        {
+            uniform token info:id = "ND_ifgreatereq_float"
+            float inputs:in1
+            float inputs:in2 = 1
+            float inputs:value1.connect = </Root/CollisionMaterial/Separate3.outputs:outz>
+            float inputs:value2.connect = </Root/CollisionMaterial.inputs:ClippingThreshold>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (-151.15727, 46.16815)
+            float2 ui:nodegraph:node:size = (156, 163)
+            int ui:nodegraph:node:stackingOrder = 60
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in1"]
+        }
     }
 }
 
