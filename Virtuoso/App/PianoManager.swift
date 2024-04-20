@@ -57,6 +57,7 @@ class PianoManager {
         createKeyAnchors()
 
         // Load the saved positions
+        // TODO: there is a new macro to clean this up
         if let leftPosition = UserDefaults.standard.value(forKey: "leftAnchorSavedPosition") as? Data,
            let rightPosition = UserDefaults.standard.value(forKey: "rightAnchorSavedPosition") as? Data
         {
@@ -129,6 +130,12 @@ class PianoManager {
         rightAnchor.position = [width / 2, 0, 0]
 
         redrawKeys()
+        reconfigureMaterials()
+    }
+
+    func reconfigureMaterials() {
+        let value = MaterialParameters.Value.float(collisionBar.position(relativeTo: spaceOrigin).z)
+        try! collisionMaterial?.setParameter(name: "WorldClipThreshold", value: value)
     }
 
     private func createKeyAnchors() {
@@ -299,11 +306,10 @@ class PianoManager {
     private func createNoteEntity(depth: Float, note: String, color: UIColor) -> Entity {
         // Generate the main note model, a colored box with slight corner radius
         let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: depth, cornerRadius: 0.001)
-        let material = SimpleMaterial(color: color, isMetallic: false)
 
         // Build up the actual entity - attaching the materials and the mesh
         // Also attach a GroundingShadowComponent so the notes cast shadows
-        let entity = ModelEntity(mesh: box, materials: [material])
+        let entity = ModelEntity(mesh: box, materials: [collisionMaterial!])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
 
         // Set the note name

@@ -1,5 +1,5 @@
 {
-  "advancedEditorSelectedIdentifier" : "ShaderGraphEditorPluginID",
+  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
     "PianoNote.usda",
     "Materials.usda"
@@ -1378,5 +1378,5 @@
       }
     ]
   },
-  "selectedSceneRelativePath" : "Materials.usda"
+  "selectedSceneRelativePath" : "PianoNote.usda"
 }

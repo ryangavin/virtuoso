@@ -24,6 +24,7 @@
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
 		9486048D2BA6339E00519884 /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048C2BA6339E00519884 /* TrainerView.swift */; };
 		9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* ClassicRockSongs.swift */; };
+		949AF48F2BD13B430066E28E /* Materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949AF48E2BD13B430066E28E /* Materials.swift */; };
 		949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
@@ -107,6 +108,7 @@
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
 		9486048C2BA6339E00519884 /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
 		9486048E2BA704E600519884 /* ClassicRockSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicRockSongs.swift; sourceTree = "<group>"; };
+		949AF48E2BD13B430066E28E /* Materials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Materials.swift; sourceTree = "<group>"; };
 		949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = electricPiano.sf2; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				941B22D82B83E26B006F114B /* Globals.swift */,
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
+				949AF48E2BD13B430066E28E /* Materials.swift */,
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
 				9480B7A82B7EAA3000DDB251 /* Info.plist */,
 				9480B7A52B7EAA3000DDB251 /* Preview Content */,
@@ -468,6 +471,7 @@
 				9486048D2BA6339E00519884 /* TrainerView.swift in Sources */,
 				9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */,
 				9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */,
+				949AF48F2BD13B430066E28E /* Materials.swift in Sources */,
 				94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,

@@ -35,6 +35,13 @@ struct PianoRealityView: View {
         .task {
             // TODO: should this really be async?
             guard let selectedSong = appState.selectedSong else { return }
+
+            // TODO: not sure this is the best place, but we can load the materials here
+            await Entity.loadRealityViewMaterials()
+
+            // TODO: add a loading bar or something
+
+            // TODO: add some protection to loadSong to ensure all the resources are loaded
             await playbackManager.loadSong(selectedSong)
         }
 
