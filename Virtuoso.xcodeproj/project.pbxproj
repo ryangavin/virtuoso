@@ -12,19 +12,16 @@
 		941B22E02B844506006F114B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B22DF2B844506006F114B /* Extensions.swift */; };
 		941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; };
 		941CFC2F2B922BCF004414E1 /* MIKMIDI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 941CFC272B922955004414E1 /* MIKMIDI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9424F43B2BD40BEF00AD7BFB /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9424F43A2BD40BEF00AD7BFB /* RealityKitContent */; };
 		942D57A12B8397CE007C7327 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D57A02B8397CE007C7327 /* Module.swift */; };
-		946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350442B9E11A3006CFA88 /* BrowserView.swift */; };
 		946350492B9E18EA006CFA88 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350482B9E18EA006CFA88 /* Song.swift */; };
 		9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463504A2B9E1A2F006CFA88 /* SongCollection.swift */; };
-		9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9480B79B2B7EAA2F00DDB251 /* RealityKitContent */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
 		9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A32B7EAA3000DDB251 /* Assets.xcassets */; };
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
-		9486048D2BA6339E00519884 /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048C2BA6339E00519884 /* TrainerView.swift */; };
 		9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* ClassicRockSongs.swift */; };
-		949AF48F2BD13B430066E28E /* Materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949AF48E2BD13B430066E28E /* Materials.swift */; };
 		949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
@@ -94,7 +91,6 @@
 		941B22DF2B844506006F114B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MIKMIDI.xcodeproj; path = Frameworks/MIKMIDI/Framework/MIKMIDI.xcodeproj; sourceTree = "<group>"; };
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
-		946350442B9E11A3006CFA88 /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
 		946350482B9E18EA006CFA88 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		9463504A2B9E1A2F006CFA88 /* SongCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollection.swift; sourceTree = "<group>"; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,9 +102,7 @@
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
-		9486048C2BA6339E00519884 /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
 		9486048E2BA704E600519884 /* ClassicRockSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicRockSongs.swift; sourceTree = "<group>"; };
-		949AF48E2BD13B430066E28E /* Materials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Materials.swift; sourceTree = "<group>"; };
 		949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = electricPiano.sf2; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -133,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9480B79C2B7EAA2F00DDB251 /* RealityKitContent in Frameworks */,
+				9424F43B2BD40BEF00AD7BFB /* RealityKitContent in Frameworks */,
 				941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,8 +148,6 @@
 				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
 				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
 				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
-				946350442B9E11A3006CFA88 /* BrowserView.swift */,
-				9486048C2BA6339E00519884 /* TrainerView.swift */,
 				94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */,
 			);
 			path = Views;
@@ -222,7 +214,6 @@
 				941B22D82B83E26B006F114B /* Globals.swift */,
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
-				949AF48E2BD13B430066E28E /* Materials.swift */,
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
 				9480B7A82B7EAA3000DDB251 /* Info.plist */,
 				9480B7A52B7EAA3000DDB251 /* Preview Content */,
@@ -331,7 +322,7 @@
 			);
 			name = Virtuoso;
 			packageProductDependencies = (
-				9480B79B2B7EAA2F00DDB251 /* RealityKitContent */,
+				9424F43A2BD40BEF00AD7BFB /* RealityKitContent */,
 			);
 			productName = Virtuoso;
 			productReference = 9480B7962B7EAA2F00DDB251 /* Virtuoso.app */;
@@ -465,13 +456,10 @@
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				94EE84802BA7F2880014B06A /* DataController.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
-				946350452B9E11A3006CFA88 /* BrowserView.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
-				9486048D2BA6339E00519884 /* TrainerView.swift in Sources */,
 				9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */,
 				9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */,
-				949AF48F2BD13B430066E28E /* Materials.swift in Sources */,
 				94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
@@ -743,7 +731,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9480B79B2B7EAA2F00DDB251 /* RealityKitContent */ = {
+		9424F43A2BD40BEF00AD7BFB /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
 		};

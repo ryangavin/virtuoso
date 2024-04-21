@@ -18,14 +18,6 @@ enum DataController {
             // Set up the defaults
             addDefaults(container: container)
 
-            // Add some user content
-            let userSong1 = Song(belongsToUser: true, title: "User Song", artist: "User Artist")
-            let userSong2 = Song(belongsToUser: true, title: "Another Song", artist: "User Artist")
-            let userSong3 = Song(belongsToUser: true, title: "The Third Song", artist: "User Artist")
-            container.mainContext.insert(userSong1)
-            container.mainContext.insert(userSong2)
-            container.mainContext.insert(userSong3)
-
             return container
         } catch {
             fatalError("Failed to create model container for previewing: \(error.localizedDescription)")

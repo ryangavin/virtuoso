@@ -90,8 +90,6 @@ struct PlaybackWidget: View {
 
                 Button(action: {
                     appState.showImmersiveSpace = false
-                    appState.showTrainerWindow = false
-                    appState.showBrowserWindow = true
                 }, label: {
                     Image(systemName: "pip.exit")
                 })
@@ -131,8 +129,8 @@ struct PlaybackWidget: View {
                 }.font(.title3)
             }
         }
-        .padding([.leading, .trailing], 10)
-        .frame(width: 800)
+        .padding(10)
+        .frame(width: 800, height: 100)
     }
 }
 

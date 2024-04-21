@@ -14,7 +14,7 @@ import SwiftUI
 class AppState {
     // MARK: Actual App State
 
-    var songDetailShown = false
+    var showSongDetail = false
     var selectedSong: Song?
 
     var showSongEditor = false
@@ -24,24 +24,26 @@ class AppState {
     var immersiveSpaceIsShown = false
 
     var showConfigurationMenu = false
-    var showTrainerWindow = false
-    var showBrowserWindow = true
 
     var showAnchors = false
 
-    func returnFromImmersiveSpace() {
+    func startTraining() {
+        showImmersiveSpace = true
+        showSongDetail = false
+    }
+
+    func returnToBrowser() {
         showImmersiveSpace = false
-        showTrainerWindow = false
-        showBrowserWindow = true
+        showSongDetail = selectedSong != nil ? true : false
     }
 
     func openSongDetail(with song: Song) {
         selectedSong = song
-        songDetailShown = true
+        showSongDetail = true
     }
 
     func closeSongDetail() {
-        songDetailShown = false
+        showSongDetail = false
         selectedSong = nil
     }
 

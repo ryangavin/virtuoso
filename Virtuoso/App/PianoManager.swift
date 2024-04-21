@@ -309,7 +309,8 @@ class PianoManager {
 
         // Build up the actual entity - attaching the materials and the mesh
         // Also attach a GroundingShadowComponent so the notes cast shadows
-        let entity = ModelEntity(mesh: box, materials: [collisionMaterial!])
+        let material = SimpleMaterial(color: .systemBlue, isMetallic: false)
+        let entity = ModelEntity(mesh: box, materials: [material])
         entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
 
         // Set the note name

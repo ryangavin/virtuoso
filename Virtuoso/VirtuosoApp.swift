@@ -32,19 +32,10 @@ struct VirtuosoApp: App {
         // MARK: The main menu, which is a browser for selecting songs
 
         WindowGroup("Browser", id: Module.browser.name) {
-            BrowserView()
+            LibraryView()
                 .environment(appState)
+                .environment(playbackManager)
                 .modelContainer(DataController.previewContainer)
-        }
-        .onChange(of: appState.showBrowserWindow) { oldValue, newValue in
-            Task {
-                print("Responding to showBrowserWindow change from \(oldValue) to \(newValue)")
-                if newValue {
-                    openWindow(id: Module.browser.name)
-                } else {
-                    dismissWindow(id: Module.browser.name)
-                }
-            }
         }
 
         // MARK: The floating menu to help configure the virtual piano
@@ -66,29 +57,6 @@ struct VirtuosoApp: App {
             }
         }
 
-        // MARK: The main trainer view which is the immersive space, and the window
-
-        WindowGroup("Trainer", id: Module.trainer.name) {
-            TrainerView()
-                .environment(appState)
-                .environment(playbackManager)
-        }
-        .onChange(of: appState.showTrainerWindow) { oldValue, newValue in
-            Task {
-                print("Responding to showTrainerWindow change from \(oldValue) to \(newValue)")
-                if newValue {
-                    openWindow(id: Module.trainer.name)
-                } else {
-                    dismissWindow(id: Module.trainer.name)
-                }
-            }
-        }
-        .onChange(of: scenePhase) { _, newValue in
-            if newValue == .background {
-                // appState.showTrainerWindow = false
-            }
-        }
-
         ImmersiveSpace(id: Module.immersiveSpace.name) {
             PianoRealityView()
                 .environment(appState)
@@ -104,9 +72,8 @@ struct VirtuosoApp: App {
                     print("Opening immersive space")
                     switch await openImmersiveSpace(id: Module.immersiveSpace.name) {
                     case .opened:
-                        appState.showTrainerWindow = true
-
-                        appState.showBrowserWindow = false
+                        // immersiveSpaceIsShown is updated by the actual view
+                        print("Immersive space opened")
                     case .error, .userCancelled:
                         fallthrough
                     @unknown default:
@@ -116,6 +83,16 @@ struct VirtuosoApp: App {
                 } else if appState.immersiveSpaceIsShown {
                     print("Dismissing immersive space")
                     await dismissImmersiveSpace()
+                }
+            }
+        }
+        .onChange(of: scenePhase) { oldValue, newValue in
+            print("Scene phase changed from \(oldValue) to \(newValue)")
+            if appState.immersiveSpaceIsShown && newValue == .background {
+                Task {
+                    print("Dismissing immersive space due to scene phase change")
+                    await dismissImmersiveSpace()
+                    appState.returnToBrowser()
                 }
             }
         }

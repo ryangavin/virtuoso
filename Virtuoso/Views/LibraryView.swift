@@ -138,43 +138,109 @@ struct LibraryEditView: View {
     }
 }
 
+struct LibraryItemDetail: View {
+    @Environment(AppState.self) var appState
+
+    var body: some View {
+        @Bindable var appStateBindable = appState
+
+        VStack {
+            // Title bar and close button
+            HStack {
+                Text(appState.selectedSong!.title)
+                    .font(.title)
+                Spacer()
+                Button(action: {
+                    appState.showSongDetail.toggle()
+                }, label: {
+                    Image(systemName: "xmark")
+                })
+            }
+
+            // Content space
+            HStack {
+                Image("Placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                    .padding(.trailing, 20)
+
+                VStack {
+                    Text(appState.selectedSong!.details)
+                        .font(.subheadline)
+                        .frame(width: 300, alignment: .leading)
+                    Spacer()
+                    Button("Start Training") {
+                        appState.showSongDetail = false
+                        appState.showImmersiveSpace = true
+                    }
+                    .tint(.blue)
+                }
+            }
+        }
+        .padding(20)
+        .background {
+            Image("Placeholder")
+                .resizable()
+                .blur(radius: 50)
+                .brightness(-0.4)
+                .opacity(0.4)
+        }
+    }
+}
+
 struct LibraryView: View {
-    @Query(filter: #Predicate<Song> { song in
-        song.belongsToUser == true
-    }, sort: \Song.title) private var userSongs: [Song]
+    @Query(sort: \Song.title) private var allSongs: [Song]
 
     @Environment(AppState.self) var appState
 
     var body: some View {
         @Bindable var appStateBindable = appState
 
-        List {
-            ForEach(userSongs, id: \.self) { song in
-                Button(song.title, action: {
-                    appState.openSongDetail(with: song)
-                })
-                .swipeActions {
-                    // Destructive role seems to automatically add a red background and remove the label
-                    Button(role: .destructive) {} label: {
-                        // TODO: does this actually delete from the database
-                        Label("Delete", systemImage: "trash")
-                    }
+        NavigationStack {
+            List {
+                ForEach(allSongs, id: \.self) { song in
+                    Button(action: {
+                        appState.openSongDetail(with: song)
+                    }, label: {
+                        HStack {
+                            Text(song.title)
+                            Text(song.artist)
+                                .foregroundColor(.gray)
+                        }
+                    })
+                    .swipeActions {
+                        // Destructive role seems to automatically add a red background and remove the label
+                        Button(role: .destructive) {} label: {
+                            // TODO: does this actually delete from the database
+                            Label("Delete", systemImage: "trash")
+                        }
 
-                    Button {
-                        appState.openLibraryEditor(with: song)
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
+                        Button {
+                            appState.openLibraryEditor(with: song)
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
                     }
                 }
             }
-        }
-        .navigationTitle("My Song Library")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    appState.openLibraryEditor(with: Song(belongsToUser: true))
-                }) {
-                    Image(systemName: "plus")
+            .navigationTitle("Virtuoso -  XR Piano Trainer")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        appState.openLibraryEditor(with: Song(belongsToUser: true))
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+
+                if appState.showImmersiveSpace {
+                    withAnimation {
+                        ToolbarItem(placement: .bottomOrnament) {
+                            PlaybackWidget()
+                        }
+                    }
                 }
             }
         }
@@ -183,8 +249,8 @@ struct LibraryView: View {
             LibraryEditView()
         }
         // Popover centered in the middle of the screen
-        .sheet(isPresented: $appStateBindable.songDetailShown) {
-            BrowserItemDetail()
+        .sheet(isPresented: $appStateBindable.showSongDetail) {
+            LibraryItemDetail()
         }
     }
 }
@@ -193,13 +259,11 @@ struct LibraryView_Previews: PreviewProvider {
     static let dataController = DataController.previewContainer
 
     static var previews: some View {
-        NavigationSplitView {} detail: {
-            LibraryView()
-                .environment(AppState())
-                .modelContainer(dataController)
-                .navigationTitle("My Song Library")
-        }
-        .glassBackgroundEffect()
+        LibraryView()
+            .environment(AppState())
+            .modelContainer(dataController)
+            .navigationTitle("My Song Library")
+            .glassBackgroundEffect()
     }
 }
 
@@ -208,16 +272,14 @@ struct LibraryViewEdit_Previews: PreviewProvider {
     static let dataController = DataController.previewContainer
 
     static var previews: some View {
-        NavigationSplitView {} detail: {
-            LibraryView()
-                .environment(appState)
-                .modelContainer(dataController)
-                .navigationTitle("My Song Library")
-                .onAppear {
-                    appState.editingSong = Song(belongsToUser: true, title: "Test Song", artist: "Test Artist", details: "Test Details", difficulty: 5)
-                    appState.showSongEditor = true
-                }
-        }
-        .glassBackgroundEffect()
+        LibraryView()
+            .environment(appState)
+            .modelContainer(dataController)
+            .navigationTitle("My Song Library")
+            .onAppear {
+                appState.editingSong = Song(belongsToUser: true, title: "Test Song", artist: "Test Artist", details: "Test Details", difficulty: 5)
+                appState.showSongEditor = true
+            }
+            .glassBackgroundEffect()
     }
 }
