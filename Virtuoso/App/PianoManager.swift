@@ -66,7 +66,7 @@ class PianoManager {
             repositionAnchors(leftPosition: leftPositionData!, rightPosition: rightPositionData!)
         }
         else {
-            repositionAnchors(leftPosition: [-0.3, 0.9, -0.3], rightPosition: [0.3, 0.9, -0.3])
+            repositionAnchors(leftPosition: [-0.4, 0.9, -0.3], rightPosition: [0.4, 0.9, -0.3])
         }
     }
 
@@ -162,6 +162,10 @@ class PianoManager {
         }
     }
 
+    private func keyWidth() -> Float {
+        return simd_length(rightAnchor.position - leftAnchor.position) / Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]!)
+    }
+
     private func redrawKeys() {
         let noteIndex = NOTE_NAMES.firstIndex(of: STARTING_KEYS[numberOfKeys]!)!
 
@@ -176,7 +180,7 @@ class PianoManager {
         // TODO: whiteKeySpacing can be refactored to only use the x axis because the piano is flat
         // TODO: the current implementation may be introducing slight placement rounding errors
         let whiteKeySpacing = (rightAnchor.position - leftAnchor.position) / Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]! - 1)
-        let keyWidth = simd_length(rightAnchor.position - leftAnchor.position) / Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]!)
+        let keyWidth = keyWidth()
         let pianoWidth = keyWidth * Float(NUMBER_OF_WHITE_KEYS[numberOfKeys]!)
 
         // The key width can be used to figure out the key height, which is about 6 times the width
@@ -193,7 +197,7 @@ class PianoManager {
             let noteName = NOTE_NAMES[(i + noteIndex) % NOTE_NAMES.count]
 
             // White keys
-            if !noteName.contains("#"), !noteName.contains("b") {
+            if !noteName.accidentalNote() {
                 let position = leftAnchor.position + whiteKeySpacing * Float(whiteKeyCount)
                 lastWhiteKeyPosition = position
                 keyAnchor.position = position
@@ -231,6 +235,14 @@ class PianoManager {
     }
 
     @MainActor
+    func clearTrack() {
+        for (_, entity) in notes {
+            entity.removeFromParent()
+        }
+        notes.removeAll()
+    }
+
+    @MainActor
     func drawTrack(track: MIKMIDITrack, targetTimestamp: MusicTimeStamp, color: UIColor) {
         // Figure out which notes in the sequence we need to draw
         // We want to see 16 bars ahead, as well as whatever is currently playing (4 bars behind)
@@ -239,6 +251,11 @@ class PianoManager {
             fromTimeStamp = 0
         }
         let trackNotes = track.notes(fromTimeStamp: fromTimeStamp, toTimeStamp: targetTimestamp + 16)
+
+        // Pre compute note widths for creating new notes
+        // TODO: adjust the widths by some percantage based padding so they don't overlap
+        let whiteNoteWidth = keyWidth() * 0.8
+        let blackNoteWidth = whiteNoteWidth * (2 / 3) * 0.8
 
         var notesSeen = [Entity]()
         for trackNote in trackNotes {
@@ -258,7 +275,8 @@ class PianoManager {
             // TODO: adding these entities is expensive, we should add them in an async task
             // TODO: they won't be available in this draw cycle, but they'll be available shortly
             if notes[trackNote] == nil {
-                let noteEntity = createNoteEntity(depth: depth, note: trackNote.noteLetter, color: color)
+                let noteWidth = trackNote.noteLetter.accidentalNote() ? blackNoteWidth : whiteNoteWidth
+                let noteEntity = createNoteEntity(depth: depth, width: noteWidth, note: trackNote.noteLetter, color: color)
                 notes[trackNote] = noteEntity
                 noteAnchor.addChild(noteEntity)
             }
@@ -303,9 +321,9 @@ class PianoManager {
         return entity
     }
 
-    private func createNoteEntity(depth: Float, note: String, color: UIColor) -> Entity {
+    private func createNoteEntity(depth: Float, width: Float, note: String, color: UIColor) -> Entity {
         // Generate the main note model, a colored box with slight corner radius
-        let box = MeshResource.generateBox(width: 0.01, height: 0.01, depth: depth, cornerRadius: 0.001)
+        let box = MeshResource.generateBox(width: width, height: 0.01, depth: depth, cornerRadius: 0.001)
 
         // Build up the actual entity - attaching the materials and the mesh
         // Also attach a GroundingShadowComponent so the notes cast shadows

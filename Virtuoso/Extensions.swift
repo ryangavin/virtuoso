@@ -23,3 +23,9 @@ extension Entity {
         return debugAnchorEntity!.clone(recursive: true)
     }
 }
+
+extension String {
+    func accidentalNote() -> Bool {
+        return self.contains("#") || self.contains("b")
+    }
+}

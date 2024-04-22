@@ -114,8 +114,9 @@ struct PianoConfigurationMenu: View {
     }
 }
 
-#Preview(windowStyle: .automatic) {
+#Preview(){
     PianoConfigurationMenu()
         .environment(PianoManager())
         .environment(AppState())
+        .glassBackgroundEffect()
 }

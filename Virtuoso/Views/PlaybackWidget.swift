@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TransportControls: View {
     @Environment(PlaybackManager.self) var playbackManager
+    @Environment(PianoManager.self) var pianoManager
 
     var body: some View {
         HStack {
@@ -18,6 +19,7 @@ struct TransportControls: View {
                 Image(systemName: "arrow.counterclockwise")
             })
             Button(action: {
+                pianoManager.clearTrack()
                 playbackManager.stopPlayback()
             }, label: {
                 Image(systemName: "stop")
@@ -64,14 +66,67 @@ struct TempoControls: View {
     }
 }
 
+struct ScrubWidget: View {
+    @Environment(PlaybackManager.self) var playbackManager
+    @Environment(PianoManager.self) var pianoManager
+
+    var body: some View {
+        @Bindable var bindablePlaybackManager = playbackManager
+
+        HStack {
+            // Progress Beats
+            Group {
+                Text("\((Int(playbackManager.currentTime) / 4) + 1)")
+                Text(".")
+                Text("\((Int(playbackManager.currentTime) % 4) + 1)")
+                    .frame(width: 10)
+                Text(".")
+                Text("\((Int(playbackManager.currentTime * 4) % 4) + 1)")
+                    .frame(width: 10)
+                    .padding(.trailing, 10)
+            }.font(.title3)
+
+            // Progress Bar
+            Slider(value: $bindablePlaybackManager.currentTime, in: 0.0 ... playbackManager.maxLength) { scrubStarted in
+                if scrubStarted {
+                    playbackManager.scrubState = .scrubStarted
+                } else {
+                    playbackManager.scrubState = .scrubEnded(bindablePlaybackManager.currentTime)
+                    pianoManager.clearTrack()
+                }
+            }
+
+            // Total Beats
+            Group {
+                Text("\((Int(playbackManager.maxLength) / 4) + 1)")
+                Text(".")
+                Text("\((Int(playbackManager.maxLength) % 4) + 1)")
+                    .frame(width: 10)
+                Text(".")
+                Text("\((Int(playbackManager.maxLength * 4) % 4) + 1)")
+                    .frame(width: 10)
+            }.font(.title3)
+        }
+    }
+}
+
 struct PlaybackWidget: View {
     @Environment(PlaybackManager.self) var playbackManager
     @Environment(AppState.self) var appState
+    @Environment(PianoManager.self) var pianoManager
 
     var body: some View {
         @Bindable var bindablePlaybackManager = playbackManager
 
         VStack {
+            HStack {
+                // Song details
+                let title = appState.selectedSong?.title ?? "No Song"
+                let artist = appState.selectedSong?.artist ?? "No Artist"
+                Text("\(title) - \(artist)")
+                    .font(.title)
+            }
+
             HStack {
                 TempoControls()
 
@@ -95,49 +150,20 @@ struct PlaybackWidget: View {
                 })
             }
 
-            HStack {
-                // Progress Beats
-                Group {
-                    Text("\((Int(playbackManager.currentTime) / 4) + 1)")
-                    Text(".")
-                    Text("\((Int(playbackManager.currentTime) % 4) + 1)")
-                        .frame(width: 10)
-                    Text(".")
-                    Text("\((Int(playbackManager.currentTime * 4) % 4) + 1)")
-                        .frame(width: 10)
-                        .padding(.trailing, 10)
-                }.font(.title3)
-
-                // Progress Bar
-                Slider(value: $bindablePlaybackManager.currentTime, in: 0.0 ... playbackManager.maxLength) { scrubStarted in
-                    if scrubStarted {
-                        playbackManager.scrubState = .scrubStarted
-                    } else {
-                        playbackManager.scrubState = .scrubEnded(bindablePlaybackManager.currentTime)
-                    }
-                }
-
-                // Total Beats
-                Group {
-                    Text("\((Int(playbackManager.maxLength) / 4) + 1)")
-                    Text(".")
-                    Text("\((Int(playbackManager.maxLength) % 4) + 1)")
-                        .frame(width: 10)
-                    Text(".")
-                    Text("\((Int(playbackManager.maxLength * 4) % 4) + 1)")
-                        .frame(width: 10)
-                }.font(.title3)
-            }
+            ScrubWidget()
         }
         .padding(10)
-        .frame(width: 800, height: 100)
+        .frame(width: 800, height: 140)
     }
 }
 
-#Preview {
-    PlaybackWidget()
-        .padding()
-        .glassBackgroundEffect()
-        .environment(PlaybackManager())
-        .environment(AppState())
+struct PlaybackWidget_Previews: PreviewProvider {
+    static var previews: some View {
+        return PlaybackWidget()
+            .padding()
+            .glassBackgroundEffect()
+            .environment(PlaybackManager())
+            .environment(PianoManager())
+            .environment(AppState())
+    }
 }

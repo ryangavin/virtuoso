@@ -35,6 +35,7 @@ struct VirtuosoApp: App {
             LibraryView()
                 .environment(appState)
                 .environment(playbackManager)
+                .environment(pianoManager)
                 .modelContainer(DataController.previewContainer)
         }
 
@@ -93,6 +94,7 @@ struct VirtuosoApp: App {
                     print("Dismissing immersive space due to scene phase change")
                     await dismissImmersiveSpace()
                     appState.returnToBrowser()
+                    playbackManager.stopPlayback()
                 }
             }
         }
