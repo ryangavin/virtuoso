@@ -10,7 +10,7 @@ import RealityKit
 import SwiftUI
 
 @Observable
-class HandManager {
+class WorldManager {
     private let session = ARKitSession()
     private let handTracking = HandTrackingProvider()
 
@@ -18,18 +18,18 @@ class HandManager {
         // Fingertip setup
         fingertips = [
             .left: [
-                HandSkeleton.JointName.indexFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.ringFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.middleFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.littleFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.thumbTip: HandManager.createFingertipEntity()
+                HandSkeleton.JointName.indexFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.ringFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.middleFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.littleFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.thumbTip: WorldManager.createFingertipEntity()
             ],
             .right: [
-                HandSkeleton.JointName.indexFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.ringFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.middleFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.littleFingerTip: HandManager.createFingertipEntity(),
-                HandSkeleton.JointName.thumbTip: HandManager.createFingertipEntity()
+                HandSkeleton.JointName.indexFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.ringFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.middleFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.littleFingerTip: WorldManager.createFingertipEntity(),
+                HandSkeleton.JointName.thumbTip: WorldManager.createFingertipEntity()
             ]
         ]
     }

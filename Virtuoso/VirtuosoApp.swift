@@ -18,7 +18,7 @@ struct VirtuosoApp: App {
     @Environment(\.scenePhase) var scenePhase
 
     @State private var appState = AppState()
-    @State private var handManager = HandManager()
+    @State private var worldManager = WorldManager()
     @State private var pianoManager = PianoManager()
     @State private var playbackManager = PlaybackManager()
 
@@ -62,7 +62,7 @@ struct VirtuosoApp: App {
             PianoRealityView()
                 .environment(appState)
                 .environment(pianoManager)
-                .environment(handManager)
+                .environment(worldManager)
                 .environment(playbackManager)
         }
         .immersionStyle(selection: $immersionStyle, in: .mixed)

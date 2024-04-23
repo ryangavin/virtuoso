@@ -15,10 +15,6 @@ struct PianoMeasurementStep: View {
 
     var body: some View {
         VStack {
-            Text("Piano Measurement")
-                .font(.title)
-                .padding()
-
             Text("Place your left index finger on the lowermost key and your right index finger on the uppermost key.")
                 .padding()
 
@@ -36,25 +32,24 @@ struct PianoMeasurementStep: View {
 
             Spacer()
         }
-        .padding()
+        .navigationTitle("Piano Measurement")
         .multilineTextAlignment(.center)
         .frame(width: 500, height: 320)
+        .padding()
     }
 }
 
 struct PianoInformationStep: View {
-    @State var numberOfKeys: Int = 88
+    @State var numberOfKeys: Int = 77
     @State var selectedKey: String = "F"
 
-    let allowedKeys: [Int] = [25, 37, 73, 88]
+    let allowedKeys: [Int] = [25, 37, 73, 77, 88]
     let allowedNotes: [String] = ["C", "Db", "D", "Eb", "E", "F", "G", "Ab", "A", "Bb", "B"]
 
     var body: some View {
         VStack {
-            Text("Piano Information")
+            Text("How many keys does your piano have?")
                 .font(.title)
-                .padding()
-            Text("Let's start by entering some information about your piano.")
                 .padding(.bottom, 30)
 
             Form {
@@ -75,6 +70,8 @@ struct PianoInformationStep: View {
 
             NavigationLink("Next", destination: PianoMeasurementStep())
         }
+        .navigationTitle("Piano Information")
+        .multilineTextAlignment(.center)
         .frame(width: 500, height: 320)
         .padding(20)
     }
@@ -87,7 +84,7 @@ struct SetupWizard: View {
                 Text("Welcome to Virtuoso!")
                     .font(.title)
                     .padding()
-                Text("This setup wizard will help you configure your virtual piano.")
+                Text("Let's get started by setting up your piano.")
                     .padding(.bottom, 30)
 
                 NavigationLink("Begin Setup", destination: PianoInformationStep())
@@ -104,11 +101,13 @@ struct SetupWizard: View {
 }
 
 #Preview {
-    PianoInformationStep()
-        .glassBackgroundEffect()
+    NavigationStack {
+        PianoInformationStep()
+    }.glassBackgroundEffect()
 }
 
 #Preview {
-    PianoMeasurementStep()
-        .glassBackgroundEffect()
+    NavigationStack {
+        PianoMeasurementStep()
+    }.glassBackgroundEffect()
 }

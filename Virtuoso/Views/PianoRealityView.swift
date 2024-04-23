@@ -6,7 +6,7 @@ import SwiftUI
 /// World interactions are managed here and updates are passed down to the entities
 struct PianoRealityView: View {
     @Environment(AppState.self) var appState
-    @Environment(HandManager.self) var handManager
+    @Environment(WorldManager.self) var worldManager
     @Environment(PianoManager.self) var pianoManager
     @Environment(PlaybackManager.self) var playbackManager
 
@@ -21,15 +21,15 @@ struct PianoRealityView: View {
         // MARK: Background Tasks
 
         .task {
-            await handManager.startARKitSession()
+            await worldManager.startARKitSession()
         }
 
         .task {
-            await handManager.monitorSessionEvents()
+            await worldManager.monitorSessionEvents()
         }
 
         .task {
-            await handManager.handleHandTrackingUpdates()
+            await worldManager.handleHandTrackingUpdates()
         }
 
         .task {
@@ -74,7 +74,7 @@ struct PianoRealityView_Previews: PreviewProvider {
         PianoRealityView()
             .environment(AppState())
             .environment(pianoManager)
-            .environment(HandManager())
+            .environment(WorldManager())
             .environment(PlaybackManager())
             .onAppear {
                 pianoManager.repositionAnchors(leftPosition: [-1, 0, 0], rightPosition: [1, 0, 0])

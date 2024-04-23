@@ -251,10 +251,14 @@ struct LibraryView: View {
                             Label("Delete", systemImage: "trash")
                         }
 
-                        Button {
-                            appState.openLibraryEditor(with: song)
-                        } label: {
-                            Label("Edit", systemImage: "pencil")
+                        // Don't allow the user to edit the default songs
+                        // They can still be deleted
+                        if song.belongsToUser {
+                            Button {
+                                appState.openLibraryEditor(with: song)
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
                         }
                     }
                 }
