@@ -377,6 +377,9 @@
 				Base,
 			);
 			mainGroup = 9480B78D2B7EAA2F00DDB251;
+			packageReferences = (
+				94FAC9172BD950A600FBD684 /* XCRemoteSwiftPackageReference "ObservableUserDefault" */,
+			);
 			productRefGroup = 9480B7972B7EAA2F00DDB251 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -620,7 +623,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Virtuoso - XR Piano Trainer";
+				INFOPLIST_KEY_CFBundleDisplayName = Virtuoso;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,7 +651,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Virtuoso - XR Piano Trainer";
+				INFOPLIST_KEY_CFBundleDisplayName = Virtuoso;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -737,6 +740,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		94FAC9172BD950A600FBD684 /* XCRemoteSwiftPackageReference "ObservableUserDefault" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davidsteppenbeck/ObservableUserDefault.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		9424F43A2BD40BEF00AD7BFB /* RealityKitContent */ = {

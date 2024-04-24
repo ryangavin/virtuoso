@@ -85,7 +85,7 @@ class PianoManager {
         redrawKeys()
     }
 
-    func captureIndexFingerPosition(chirality: HandAnchor.Chirality) {
+    func captureIndexFingerPosition(chirality: HandAnchor.Chirality) -> SIMD3<Float> {
         let fingerTip = fingertips[chirality]![.indexFingerTip]!
         let measuredPosition = fingerTip.position
 
@@ -107,6 +107,8 @@ class PianoManager {
         UserDefaults.standard.set(rightPositionData, forKey: "rightAnchorSavedPosition")
 
         repositionAnchors(leftPosition: leftPosition, rightPosition: rightPosition)
+
+        return chirality == .left ? leftPosition : rightPosition
     }
 
     func repositionAnchors(leftPosition: SIMD3<Float>, rightPosition: SIMD3<Float>) {

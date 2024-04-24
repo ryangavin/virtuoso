@@ -27,6 +27,8 @@ class AppState {
 
     var showAnchors = false
 
+    var hasCompletedSetup = false
+
     func startTraining() {
         showImmersiveSpace = true
         showSongDetail = false
