@@ -57,6 +57,7 @@ struct PianoRealityView: View {
         // TODO: consider reolcating all tracking of the window state to the toplevel app
         .onAppear {
             print("PianoRealityView appeared!")
+            print("hasCompletedSetup = \(appState.hasCompletedSetup)")
             appState.immersiveSpaceIsShown = true
         }
 

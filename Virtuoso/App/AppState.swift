@@ -8,6 +8,7 @@
 //  Created by Ryan Gavin on 2/15/24.
 //
 
+import ObservableUserDefault
 import SwiftUI
 
 @Observable
@@ -27,7 +28,9 @@ class AppState {
 
     var showAnchors = false
 
-    var hasCompletedSetup = false
+    @ObservableUserDefault(.init(key: "HAS_COMPLETED_SETUP", defaultValue: false, store: .standard))
+    @ObservationIgnored
+    var hasCompletedSetup: Bool
 
     func startTraining() {
         showImmersiveSpace = true

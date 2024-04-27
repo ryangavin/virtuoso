@@ -27,7 +27,6 @@
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0992BB7A5150088EF8C /* piano.sf2 */; };
-		94CEB0A22BB8521E0088EF8C /* drums.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A12BB8521E0088EF8C /* drums.sf2 */; };
 		94CEB0A42BB8536A0088EF8C /* bass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A32BB8536A0088EF8C /* bass.sf2 */; };
 		94CEB0A62BB853A10088EF8C /* guitar.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A52BB853A10088EF8C /* guitar.sf2 */; };
 		94CEB0A82BB854E50088EF8C /* brass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0A72BB854E50088EF8C /* brass.sf2 */; };
@@ -39,6 +38,7 @@
 		94E2E5F42B8CAE980096A41B /* peg.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94E2E5F32B8CAE980096A41B /* peg.mid */; };
 		94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */; };
 		94EE84802BA7F2880014B06A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE847F2BA7F2880014B06A /* DataController.swift */; };
+		94FAC9192BD9CBAC00FBD684 /* ObservableUserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = 94FAC9182BD9CBAC00FBD684 /* ObservableUserDefault */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +109,6 @@
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94CEB0992BB7A5150088EF8C /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
-		94CEB0A12BB8521E0088EF8C /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = drums.sf2; path = ../../../../Downloads/realacousticdrums_5/drums.sf2; sourceTree = "<group>"; };
 		94CEB0A32BB8536A0088EF8C /* bass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass.sf2; sourceTree = "<group>"; };
 		94CEB0A52BB853A10088EF8C /* guitar.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = guitar.sf2; sourceTree = "<group>"; };
 		94CEB0A72BB854E50088EF8C /* brass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = brass.sf2; sourceTree = "<group>"; };
@@ -122,6 +121,8 @@
 		94E2E5F32B8CAE980096A41B /* peg.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = peg.mid; sourceTree = "<group>"; };
 		94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		94EE847F2BA7F2880014B06A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		94FAC91F2BDD159C00FBD684 /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = drums.sf2; path = ../../../Downloads/realacousticdrums_5/drums.sf2; sourceTree = "<group>"; };
+		94FAC9202BDD15AA00FBD684 /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = drums.sf2; path = ../../../../Downloads/realacousticdrums_5/drums.sf2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +132,7 @@
 			files = (
 				9424F43B2BD40BEF00AD7BFB /* RealityKitContent in Frameworks */,
 				941CFC2E2B922BCF004414E1 /* MIKMIDI.framework in Frameworks */,
+				94FAC9192BD9CBAC00FBD684 /* ObservableUserDefault in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,7 @@
 				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
+				94FAC91F2BDD159C00FBD684 /* drums.sf2 */,
 				9480B7A82B7EAA3000DDB251 /* Info.plist */,
 				9480B7A52B7EAA3000DDB251 /* Preview Content */,
 				94CEB0AB2BB8C5380088EF8C /* LICENSES.md */,
@@ -266,7 +269,7 @@
 				94CEB0A72BB854E50088EF8C /* brass.sf2 */,
 				94CEB0A52BB853A10088EF8C /* guitar.sf2 */,
 				94CEB0A32BB8536A0088EF8C /* bass.sf2 */,
-				94CEB0A12BB8521E0088EF8C /* drums.sf2 */,
+				94FAC9202BDD15AA00FBD684 /* drums.sf2 */,
 				94CEB0992BB7A5150088EF8C /* piano.sf2 */,
 				949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */,
 			);
@@ -326,6 +329,7 @@
 			name = Virtuoso;
 			packageProductDependencies = (
 				9424F43A2BD40BEF00AD7BFB /* RealityKitContent */,
+				94FAC9182BD9CBAC00FBD684 /* ObservableUserDefault */,
 			);
 			productName = Virtuoso;
 			productReference = 9480B7962B7EAA2F00DDB251 /* Virtuoso.app */;
@@ -434,7 +438,6 @@
 				94CEB0AA2BB8C5070088EF8C /* itsy_bitsy_spider.mid in Resources */,
 				94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */,
 				94CEB0A42BB8536A0088EF8C /* bass.sf2 in Resources */,
-				94CEB0A22BB8521E0088EF8C /* drums.sf2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +759,11 @@
 		9424F43A2BD40BEF00AD7BFB /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
+		};
+		94FAC9182BD9CBAC00FBD684 /* ObservableUserDefault */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94FAC9172BD950A600FBD684 /* XCRemoteSwiftPackageReference "ObservableUserDefault" */;
+			productName = ObservableUserDefault;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
