@@ -163,10 +163,10 @@
 		941B22DE2B844480006F114B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
-				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
-				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
 				94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */,
+				941B22DB2B83E69B006F114B /* PianoConfigurationMenu.swift */,
+				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
+				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
 				9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */,
 			);
 			path = Views;
@@ -192,9 +192,9 @@
 		946350472B9E1776006CFA88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94EE847F2BA7F2880014B06A /* DataController.swift */,
 				946350482B9E18EA006CFA88 /* Song.swift */,
 				9463504A2B9E1A2F006CFA88 /* SongCollection.swift */,
-				94EE847F2BA7F2880014B06A /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,14 +223,14 @@
 		9480B7982B7EAA2F00DDB251 /* Virtuoso */ = {
 			isa = PBXGroup;
 			children = (
-				94CEB0AC2BB8C59B0088EF8C /* Songs */,
-				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
+				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				9483F1DB2B88D5CD00B8E1BA /* App */,
 				946350472B9E1776006CFA88 /* Model */,
 				941B22DE2B844480006F114B /* Views */,
+				94CEB0AC2BB8C59B0088EF8C /* Songs */,
+				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
 				941B22D82B83E26B006F114B /* Globals.swift */,
-				9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
 				9480B7A32B7EAA3000DDB251 /* Assets.xcassets */,
 				9480B7A82B7EAA3000DDB251 /* Info.plist */,
@@ -269,8 +269,8 @@
 			children = (
 				94CD99672B7F151300BF09DE /* AppState.swift */,
 				9483F1DC2B88D63800B8E1BA /* PianoManager.swift */,
-				94D138C92B8BCD45007CEF45 /* WorldManager.swift */,
 				94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */,
+				94D138C92B8BCD45007CEF45 /* WorldManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";

@@ -284,6 +284,12 @@ struct LibraryView: View {
                 }
             }
         }
+        .onAppear {
+            // Load the immersive space right away
+            appState.showImmersiveSpace = true
+
+            // TODO: draw the piano
+        }
         // Edit View
         .sheet(isPresented: $appStateBindable.showSongEditor) {
             LibraryEditView()
@@ -299,7 +305,6 @@ struct LibraryView: View {
         .sheet(isPresented: $appStateBindable.showConfigurationMenu) {
             PianoConfigurationMenu()
         }
-        // TODO: move configuration thing to a sheet
     }
 }
 

@@ -39,25 +39,6 @@ struct VirtuosoApp: App {
                 .modelContainer(DataController.previewContainer)
         }
 
-        // MARK: The floating menu to help configure the virtual piano
-
-//        WindowGroup("Piano Configuration Menu", id: Module.pianoConfigurationMenu.name) {
-//            PianoConfigurationMenu()
-//                .environment(appState)
-//                .environment(pianoManager)
-//        }
-//        .defaultSize(width: 500, height: 350)
-//        .onChange(of: appState.showConfigurationMenu) { oldValue, newValue in
-//            Task {
-//                print("Responding to showConfigurationMenu change from \(oldValue) to \(newValue)")
-//                if newValue {
-//                    openWindow(id: Module.pianoConfigurationMenu.name)
-//                } else {
-//                    dismissWindow(id: Module.pianoConfigurationMenu.name)
-//                }
-//            }
-//        }
-
         ImmersiveSpace(id: Module.immersiveSpace.name) {
             PianoRealityView()
                 .environment(appState)
