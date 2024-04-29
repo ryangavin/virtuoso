@@ -29,3 +29,10 @@ extension String {
         return self.contains("#") || self.contains("b")
     }
 }
+
+extension Bool {
+    var not: Self {
+        get { !self }
+        set { self = !newValue }
+    }
+}

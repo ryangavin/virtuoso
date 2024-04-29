@@ -121,10 +121,13 @@ struct PlaybackWidget: View {
         VStack {
             HStack {
                 // Song details
-                let title = appState.selectedSong?.title ?? "No Song"
-                let artist = appState.selectedSong?.artist ?? "No Artist"
-                Text("\(title) - \(artist)")
-                    .font(.title)
+                if let selectedSong = appState.selectedSong {
+                    Text("\(selectedSong.title) - \(selectedSong.artist)")
+                        .font(.title)
+                } else {
+                    Text("No Song Selected")
+                        .font(.title)
+                }
             }
 
             HStack {
@@ -142,12 +145,6 @@ struct PlaybackWidget: View {
                 }, label: {
                     Image(systemName: "gearshape")
                 }).tint(appState.showConfigurationMenu ? .accentColor : .none)
-
-                Button(action: {
-                    appState.showImmersiveSpace = false
-                }, label: {
-                    Image(systemName: "pip.exit")
-                })
             }
 
             ScrubWidget()

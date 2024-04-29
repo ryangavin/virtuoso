@@ -53,15 +53,11 @@ struct PianoRealityView: View {
                 pianoManager.drawTrack(track: midiTrack, targetTimestamp: sequencer.currentTimeStamp, color: track.hand == .left ? .systemGreen : .systemBlue)
             }
         }
-
-        // TODO: consider reolcating all tracking of the window state to the toplevel app
         .onAppear {
-            print("PianoRealityView appeared!")
-            print("hasCompletedSetup = \(appState.hasCompletedSetup)")
             appState.immersiveSpaceIsShown = true
         }
 
-        // This might not really be working
+        // TODO: This might not really be working
         .onDisappear {
             appState.immersiveSpaceIsShown = false
         }

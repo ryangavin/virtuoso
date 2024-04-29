@@ -232,6 +232,8 @@ struct LibraryView: View {
 
                             Spacer()
 
+                            Text("Difficulty")
+                                .foregroundColor(.gray)
                             // show a number of stars based on the difficulty
                             ForEach(1 ... song.difficulty, id: \.self) { _ in
                                 Image(systemName: "star.fill")
@@ -290,6 +292,14 @@ struct LibraryView: View {
         .sheet(isPresented: $appStateBindable.showSongDetail) {
             LibraryItemDetail()
         }
+        // Setup Wizard
+        .sheet(isPresented: $appStateBindable.showSetupWizard) {
+            SetupWizard()
+        }
+        .sheet(isPresented: $appStateBindable.showConfigurationMenu) {
+            PianoConfigurationMenu()
+        }
+        // TODO: move configuration thing to a sheet
     }
 }
 

@@ -25,6 +25,7 @@ class AppState {
     var immersiveSpaceIsShown = false
 
     var showConfigurationMenu = false
+    var showSetupWizard = false
 
     var showAnchors = false
 
