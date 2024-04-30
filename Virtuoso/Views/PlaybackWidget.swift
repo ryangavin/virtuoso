@@ -121,8 +121,8 @@ struct PlaybackWidget: View {
         VStack {
             HStack {
                 // Song details
-                if let selectedSong = appState.selectedSong {
-                    Text("\(selectedSong.title) - \(selectedSong.artist)")
+                if let loadedSong = appState.loadedSong {
+                    Text("\(loadedSong.title) - \(loadedSong.artist)")
                         .font(.title)
                 } else {
                     Text("No Song Selected")

@@ -15,6 +15,10 @@ import SwiftUI
 class AppState {
     // MARK: Actual App State
 
+    // TODO: maybe move this loadedSong to the PlaybackManager
+    var loadedSong: Song?
+    var showLoadingView = false
+
     var showSongDetail = false
     var selectedSong: Song?
 

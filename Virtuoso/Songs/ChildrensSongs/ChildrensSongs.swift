@@ -17,6 +17,7 @@ extension SongCollection {
                     title: "Itsy Bitsy Spider",
                     artist: "Traditional",
                     details: "A jazz arrangement of the classic nursery rhyme",
+                    difficulty: 5,
                     midiFile: "itsy_bitsy_spider",
                     midiTracks: [
                         Song.Track(trackNumber: 0, sound: .electricPiano),

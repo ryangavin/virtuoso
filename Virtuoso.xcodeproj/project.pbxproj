@@ -47,6 +47,7 @@
 		94FAC9312BDD7D0300FBD684 /* zippety-doo-dah.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9282BDD7D0200FBD684 /* zippety-doo-dah.mid */; };
 		94FAC9332BDD7D0300FBD684 /* baabaablacksheep.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC92A2BDD7D0200FBD684 /* baabaablacksheep.mid */; };
 		94FAC9362BDD873700FBD684 /* farmer_in_the_dell.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9352BDD873700FBD684 /* farmer_in_the_dell.mid */; };
+		94FAC9382BE070D900FBD684 /* Loading View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FAC9372BE070D900FBD684 /* Loading View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		94FAC9282BDD7D0200FBD684 /* zippety-doo-dah.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "zippety-doo-dah.mid"; sourceTree = "<group>"; };
 		94FAC92A2BDD7D0200FBD684 /* baabaablacksheep.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = baabaablacksheep.mid; sourceTree = "<group>"; };
 		94FAC9352BDD873700FBD684 /* farmer_in_the_dell.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = farmer_in_the_dell.mid; sourceTree = "<group>"; };
+		94FAC9372BE070D900FBD684 /* Loading View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */,
 				94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */,
 				9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */,
+				94FAC9372BE070D900FBD684 /* Loading View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
+				94FAC9382BE070D900FBD684 /* Loading View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

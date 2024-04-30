@@ -185,9 +185,9 @@ struct LibraryItemDetail: View {
                         .font(.subheadline)
                         .frame(width: 300, alignment: .leading)
                     Spacer()
-                    Button("Start Training") {
+                    Button("Load Track") {
+                        appState.loadedSong = appState.selectedSong
                         appState.showSongDetail = false
-                        appState.showImmersiveSpace = true
                     }
                     .tint(.blue)
                 }
@@ -220,7 +220,7 @@ struct LibraryView: View {
                     }, label: {
                         HStack {
                             // Show an animated note icon if the song is selected and trainer is active
-                            if song.id == appState.selectedSong?.id && appState.immersiveSpaceIsShown {
+                            if song.id == appState.loadedSong?.id && appState.immersiveSpaceIsShown {
                                 Image(systemName: "music.note")
                                     .foregroundColor(.accentColor)
                                     .padding(.trailing, 10)
@@ -305,6 +305,9 @@ struct LibraryView: View {
         .sheet(isPresented: $appStateBindable.showConfigurationMenu) {
             PianoConfigurationMenu()
         }
+        .sheet(isPresented: $appStateBindable.showLoadingView, content: {
+            LoadingView()
+        })
     }
 }
 
