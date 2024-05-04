@@ -10,16 +10,18 @@ import SwiftUI
 struct PianoMeasurementStep: View {
     @Environment(PianoManager.self) var pianoManager
 
+    @Environment(\.dismiss) var dismiss
+
     @State var leftPosition: SIMD3<Float>? = nil
     @State var rightPosition: SIMD3<Float>? = nil
+
+    var back: () -> Void
 
     var body: some View {
         VStack {
             Text("Let's find your piano in the real world!")
                 .font(.title)
                 .padding(.bottom, 30)
-
-            Spacer()
 
             Form {
                 Section {
@@ -52,26 +54,36 @@ struct PianoMeasurementStep: View {
                         }
                     }
                 }
-            }.frame(height: 140)
-
-            let disabled = leftPosition == nil || rightPosition == nil
-            Button("Complete Setup") {
-                // Save the positions
             }
-            .padding()
-            .disabled(disabled)
-            .tint(disabled ? .gray : .accentColor)
+
+            HStack {
+                Button("Back") {
+                    back()
+                }
+
+                let disabled = leftPosition == nil || rightPosition == nil
+                Button("Complete Setup") {
+                    // TODO: Save the positions
+
+                    dismiss()
+                }
+                .padding()
+                .disabled(disabled)
+                .tint(disabled ? .gray : .accentColor)
+            }
         }
-        .navigationTitle("Piano Measurement")
         .multilineTextAlignment(.center)
-        .frame(width: 500, height: 500)
         .padding()
     }
 }
 
 struct PianoInformationStep: View {
+    // TODO: these need to be on app state using the user defaults
     @State var numberOfKeys: Int = 77
     @State var selectedKey: String = "F"
+
+    var back: () -> Void
+    var next: () -> Void
 
     let allowedKeys: [Int] = [25, 37, 73, 77, 88]
     let allowedNotes: [String] = ["C", "Db", "D", "Eb", "E", "F", "G", "Ab", "A", "Bb", "B"]
@@ -96,34 +108,79 @@ struct PianoInformationStep: View {
                         Text(note)
                     }
                 }
-            }
+            }.frame(height: 300)
 
-            NavigationLink("Next", destination: PianoMeasurementStep())
-                .tint(.accentColor)
+            HStack {
+                Button("Back") {
+                    back()
+                }
+                Button("Next") {
+                    next()
+                }.tint(.accentColor)
+            }
         }
-        .navigationTitle("Piano Information")
         .multilineTextAlignment(.center)
-        .frame(width: 500, height: 320)
         .padding(20)
     }
 }
 
-struct SetupWizard: View {
-    var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Welcome to Virtuoso!")
-                    .font(.extraLargeTitle2)
-                    .padding()
-                Text("Let's get started by setting up your piano.")
-                    .font(.title)
-                    .padding(.bottom, 30)
+struct WelcomeStep: View {
+    @Environment(AppState.self) var appState
 
-                NavigationLink("Begin Setup", destination: PianoInformationStep())
-                    .tint(.accentColor)
+    var next: () -> Void
+
+    var body: some View {
+        VStack {
+            Text("Welcome to Virtuoso!")
+                .font(.extraLargeTitle2)
+                .padding()
+            Text("Let's get started by setting up your piano.")
+                .font(.title)
+                .padding(.bottom, 30)
+
+            HStack {
+                Button("Skip Setup") {
+                    // Skip the setup
+                    appState.hasCompletedSetup = true
+                }
+
+                Button("Begin Setup") {
+                    next()
+                }.tint(.accentColor)
             }
-            .frame(width: 500, height: 220)
-            .padding(20)
+        }
+    }
+}
+
+struct SetupWizard: View {
+    @Environment(AppState.self) var appState
+
+    @State var step = 0
+
+    var body: some View {
+        let next = {
+            step += 1
+            if step > 2 {
+                step = 2
+            }
+        }
+
+        let back = {
+            step -= 1
+            if step < 0 {
+                step = 0
+            }
+        }
+
+        switch step {
+        case 0:
+            WelcomeStep(next: next)
+        case 1:
+            PianoInformationStep(back: back, next: next)
+        case 2:
+            PianoMeasurementStep(back: back)
+        default:
+            Text("Unknown step")
         }
     }
 }
@@ -131,19 +188,6 @@ struct SetupWizard: View {
 #Preview {
     SetupWizard()
         .environment(PianoManager())
+        .environment(AppState())
         .glassBackgroundEffect()
-}
-
-#Preview {
-    NavigationStack {
-        PianoInformationStep()
-            .environment(PianoManager())
-    }.glassBackgroundEffect()
-}
-
-#Preview {
-    NavigationStack {
-        PianoMeasurementStep()
-            .environment(PianoManager())
-    }.glassBackgroundEffect()
 }

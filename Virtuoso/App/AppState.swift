@@ -11,6 +11,12 @@
 import ObservableUserDefault
 import SwiftUI
 
+enum SetupWizardStep {
+    case welcome
+    case pianoInformation
+    case pianoMeasurement
+}
+
 @Observable
 class AppState {
     // MARK: Actual App State
@@ -29,13 +35,12 @@ class AppState {
     var immersiveSpaceIsShown = false
 
     var showConfigurationMenu = false
-    var showSetupWizard = false
-
     var showAnchors = false
 
     @ObservableUserDefault(.init(key: "HAS_COMPLETED_SETUP", defaultValue: false, store: .standard))
     @ObservationIgnored
     var hasCompletedSetup: Bool
+    var setupWizardStep: SetupWizardStep = .welcome
 
     func startTraining() {
         showImmersiveSpace = true

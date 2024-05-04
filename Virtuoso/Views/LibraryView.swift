@@ -288,6 +288,9 @@ struct LibraryView: View {
             // Load the immersive space right away
             appState.showImmersiveSpace = true
 
+            // TODO: remove debugging for wizard
+            appState.hasCompletedSetup = false
+
             // TODO: draw the piano
         }
         // Edit View
@@ -299,15 +302,17 @@ struct LibraryView: View {
             LibraryItemDetail()
         }
         // Setup Wizard
-        .sheet(isPresented: $appStateBindable.showSetupWizard) {
+        // TODO: try breaking this into separate sheets so we can get clean animations
+        .sheet(isPresented: $appStateBindable.hasCompletedSetup.not) {
             SetupWizard()
+                .presentationDetents([.medium])
         }
         .sheet(isPresented: $appStateBindable.showConfigurationMenu) {
             PianoConfigurationMenu()
         }
-        .sheet(isPresented: $appStateBindable.showLoadingView, content: {
+        .sheet(isPresented: $appStateBindable.showLoadingView) {
             LoadingView()
-        })
+        }
     }
 }
 
