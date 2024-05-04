@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TransportControls: View {
     @Environment(PlaybackManager.self) var playbackManager
-    @Environment(PianoManager.self) var pianoManager
 
     var body: some View {
         HStack {
@@ -19,7 +18,6 @@ struct TransportControls: View {
                 Image(systemName: "arrow.counterclockwise")
             })
             Button(action: {
-                pianoManager.clearTrack()
                 playbackManager.stopPlayback()
             }, label: {
                 Image(systemName: "stop")

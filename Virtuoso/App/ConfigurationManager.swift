@@ -8,9 +8,14 @@
 import ObservableUserDefault
 import SwiftUI
 
+/**
+ Manages the user defined configuration settings for the app.
+
+ Ideally no other part of the app should be directly accessing UserDefaults.
+ */
 @Observable
 class ConfigurationManager {
-    @ObservableUserDefault(.init(key: "HAS_COMPLETED_SETUP", defaultValue: false, store: .standard))
+    @ObservableUserDefault(.init(key: "SETUP_WIZARD_COMPLETE", defaultValue: false, store: .standard))
     @ObservationIgnored
     var hasCompletedSetup: Bool
     var setupWizardStep: SetupWizardStep = .dismissed
@@ -27,7 +32,7 @@ class ConfigurationManager {
         get { setupWizardStep == .pianoInformation && !hasCompletedSetup }
         set { if newValue {
             hasCompletedSetup = false
-            setupWizardStep = .welcome
+            setupWizardStep = .pianoInformation
         } }
     }
 
@@ -35,7 +40,7 @@ class ConfigurationManager {
         get { setupWizardStep == .pianoMeasurement && !hasCompletedSetup }
         set { if newValue {
             hasCompletedSetup = false
-            setupWizardStep = .welcome
+            setupWizardStep = .pianoMeasurement
         } }
     }
 }
