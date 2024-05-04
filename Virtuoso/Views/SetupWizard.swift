@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+enum SetupWizardStep {
+    case dismissed
+    case welcome
+    case pianoInformation
+    case pianoMeasurement
+}
+
 struct PianoMeasurementStep: View {
     @Environment(PianoManager.self) var pianoManager
+    @Environment(ConfigurationManager.self) var configurationManager
 
     @Environment(\.dismiss) var dismiss
 
     @State var leftPosition: SIMD3<Float>? = nil
     @State var rightPosition: SIMD3<Float>? = nil
-
-    var back: () -> Void
 
     var body: some View {
         VStack {
@@ -58,13 +64,13 @@ struct PianoMeasurementStep: View {
 
             HStack {
                 Button("Back") {
-                    back()
+                    configurationManager.setupWizardStep = .pianoInformation
                 }
 
                 let disabled = leftPosition == nil || rightPosition == nil
                 Button("Complete Setup") {
                     // TODO: Save the positions
-
+                    configurationManager.hasCompletedSetup = true
                     dismiss()
                 }
                 .padding()
@@ -78,12 +84,11 @@ struct PianoMeasurementStep: View {
 }
 
 struct PianoInformationStep: View {
+    @Environment(ConfigurationManager.self) var configurationManager
+
     // TODO: these need to be on app state using the user defaults
     @State var numberOfKeys: Int = 77
     @State var selectedKey: String = "F"
-
-    var back: () -> Void
-    var next: () -> Void
 
     let allowedKeys: [Int] = [25, 37, 73, 77, 88]
     let allowedNotes: [String] = ["C", "Db", "D", "Eb", "E", "F", "G", "Ab", "A", "Bb", "B"]
@@ -112,10 +117,11 @@ struct PianoInformationStep: View {
 
             HStack {
                 Button("Back") {
-                    back()
+                    configurationManager.setupWizardStep = .welcome
                 }
                 Button("Next") {
-                    next()
+                    // Save the configuration
+                    configurationManager.setupWizardStep = .pianoMeasurement
                 }.tint(.accentColor)
             }
         }
@@ -125,9 +131,7 @@ struct PianoInformationStep: View {
 }
 
 struct WelcomeStep: View {
-    @Environment(AppState.self) var appState
-
-    var next: () -> Void
+    @Environment(ConfigurationManager.self) var configurationManager
 
     var body: some View {
         VStack {
@@ -141,53 +145,13 @@ struct WelcomeStep: View {
             HStack {
                 Button("Skip Setup") {
                     // Skip the setup
-                    appState.hasCompletedSetup = true
+                    configurationManager.hasCompletedSetup = true
                 }
 
                 Button("Begin Setup") {
-                    next()
+                    configurationManager.setupWizardStep = .pianoInformation
                 }.tint(.accentColor)
             }
         }
     }
-}
-
-struct SetupWizard: View {
-    @Environment(AppState.self) var appState
-
-    @State var step = 0
-
-    var body: some View {
-        let next = {
-            step += 1
-            if step > 2 {
-                step = 2
-            }
-        }
-
-        let back = {
-            step -= 1
-            if step < 0 {
-                step = 0
-            }
-        }
-
-        switch step {
-        case 0:
-            WelcomeStep(next: next)
-        case 1:
-            PianoInformationStep(back: back, next: next)
-        case 2:
-            PianoMeasurementStep(back: back)
-        default:
-            Text("Unknown step")
-        }
-    }
-}
-
-#Preview {
-    SetupWizard()
-        .environment(PianoManager())
-        .environment(AppState())
-        .glassBackgroundEffect()
 }

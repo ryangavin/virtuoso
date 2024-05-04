@@ -208,9 +208,11 @@ struct LibraryView: View {
     @Query(sort: \Song.title) private var allSongs: [Song]
 
     @Environment(AppState.self) var appState
+    @Environment(ConfigurationManager.self) var configurationManager
 
     var body: some View {
         @Bindable var appStateBindable = appState
+        @Bindable var configurationManagerBindable = configurationManager
 
         NavigationStack {
             List {
@@ -289,7 +291,7 @@ struct LibraryView: View {
             appState.showImmersiveSpace = true
 
             // TODO: remove debugging for wizard
-            appState.hasCompletedSetup = false
+            configurationManagerBindable.showWelcomeStep = true
 
             // TODO: draw the piano
         }
@@ -301,15 +303,26 @@ struct LibraryView: View {
         .sheet(isPresented: $appStateBindable.showSongDetail) {
             LibraryItemDetail()
         }
-        // Setup Wizard
-        // TODO: try breaking this into separate sheets so we can get clean animations
-        .sheet(isPresented: $appStateBindable.hasCompletedSetup.not) {
-            SetupWizard()
-                .presentationDetents([.medium])
+
+        // MARK: Setup Wizard
+
+        // Welcome screen
+        .sheet(isPresented: $configurationManagerBindable.showWelcomeStep) {
+            WelcomeStep()
         }
+        .sheet(isPresented: $configurationManagerBindable.showPianoInformationStep) {
+            PianoInformationStep()
+        }
+        .sheet(isPresented: $configurationManagerBindable.showPianoMeasurementStep) {
+            PianoMeasurementStep()
+        }
+
+        // Configuration Menu
         .sheet(isPresented: $appStateBindable.showConfigurationMenu) {
             PianoConfigurationMenu()
         }
+
+        // Loading View
         .sheet(isPresented: $appStateBindable.showLoadingView) {
             LoadingView()
         }

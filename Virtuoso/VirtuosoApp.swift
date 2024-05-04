@@ -18,6 +18,8 @@ struct VirtuosoApp: App {
     @Environment(\.scenePhase) var scenePhase
 
     @State private var appState = AppState()
+    @State private var configurationManager = ConfigurationManager()
+    
     @State private var worldManager = WorldManager()
     @State private var pianoManager = PianoManager()
     @State private var playbackManager = PlaybackManager()
@@ -34,6 +36,7 @@ struct VirtuosoApp: App {
         WindowGroup("Browser", id: Module.browser.name) {
             LibraryView()
                 .environment(appState)
+                .environment(configurationManager)
                 .environment(playbackManager)
                 .environment(pianoManager)
                 .modelContainer(DataController.previewContainer)
