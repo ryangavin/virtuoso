@@ -2,15 +2,18 @@ import RealityKit
 import RealityKitContent
 import SwiftUI
 
-/// A view that manages all the entities for the piano experience
-/// World interactions are managed here and updates are passed down to the entities
+/**
+ The actual AR experience.
+
+ This View is responsible for glueing all the systems together.
+ It listens for changes in the app state and updates the world accordingly.
+ */
 struct PianoRealityView: View {
     @Environment(AppState.self) var appState
     @Environment(WorldManager.self) var worldManager
     @Environment(PianoManager.self) var pianoManager
     @Environment(PlaybackManager.self) var playbackManager
 
-    @MainActor
     func drawTrack(currentTime: Double) {
         guard playbackManager.sequencer != nil else { return }
         for track in playbackManager.lessonTracks {
@@ -60,11 +63,17 @@ struct PianoRealityView: View {
         }
 
         // TODO: BIG: Consider rewriting this whole idea as a system or component
-        // TODO: it seems weird that we listen to this var instead of the current timestamp
-        // TODO: should we just publish that instead of the target display timestamp?
-        .onChange(of: playbackManager.currentTime) { _, currentTime in
+        .onChange(of: playbackManager.currentTime) { previousTime, currentTime in
+            // If we move backwards in time, we should clear the track
+            // This could probably be done in a better way
+            if previousTime > currentTime {
+                pianoManager.clearTrack()
+            }
+
+            // Always draw the track based on where we are
             drawTrack(currentTime: currentTime)
         }
+
         .onAppear {
             appState.immersiveSpaceIsShown = true
         }

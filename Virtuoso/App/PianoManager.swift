@@ -236,7 +236,6 @@ class PianoManager {
         noteAnchor.setPosition([0.0, 0.0, 0.0], relativeTo: collisionBar)
     }
 
-    @MainActor
     func clearTrack() {
         print("Clearing track")
         for (_, entity) in notes {
@@ -245,7 +244,6 @@ class PianoManager {
         notes.removeAll()
     }
 
-    @MainActor
     func drawTrack(track: MIKMIDITrack, targetTimestamp: MusicTimeStamp, color: UIColor) {
         // Figure out which notes in the sequence we need to draw
         // We want to see 16 bars ahead, as well as whatever is currently playing (4 bars behind)
