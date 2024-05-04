@@ -238,6 +238,7 @@ class PianoManager {
 
     @MainActor
     func clearTrack() {
+        print("Clearing track")
         for (_, entity) in notes {
             entity.removeFromParent()
         }

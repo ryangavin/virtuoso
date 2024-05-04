@@ -23,9 +23,6 @@ class PlaybackManager {
 
     var lessonTracks: [Song.Track] = []
 
-    // Display sync
-    var targetDisplayTimestamp = 0.0
-
     // Expose some stuff for the transport widget
     var currentTempo = 120.0
     var currentTime = 0.0
@@ -50,7 +47,7 @@ class PlaybackManager {
         createDisplayLink()
     }
 
-    func loadSong(_ song: Song) async {
+    func loadSong(_ song: Song) {
         let url = song.belongsToUser ? URL(fileURLWithPath: song.midiFile) : Bundle.main.url(forResource: song.midiFile, withExtension: "mid")!
         sequence = try! MIKMIDISequence(fileAt: url)
         sequencer = MIKMIDISequencer(sequence: sequence!)
@@ -144,7 +141,6 @@ class PlaybackManager {
     }
 
     @objc func step(displaylink: CADisplayLink) {
-        targetDisplayTimestamp = displaylink.targetTimestamp
         guard sequencer != nil else { return }
 
         // Only update the current time if we aren't scrubbing
