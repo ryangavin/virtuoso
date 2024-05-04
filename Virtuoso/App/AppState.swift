@@ -19,9 +19,6 @@ class AppState {
     var loadedSong: Song?
     var showLoadingView = false
 
-    var showSongDetail = false
-    var selectedSong: Song?
-
     var showSongEditor = false
     var editingSong: Song?
 
@@ -30,26 +27,6 @@ class AppState {
 
     var showConfigurationMenu = false
     var showAnchors = false
-
-    func startTraining() {
-        showImmersiveSpace = true
-        showSongDetail = false
-    }
-
-    func returnToBrowser() {
-        showImmersiveSpace = false
-        showSongDetail = selectedSong != nil ? true : false
-    }
-
-    func openSongDetail(with song: Song) {
-        selectedSong = song
-        showSongDetail = true
-    }
-
-    func closeSongDetail() {
-        showSongDetail = false
-        selectedSong = nil
-    }
 
     func openLibraryEditor(with song: Song) {
         editingSong = song

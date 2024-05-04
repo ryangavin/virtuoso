@@ -77,7 +77,6 @@ struct VirtuosoApp: App {
                 Task {
                     print("Dismissing immersive space due to scene phase change")
                     await dismissImmersiveSpace()
-                    appState.returnToBrowser()
                     playbackManager.stopPlayback()
                 }
             }

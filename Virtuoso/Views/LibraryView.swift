@@ -152,62 +152,11 @@ struct LibraryEditView: View {
     }
 }
 
-struct LibraryItemDetail: View {
-    @Environment(AppState.self) var appState
-
-    var body: some View {
-        @Bindable var appStateBindable = appState
-
-        VStack {
-            // Title bar and close button
-            HStack {
-                Text(appState.selectedSong!.title)
-                    .font(.title)
-                Spacer()
-                Button(action: {
-                    appState.showSongDetail.toggle()
-                }, label: {
-                    Image(systemName: "xmark")
-                })
-            }
-
-            // Content space
-            HStack {
-                Image("Placeholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 200)
-                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                    .padding(.trailing, 20)
-
-                VStack {
-                    Text(appState.selectedSong!.details)
-                        .font(.subheadline)
-                        .frame(width: 300, alignment: .leading)
-                    Spacer()
-                    Button("Load Track") {
-                        appState.loadedSong = appState.selectedSong
-                        appState.showSongDetail = false
-                    }
-                    .tint(.blue)
-                }
-            }
-        }
-        .padding(20)
-        .background {
-            Image("Placeholder")
-                .resizable()
-                .blur(radius: 50)
-                .brightness(-0.4)
-                .opacity(0.4)
-        }
-    }
-}
-
 struct LibraryView: View {
     @Query(sort: \Song.title) private var allSongs: [Song]
 
     @Environment(AppState.self) var appState
+    @Environment(PlaybackManager.self) var playbackManager
     @Environment(ConfigurationManager.self) var configurationManager
 
     var body: some View {
@@ -218,7 +167,9 @@ struct LibraryView: View {
             List {
                 ForEach(allSongs, id: \.self) { song in
                     Button(action: {
-                        appState.openSongDetail(with: song)
+                        // All the loading and reacting happens in the reality view
+                        // All we have to do is change the loaded song here
+                        appState.loadedSong = song
                     }, label: {
                         HStack {
                             // Show an animated note icon if the song is selected and trainer is active
@@ -291,17 +242,13 @@ struct LibraryView: View {
             appState.showImmersiveSpace = true
 
             // TODO: remove debugging for wizard
-            configurationManagerBindable.showWelcomeStep = true
+            // configurationManagerBindable.showWelcomeStep = true
 
             // TODO: draw the piano
         }
         // Edit View
         .sheet(isPresented: $appStateBindable.showSongEditor) {
             LibraryEditView()
-        }
-        // Popover centered in the middle of the screen
-        .sheet(isPresented: $appStateBindable.showSongDetail) {
-            LibraryItemDetail()
         }
 
         // MARK: Setup Wizard
