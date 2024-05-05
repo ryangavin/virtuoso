@@ -25,6 +25,8 @@
 		9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* ClassicRockSongs.swift */; };
 		949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */; };
 		94B8FADC2BE65AF300BCD998 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8FADB2BE65AF300BCD998 /* ConfigurationManager.swift */; };
+		94B8FADF2BE6CCFA00BCD998 /* NoteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8FADE2BE6CCFA00BCD998 /* NoteSystem.swift */; };
+		94B8FAE62BE79B8100BCD998 /* NoteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8FAE52BE79B8100BCD998 /* NoteComponent.swift */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0992BB7A5150088EF8C /* piano.sf2 */; };
@@ -117,6 +119,8 @@
 		9486048E2BA704E600519884 /* ClassicRockSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicRockSongs.swift; sourceTree = "<group>"; };
 		949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = electricPiano.sf2; sourceTree = "<group>"; };
 		94B8FADB2BE65AF300BCD998 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		94B8FADE2BE6CCFA00BCD998 /* NoteSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSystem.swift; sourceTree = "<group>"; };
+		94B8FAE52BE79B8100BCD998 /* NoteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteComponent.swift; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94CEB0992BB7A5150088EF8C /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				9483F1DB2B88D5CD00B8E1BA /* App */,
 				946350472B9E1776006CFA88 /* Model */,
 				941B22DE2B844480006F114B /* Views */,
+				94B8FADD2BE6CCE200BCD998 /* Systems */,
 				94CEB0AC2BB8C59B0088EF8C /* Songs */,
 				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
@@ -292,6 +297,15 @@
 				949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */,
 			);
 			path = Soundfonts;
+			sourceTree = "<group>";
+		};
+		94B8FADD2BE6CCE200BCD998 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				94B8FADE2BE6CCFA00BCD998 /* NoteSystem.swift */,
+				94B8FAE52BE79B8100BCD998 /* NoteComponent.swift */,
+			);
+			path = Systems;
 			sourceTree = "<group>";
 		};
 		94CEB0872BB7A4BB0088EF8C /* ChildrensSongs */ = {
@@ -492,6 +506,7 @@
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				94EE84802BA7F2880014B06A /* DataController.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
+				94B8FAE62BE79B8100BCD998 /* NoteComponent.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
 				942D57A12B8397CE007C7327 /* Module.swift in Sources */,
 				9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */,
@@ -500,6 +515,7 @@
 				94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
+				94B8FADF2BE6CCFA00BCD998 /* NoteSystem.swift in Sources */,
 				94FAC9382BE070D900FBD684 /* Loading View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
