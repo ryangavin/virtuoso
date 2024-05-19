@@ -164,74 +164,95 @@ struct LibraryView: View {
         @Bindable var configurationManagerBindable = configurationManager
 
         NavigationStack {
-            List {
-                ForEach(allSongs, id: \.self) { song in
-                    Button(action: {
-                        // All the loading and reacting happens in the reality view
-                        // All we have to do is change the loaded song here
-                        appState.loadedSong = song
-                    }, label: {
-                        HStack {
-                            // Show an animated note icon if the song is selected and trainer is active
-                            if song.id == appState.loadedSong?.id && appState.immersiveSpaceIsShown {
-                                Image(systemName: "music.note")
-                                    .foregroundColor(.accentColor)
-                                    .padding(.trailing, 10)
+            ZStack {
+                // MARK: Main view
+
+                List {
+                    ForEach(allSongs, id: \.self) { song in
+                        Button(action: {
+                            // All the loading and reacting happens in the reality view
+                            // All we have to do is change the loaded song here
+                            appState.loadedSong = song
+                        }, label: {
+                            HStack {
+                                // Show an animated note icon if the song is selected and trainer is active
+                                if song.id == appState.loadedSong?.id && appState.immersiveSpaceIsShown {
+                                    Image(systemName: "music.note")
+                                        .foregroundColor(.accentColor)
+                                        .padding(.trailing, 10)
+                                }
+
+                                Text(song.title)
+                                Text(song.artist)
+                                    .foregroundColor(.gray)
+
+                                Spacer()
+
+                                Text("Difficulty")
+                                    .foregroundColor(.gray)
+                                // show a number of stars based on the difficulty
+                                ForEach(1 ... song.difficulty, id: \.self) { _ in
+                                    Image(systemName: "star.fill")
+                                }
+                                // show an empty star for the remaining difficulty
+                                if song.difficulty < 5 {
+                                    ForEach(1 ... (5 - song.difficulty), id: \.self) { _ in
+                                        Image(systemName: "star")
+                                    }
+                                }
+                            }
+                        })
+                        .swipeActions {
+                            // Destructive role seems to automatically add a red background and remove the label
+                            Button(role: .destructive) {} label: {
+                                // TODO: does this actually delete from the database
+                                Label("Delete", systemImage: "trash")
                             }
 
-                            Text(song.title)
-                            Text(song.artist)
-                                .foregroundColor(.gray)
-
-                            Spacer()
-
-                            Text("Difficulty")
-                                .foregroundColor(.gray)
-                            // show a number of stars based on the difficulty
-                            ForEach(1 ... song.difficulty, id: \.self) { _ in
-                                Image(systemName: "star.fill")
-                            }
-                            // show an empty star for the remaining difficulty
-                            if song.difficulty < 5 {
-                                ForEach(1 ... (5 - song.difficulty), id: \.self) { _ in
-                                    Image(systemName: "star")
+                            // Don't allow the user to edit the default songs
+                            // They can still be deleted
+                            if song.belongsToUser {
+                                Button {
+                                    appState.openLibraryEditor(with: song)
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
                                 }
                             }
                         }
-                    })
-                    .swipeActions {
-                        // Destructive role seems to automatically add a red background and remove the label
-                        Button(role: .destructive) {} label: {
-                            // TODO: does this actually delete from the database
-                            Label("Delete", systemImage: "trash")
-                        }
+                    }
+                }
 
-                        // Don't allow the user to edit the default songs
-                        // They can still be deleted
-                        if song.belongsToUser {
-                            Button {
-                                appState.openLibraryEditor(with: song)
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
+                // MARK: Floating help button
+
+                VStack {
+                    Spacer()
+                    HStack {
+                        Button {
+                            appState.showHelp = true
+                        } label: {
+                            Image(systemName: "questionmark")
+                        }
+                        .buttonBorderShape(.circle)
+                        .padding(20)
+                        Spacer()
+                    }
+                }
+
+                .navigationTitle("Virtuoso -  XR Piano Trainer")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            appState.openLibraryEditor(with: Song(belongsToUser: true))
+                        }) {
+                            Label("Add Song", systemImage: "plus")
+                        }
+                    }
+
+                    if appState.showImmersiveSpace {
+                        withAnimation {
+                            ToolbarItem(placement: .bottomOrnament) {
+                                PlaybackWidget()
                             }
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Virtuoso -  XR Piano Trainer")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        appState.openLibraryEditor(with: Song(belongsToUser: true))
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                }
-
-                if appState.showImmersiveSpace {
-                    withAnimation {
-                        ToolbarItem(placement: .bottomOrnament) {
-                            PlaybackWidget()
                         }
                     }
                 }
@@ -273,6 +294,11 @@ struct LibraryView: View {
         .sheet(isPresented: $appStateBindable.showLoadingView) {
             LoadingView()
         }
+        
+        // Help View
+        .sheet(isPresented: $appStateBindable.showHelp) {
+            HelpView()
+        }
     }
 }
 
@@ -282,6 +308,8 @@ struct LibraryView_Previews: PreviewProvider {
     static var previews: some View {
         LibraryView()
             .environment(AppState())
+            .environment(PlaybackManager())
+            .environment(ConfigurationManager())
             .modelContainer(dataController)
             .navigationTitle("My Song Library")
             .glassBackgroundEffect()
@@ -295,6 +323,8 @@ struct LibraryViewEdit_Previews: PreviewProvider {
     static var previews: some View {
         LibraryView()
             .environment(appState)
+            .environment(PlaybackManager())
+            .environment(ConfigurationManager())
             .modelContainer(dataController)
             .navigationTitle("My Song Library")
             .onAppear {

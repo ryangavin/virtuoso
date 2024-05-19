@@ -27,6 +27,8 @@ class AppState {
 
     var showConfigurationMenu = false
     var showAnchors = false
+    
+    var showHelp = false
 
     func openLibraryEditor(with song: Song) {
         editingSong = song
