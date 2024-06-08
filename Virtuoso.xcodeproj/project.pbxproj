@@ -15,7 +15,6 @@
 		9424F43B2BD40BEF00AD7BFB /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9424F43A2BD40BEF00AD7BFB /* RealityKitContent */; };
 		9424F43D2BD5FE2F00AD7BFB /* SetupWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */; };
 		942D57A12B8397CE007C7327 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D57A02B8397CE007C7327 /* Module.swift */; };
-		943AC3912C0F248200280C9E /* SheetMusicRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */; };
 		946350492B9E18EA006CFA88 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350482B9E18EA006CFA88 /* Song.swift */; };
 		9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463504A2B9E1A2F006CFA88 /* SongCollection.swift */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
@@ -106,7 +105,6 @@
 		941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MIKMIDI.xcodeproj; path = Frameworks/MIKMIDI/Framework/MIKMIDI.xcodeproj; sourceTree = "<group>"; };
 		9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWizard.swift; sourceTree = "<group>"; };
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
-		943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetMusicRenderer.swift; sourceTree = "<group>"; };
 		946350482B9E18EA006CFA88 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		9463504A2B9E1A2F006CFA88 /* SongCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollection.swift; sourceTree = "<group>"; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,7 +178,6 @@
 				9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */,
 				94FAC9372BE070D900FBD684 /* LoadingView.swift */,
 				9494E6BE2BFA263D00B0F30C /* HelpView.swift */,
-				943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,7 +505,6 @@
 				941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				94EE84802BA7F2880014B06A /* DataController.swift in Sources */,
-				943AC3912C0F248200280C9E /* SheetMusicRenderer.swift in Sources */,
 				9494E6BF2BFA263D00B0F30C /* HelpView.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
