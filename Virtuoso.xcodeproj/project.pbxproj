@@ -23,14 +23,11 @@
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
-		9485E49D2C14CEC400FAAF44 /* chopin.mxl in Resources */ = {isa = PBXBuildFile; fileRef = 9485E49C2C14CEB900FAAF44 /* chopin.mxl */; };
 		9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* ClassicRockSongs.swift */; };
 		9494E6BF2BFA263D00B0F30C /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9494E6BE2BFA263D00B0F30C /* HelpView.swift */; };
 		949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */; };
 		94B8FADC2BE65AF300BCD998 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8FADB2BE65AF300BCD998 /* ConfigurationManager.swift */; };
 		94CABF5B2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CABF5A2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid */; };
-		94CABF632C0EA0A6005A3831 /* opensheetmusicdisplay.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 94CABF622C0EA0A6005A3831 /* opensheetmusicdisplay.min.js */; };
-		94CABF652C0EA0D2005A3831 /* sheetMusicRenderer.html in Resources */ = {isa = PBXBuildFile; fileRef = 94CABF642C0EA0D2005A3831 /* sheetMusicRenderer.html */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0992BB7A5150088EF8C /* piano.sf2 */; };
@@ -110,7 +107,6 @@
 		9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWizard.swift; sourceTree = "<group>"; };
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetMusicRenderer.swift; sourceTree = "<group>"; };
-		943AC3922C1095A800280C9E /* opensheetmusicdisplay.min.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = opensheetmusicdisplay.min.js.map; sourceTree = "<group>"; };
 		946350482B9E18EA006CFA88 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		9463504A2B9E1A2F006CFA88 /* SongCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollection.swift; sourceTree = "<group>"; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,14 +118,11 @@
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
-		9485E49C2C14CEB900FAAF44 /* chopin.mxl */ = {isa = PBXFileReference; lastKnownFileType = file; path = chopin.mxl; sourceTree = "<group>"; };
 		9486048E2BA704E600519884 /* ClassicRockSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicRockSongs.swift; sourceTree = "<group>"; };
 		9494E6BE2BFA263D00B0F30C /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = electricPiano.sf2; sourceTree = "<group>"; };
 		94B8FADB2BE65AF300BCD998 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		94CABF5A2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = chopin_nocturne_op9_no2.mid; sourceTree = "<group>"; };
-		94CABF622C0EA0A6005A3831 /* opensheetmusicdisplay.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = opensheetmusicdisplay.min.js; sourceTree = "<group>"; };
-		94CABF642C0EA0D2005A3831 /* sheetMusicRenderer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = sheetMusicRenderer.html; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94CEB0992BB7A5150088EF8C /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
@@ -249,7 +242,6 @@
 				941B22DE2B844480006F114B /* Views */,
 				94CEB0AC2BB8C59B0088EF8C /* Songs */,
 				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
-				94CABF612C0EA08E005A3831 /* Web */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
 				941B22D82B83E26B006F114B /* Globals.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
@@ -311,16 +303,6 @@
 			path = Soundfonts;
 			sourceTree = "<group>";
 		};
-		94CABF612C0EA08E005A3831 /* Web */ = {
-			isa = PBXGroup;
-			children = (
-				943AC3922C1095A800280C9E /* opensheetmusicdisplay.min.js.map */,
-				94CABF622C0EA0A6005A3831 /* opensheetmusicdisplay.min.js */,
-				94CABF642C0EA0D2005A3831 /* sheetMusicRenderer.html */,
-			);
-			path = Web;
-			sourceTree = "<group>";
-		};
 		94CEB0872BB7A4BB0088EF8C /* ChildrensSongs */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +324,6 @@
 		94CEB0AC2BB8C59B0088EF8C /* Songs */ = {
 			isa = PBXGroup;
 			children = (
-				9485E49C2C14CEB900FAAF44 /* chopin.mxl */,
 				94CEB0872BB7A4BB0088EF8C /* ChildrensSongs */,
 				94D1B8BE2BFED3A4009C9D5B /* Classical */,
 				94CEB0882BB7A4C30088EF8C /* ClassicRock */,
@@ -483,11 +464,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9485E49D2C14CEC400FAAF44 /* chopin.mxl in Resources */,
 				94D1B8C82BFF46D8009C9D5B /* strings.sf2 in Resources */,
 				94CABF5B2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid in Resources */,
 				94D1B8CF2C01FDA9009C9D5B /* minuet_in_g_major.mid in Resources */,
-				94CABF652C0EA0D2005A3831 /* sheetMusicRenderer.html in Resources */,
 				949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */,
 				94FAC9222BDD196D00FBD684 /* drums.sf2 in Resources */,
 				94D1B8CC2BFF485F009C9D5B /* canon_in_d.mid in Resources */,
@@ -502,7 +481,6 @@
 				94CEB0AA2BB8C5070088EF8C /* itsy_bitsy_spider.mid in Resources */,
 				94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */,
 				94CEB0A42BB8536A0088EF8C /* bass.sf2 in Resources */,
-				94CABF632C0EA0A6005A3831 /* opensheetmusicdisplay.min.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
