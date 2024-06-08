@@ -183,13 +183,18 @@ struct LibraryView: View {
                                 }
 
                                 Text(song.title)
+                                    .font(.title)
+
                                 Text(song.artist)
+                                    .font(.title3)
                                     .foregroundColor(.gray)
 
                                 Spacer()
 
                                 Text("Difficulty")
+                                    .font(.title3)
                                     .foregroundColor(.gray)
+
                                 // show a number of stars based on the difficulty
                                 ForEach(1 ... song.difficulty, id: \.self) { _ in
                                     Image(systemName: "star.fill")
@@ -238,13 +243,16 @@ struct LibraryView: View {
                     }
                 }
 
-                .navigationTitle("Virtuoso -  XR Piano Trainer")
+                .navigationTitle("Virtuoso XR")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             appState.openLibraryEditor(with: Song(belongsToUser: true))
                         }) {
-                            Label("Add Song", systemImage: "plus")
+                            HStack {
+                                Image(systemName: "plus")
+                                Text("Add Song")
+                            }
                         }
                     }
 
@@ -294,7 +302,7 @@ struct LibraryView: View {
         .sheet(isPresented: $appStateBindable.showLoadingView) {
             LoadingView()
         }
-        
+
         // Help View
         .sheet(isPresented: $appStateBindable.showHelp) {
             HelpView()

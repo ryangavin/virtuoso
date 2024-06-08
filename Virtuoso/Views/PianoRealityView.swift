@@ -48,18 +48,20 @@ struct PianoRealityView: View {
         }
 
         .onChange(of: appState.loadedSong) {
-            // TODO: should this really be async?
-            guard let loadedSong = appState.loadedSong else {
-                print("Tried to load a song, but there was no song loaded!")
-                return
-            }
-
             // TODO: add some protection to loadSong to ensure all the resources are loaded
             appState.showLoadingView = true
-            pianoManager.clearTrack()
-            playbackManager.loadSong(loadedSong)
-            drawTrack(currentTime: 0)
-            appState.showLoadingView = false
+            Task {
+                guard let loadedSong = appState.loadedSong else {
+                    print("Tried to load a song, but there was no song loaded!")
+                    appState.showLoadingView = false
+                    return
+                }
+                playbackManager.stopPlayback()
+                pianoManager.clearTrack()
+                playbackManager.loadSong(loadedSong)
+                drawTrack(currentTime: 0)
+                appState.showLoadingView = false
+            }
         }
 
         // TODO: BIG: Consider rewriting this whole idea as a system or component

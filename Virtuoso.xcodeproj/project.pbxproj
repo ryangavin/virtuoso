@@ -15,6 +15,7 @@
 		9424F43B2BD40BEF00AD7BFB /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9424F43A2BD40BEF00AD7BFB /* RealityKitContent */; };
 		9424F43D2BD5FE2F00AD7BFB /* SetupWizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */; };
 		942D57A12B8397CE007C7327 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D57A02B8397CE007C7327 /* Module.swift */; };
+		943AC3912C0F248200280C9E /* SheetMusicRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */; };
 		946350492B9E18EA006CFA88 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946350482B9E18EA006CFA88 /* Song.swift */; };
 		9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9463504A2B9E1A2F006CFA88 /* SongCollection.swift */; };
 		9480B79E2B7EAA2F00DDB251 /* VirtuosoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B79D2B7EAA2F00DDB251 /* VirtuosoApp.swift */; };
@@ -22,10 +23,14 @@
 		9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9480B7A62B7EAA3000DDB251 /* Preview Assets.xcassets */; };
 		9480B7B22B7EAA3000DDB251 /* VirtuosoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */; };
 		9483F1DD2B88D63800B8E1BA /* PianoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F1DC2B88D63800B8E1BA /* PianoManager.swift */; };
+		9485E49D2C14CEC400FAAF44 /* chopin.mxl in Resources */ = {isa = PBXBuildFile; fileRef = 9485E49C2C14CEB900FAAF44 /* chopin.mxl */; };
 		9486048F2BA704E600519884 /* ClassicRockSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9486048E2BA704E600519884 /* ClassicRockSongs.swift */; };
 		9494E6BF2BFA263D00B0F30C /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9494E6BE2BFA263D00B0F30C /* HelpView.swift */; };
 		949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */; };
 		94B8FADC2BE65AF300BCD998 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8FADB2BE65AF300BCD998 /* ConfigurationManager.swift */; };
+		94CABF5B2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94CABF5A2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid */; };
+		94CABF632C0EA0A6005A3831 /* opensheetmusicdisplay.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 94CABF622C0EA0A6005A3831 /* opensheetmusicdisplay.min.js */; };
+		94CABF652C0EA0D2005A3831 /* sheetMusicRenderer.html in Resources */ = {isa = PBXBuildFile; fileRef = 94CABF642C0EA0D2005A3831 /* sheetMusicRenderer.html */; };
 		94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */; };
 		94CD99682B7F151300BF09DE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD99672B7F151300BF09DE /* AppState.swift */; };
 		94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94CEB0992BB7A5150088EF8C /* piano.sf2 */; };
@@ -37,18 +42,18 @@
 		94D138CA2B8BCD45007CEF45 /* WorldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138C92B8BCD45007CEF45 /* WorldManager.swift */; };
 		94D138CC2B8BF2F0007CEF45 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */; };
 		94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */; };
+		94D1B8C02BFED3BD009C9D5B /* ClassicalSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8BF2BFED3BD009C9D5B /* ClassicalSongs.swift */; };
+		94D1B8C22BFED3F4009C9D5B /* fur_elise.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94D1B8C12BFED3F4009C9D5B /* fur_elise.mid */; };
+		94D1B8C82BFF46D8009C9D5B /* strings.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94D1B8C72BFF468D009C9D5B /* strings.sf2 */; };
+		94D1B8CC2BFF485F009C9D5B /* canon_in_d.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94D1B8CB2BFF485F009C9D5B /* canon_in_d.mid */; };
+		94D1B8CF2C01FDA9009C9D5B /* minuet_in_g_major.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94D1B8CD2C01FDA9009C9D5B /* minuet_in_g_major.mid */; };
+		94D1B8D62C020103009C9D5B /* prelude_in_c_major.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94D1B8D52C020103009C9D5B /* prelude_in_c_major.mid */; };
+		94D1B8D82C0417F5009C9D5B /* moonlight_sonata.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94D1B8D72C0417F5009C9D5B /* moonlight_sonata.mid */; };
 		94E2E5F42B8CAE980096A41B /* peg.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94E2E5F32B8CAE980096A41B /* peg.mid */; };
 		94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */; };
 		94EE84802BA7F2880014B06A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE847F2BA7F2880014B06A /* DataController.swift */; };
 		94FAC9192BD9CBAC00FBD684 /* ObservableUserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = 94FAC9182BD9CBAC00FBD684 /* ObservableUserDefault */; };
 		94FAC9222BDD196D00FBD684 /* drums.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9212BDD191F00FBD684 /* drums.sf2 */; };
-		94FAC92D2BDD7D0300FBD684 /* old_mac_donald.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9242BDD7D0200FBD684 /* old_mac_donald.mid */; };
-		94FAC92E2BDD7D0300FBD684 /* twinkle_little_star.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9252BDD7D0200FBD684 /* twinkle_little_star.mid */; };
-		94FAC92F2BDD7D0300FBD684 /* whos-afraid-of-the-big-bad-wolf.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9262BDD7D0200FBD684 /* whos-afraid-of-the-big-bad-wolf.mid */; };
-		94FAC9302BDD7D0300FBD684 /* london_bridge.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9272BDD7D0200FBD684 /* london_bridge.mid */; };
-		94FAC9312BDD7D0300FBD684 /* zippety-doo-dah.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9282BDD7D0200FBD684 /* zippety-doo-dah.mid */; };
-		94FAC9332BDD7D0300FBD684 /* baabaablacksheep.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC92A2BDD7D0200FBD684 /* baabaablacksheep.mid */; };
-		94FAC9362BDD873700FBD684 /* farmer_in_the_dell.mid in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC9352BDD873700FBD684 /* farmer_in_the_dell.mid */; };
 		94FAC9382BE070D900FBD684 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FAC9372BE070D900FBD684 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +109,8 @@
 		941CFC1D2B922955004414E1 /* MIKMIDI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MIKMIDI.xcodeproj; path = Frameworks/MIKMIDI/Framework/MIKMIDI.xcodeproj; sourceTree = "<group>"; };
 		9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWizard.swift; sourceTree = "<group>"; };
 		942D57A02B8397CE007C7327 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetMusicRenderer.swift; sourceTree = "<group>"; };
+		943AC3922C1095A800280C9E /* opensheetmusicdisplay.min.js.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = opensheetmusicdisplay.min.js.map; sourceTree = "<group>"; };
 		946350482B9E18EA006CFA88 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		9463504A2B9E1A2F006CFA88 /* SongCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCollection.swift; sourceTree = "<group>"; };
 		9480B7962B7EAA2F00DDB251 /* Virtuoso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virtuoso.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,10 +122,14 @@
 		9480B7AD2B7EAA3000DDB251 /* VirtuosoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtuosoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9480B7B12B7EAA3000DDB251 /* VirtuosoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtuosoTests.swift; sourceTree = "<group>"; };
 		9483F1DC2B88D63800B8E1BA /* PianoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoManager.swift; sourceTree = "<group>"; };
+		9485E49C2C14CEB900FAAF44 /* chopin.mxl */ = {isa = PBXFileReference; lastKnownFileType = file; path = chopin.mxl; sourceTree = "<group>"; };
 		9486048E2BA704E600519884 /* ClassicRockSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicRockSongs.swift; sourceTree = "<group>"; };
 		9494E6BE2BFA263D00B0F30C /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		949F2CA92BABD8DF00FCB8C8 /* electricPiano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = electricPiano.sf2; sourceTree = "<group>"; };
 		94B8FADB2BE65AF300BCD998 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		94CABF5A2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = chopin_nocturne_op9_no2.mid; sourceTree = "<group>"; };
+		94CABF622C0EA0A6005A3831 /* opensheetmusicdisplay.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = opensheetmusicdisplay.min.js; sourceTree = "<group>"; };
+		94CABF642C0EA0D2005A3831 /* sheetMusicRenderer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = sheetMusicRenderer.html; sourceTree = "<group>"; };
 		94CD99622B7EE3CC00BF09DE /* PianoRealityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoRealityView.swift; sourceTree = "<group>"; };
 		94CD99672B7F151300BF09DE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		94CEB0992BB7A5150088EF8C /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
@@ -131,17 +142,17 @@
 		94D138C92B8BCD45007CEF45 /* WorldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldManager.swift; sourceTree = "<group>"; };
 		94D138CB2B8BF2F0007CEF45 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
 		94D138CD2B8BF322007CEF45 /* PlaybackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackWidget.swift; sourceTree = "<group>"; };
+		94D1B8BF2BFED3BD009C9D5B /* ClassicalSongs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicalSongs.swift; sourceTree = "<group>"; };
+		94D1B8C12BFED3F4009C9D5B /* fur_elise.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = fur_elise.mid; sourceTree = "<group>"; };
+		94D1B8C72BFF468D009C9D5B /* strings.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = strings.sf2; sourceTree = "<group>"; };
+		94D1B8CB2BFF485F009C9D5B /* canon_in_d.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = canon_in_d.mid; sourceTree = "<group>"; };
+		94D1B8CD2C01FDA9009C9D5B /* minuet_in_g_major.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = minuet_in_g_major.mid; sourceTree = "<group>"; };
+		94D1B8D52C020103009C9D5B /* prelude_in_c_major.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = prelude_in_c_major.mid; sourceTree = "<group>"; };
+		94D1B8D72C0417F5009C9D5B /* moonlight_sonata.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = moonlight_sonata.mid; sourceTree = "<group>"; };
 		94E2E5F32B8CAE980096A41B /* peg.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = peg.mid; sourceTree = "<group>"; };
 		94E6DD2C2BC30989002BDDB0 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		94EE847F2BA7F2880014B06A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		94FAC9212BDD191F00FBD684 /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.sf2; sourceTree = "<group>"; };
-		94FAC9242BDD7D0200FBD684 /* old_mac_donald.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = old_mac_donald.mid; sourceTree = "<group>"; };
-		94FAC9252BDD7D0200FBD684 /* twinkle_little_star.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = twinkle_little_star.mid; sourceTree = "<group>"; };
-		94FAC9262BDD7D0200FBD684 /* whos-afraid-of-the-big-bad-wolf.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "whos-afraid-of-the-big-bad-wolf.mid"; sourceTree = "<group>"; };
-		94FAC9272BDD7D0200FBD684 /* london_bridge.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = london_bridge.mid; sourceTree = "<group>"; };
-		94FAC9282BDD7D0200FBD684 /* zippety-doo-dah.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "zippety-doo-dah.mid"; sourceTree = "<group>"; };
-		94FAC92A2BDD7D0200FBD684 /* baabaablacksheep.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = baabaablacksheep.mid; sourceTree = "<group>"; };
-		94FAC9352BDD873700FBD684 /* farmer_in_the_dell.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = farmer_in_the_dell.mid; sourceTree = "<group>"; };
 		94FAC9372BE070D900FBD684 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +187,7 @@
 				9424F43C2BD5FE2F00AD7BFB /* SetupWizard.swift */,
 				94FAC9372BE070D900FBD684 /* LoadingView.swift */,
 				9494E6BE2BFA263D00B0F30C /* HelpView.swift */,
+				943AC3902C0F248200280C9E /* SheetMusicRenderer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,6 +249,7 @@
 				941B22DE2B844480006F114B /* Views */,
 				94CEB0AC2BB8C59B0088EF8C /* Songs */,
 				949F2CA82BABD8CF00FCB8C8 /* Soundfonts */,
+				94CABF612C0EA08E005A3831 /* Web */,
 				942D57A02B8397CE007C7327 /* Module.swift */,
 				941B22D82B83E26B006F114B /* Globals.swift */,
 				941B22DF2B844506006F114B /* Extensions.swift */,
@@ -287,6 +300,7 @@
 		949F2CA82BABD8CF00FCB8C8 /* Soundfonts */ = {
 			isa = PBXGroup;
 			children = (
+				94D1B8C72BFF468D009C9D5B /* strings.sf2 */,
 				94FAC9212BDD191F00FBD684 /* drums.sf2 */,
 				94CEB0A72BB854E50088EF8C /* brass.sf2 */,
 				94CEB0A52BB853A10088EF8C /* guitar.sf2 */,
@@ -297,18 +311,21 @@
 			path = Soundfonts;
 			sourceTree = "<group>";
 		};
+		94CABF612C0EA08E005A3831 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				943AC3922C1095A800280C9E /* opensheetmusicdisplay.min.js.map */,
+				94CABF622C0EA0A6005A3831 /* opensheetmusicdisplay.min.js */,
+				94CABF642C0EA0D2005A3831 /* sheetMusicRenderer.html */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		94CEB0872BB7A4BB0088EF8C /* ChildrensSongs */ = {
 			isa = PBXGroup;
 			children = (
-				94CEB0AD2BB8C5CE0088EF8C /* ChildrensSongs.swift */,
-				94FAC9352BDD873700FBD684 /* farmer_in_the_dell.mid */,
-				94FAC92A2BDD7D0200FBD684 /* baabaablacksheep.mid */,
-				94FAC9272BDD7D0200FBD684 /* london_bridge.mid */,
-				94FAC9242BDD7D0200FBD684 /* old_mac_donald.mid */,
-				94FAC9252BDD7D0200FBD684 /* twinkle_little_star.mid */,
-				94FAC9262BDD7D0200FBD684 /* whos-afraid-of-the-big-bad-wolf.mid */,
-				94FAC9282BDD7D0200FBD684 /* zippety-doo-dah.mid */,
 				94CEB0A92BB8C5060088EF8C /* itsy_bitsy_spider.mid */,
+				94CEB0AD2BB8C5CE0088EF8C /* ChildrensSongs.swift */,
 			);
 			path = ChildrensSongs;
 			sourceTree = "<group>";
@@ -316,8 +333,8 @@
 		94CEB0882BB7A4C30088EF8C /* ClassicRock */ = {
 			isa = PBXGroup;
 			children = (
-				9486048E2BA704E600519884 /* ClassicRockSongs.swift */,
 				94E2E5F32B8CAE980096A41B /* peg.mid */,
+				9486048E2BA704E600519884 /* ClassicRockSongs.swift */,
 			);
 			path = ClassicRock;
 			sourceTree = "<group>";
@@ -325,10 +342,26 @@
 		94CEB0AC2BB8C59B0088EF8C /* Songs */ = {
 			isa = PBXGroup;
 			children = (
-				94CEB0882BB7A4C30088EF8C /* ClassicRock */,
+				9485E49C2C14CEB900FAAF44 /* chopin.mxl */,
 				94CEB0872BB7A4BB0088EF8C /* ChildrensSongs */,
+				94D1B8BE2BFED3A4009C9D5B /* Classical */,
+				94CEB0882BB7A4C30088EF8C /* ClassicRock */,
 			);
 			path = Songs;
+			sourceTree = "<group>";
+		};
+		94D1B8BE2BFED3A4009C9D5B /* Classical */ = {
+			isa = PBXGroup;
+			children = (
+				94CABF5A2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid */,
+				94D1B8D72C0417F5009C9D5B /* moonlight_sonata.mid */,
+				94D1B8CB2BFF485F009C9D5B /* canon_in_d.mid */,
+				94D1B8C12BFED3F4009C9D5B /* fur_elise.mid */,
+				94D1B8CD2C01FDA9009C9D5B /* minuet_in_g_major.mid */,
+				94D1B8D52C020103009C9D5B /* prelude_in_c_major.mid */,
+				94D1B8BF2BFED3BD009C9D5B /* ClassicalSongs.swift */,
+			);
+			path = Classical;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,23 +483,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94FAC9302BDD7D0300FBD684 /* london_bridge.mid in Resources */,
+				9485E49D2C14CEC400FAAF44 /* chopin.mxl in Resources */,
+				94D1B8C82BFF46D8009C9D5B /* strings.sf2 in Resources */,
+				94CABF5B2C0D5BE3005A3831 /* chopin_nocturne_op9_no2.mid in Resources */,
+				94D1B8CF2C01FDA9009C9D5B /* minuet_in_g_major.mid in Resources */,
+				94CABF652C0EA0D2005A3831 /* sheetMusicRenderer.html in Resources */,
 				949F2CAA2BABD8DF00FCB8C8 /* electricPiano.sf2 in Resources */,
 				94FAC9222BDD196D00FBD684 /* drums.sf2 in Resources */,
-				94FAC9362BDD873700FBD684 /* farmer_in_the_dell.mid in Resources */,
-				94FAC92E2BDD7D0300FBD684 /* twinkle_little_star.mid in Resources */,
-				94FAC92D2BDD7D0300FBD684 /* old_mac_donald.mid in Resources */,
+				94D1B8CC2BFF485F009C9D5B /* canon_in_d.mid in Resources */,
+				94D1B8D62C020103009C9D5B /* prelude_in_c_major.mid in Resources */,
 				94CEB0A62BB853A10088EF8C /* guitar.sf2 in Resources */,
+				94D1B8C22BFED3F4009C9D5B /* fur_elise.mid in Resources */,
 				94E2E5F42B8CAE980096A41B /* peg.mid in Resources */,
-				94FAC92F2BDD7D0300FBD684 /* whos-afraid-of-the-big-bad-wolf.mid in Resources */,
+				94D1B8D82C0417F5009C9D5B /* moonlight_sonata.mid in Resources */,
 				94CEB0A82BB854E50088EF8C /* brass.sf2 in Resources */,
-				94FAC9312BDD7D0300FBD684 /* zippety-doo-dah.mid in Resources */,
-				94FAC9332BDD7D0300FBD684 /* baabaablacksheep.mid in Resources */,
 				9480B7A72B7EAA3000DDB251 /* Preview Assets.xcassets in Resources */,
 				9480B7A42B7EAA3000DDB251 /* Assets.xcassets in Resources */,
 				94CEB0AA2BB8C5070088EF8C /* itsy_bitsy_spider.mid in Resources */,
 				94CEB09A2BB7A5150088EF8C /* piano.sf2 in Resources */,
 				94CEB0A42BB8536A0088EF8C /* bass.sf2 in Resources */,
+				94CABF632C0EA0A6005A3831 /* opensheetmusicdisplay.min.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +530,7 @@
 				941B22DD2B83E69B006F114B /* PianoConfigurationMenu.swift in Sources */,
 				941B22E02B844506006F114B /* Extensions.swift in Sources */,
 				94EE84802BA7F2880014B06A /* DataController.swift in Sources */,
+				943AC3912C0F248200280C9E /* SheetMusicRenderer.swift in Sources */,
 				9494E6BF2BFA263D00B0F30C /* HelpView.swift in Sources */,
 				941B22D92B83E26B006F114B /* Globals.swift in Sources */,
 				94CD99632B7EE3CC00BF09DE /* PianoRealityView.swift in Sources */,
@@ -502,6 +539,7 @@
 				9463504B2B9E1A2F006CFA88 /* SongCollection.swift in Sources */,
 				9424F43D2BD5FE2F00AD7BFB /* SetupWizard.swift in Sources */,
 				94E6DD2D2BC30989002BDDB0 /* LibraryView.swift in Sources */,
+				94D1B8C02BFED3BD009C9D5B /* ClassicalSongs.swift in Sources */,
 				94D138CE2B8BF322007CEF45 /* PlaybackWidget.swift in Sources */,
 				94CD99682B7F151300BF09DE /* AppState.swift in Sources */,
 				94FAC9382BE070D900FBD684 /* LoadingView.swift in Sources */,

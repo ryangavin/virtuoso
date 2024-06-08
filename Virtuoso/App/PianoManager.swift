@@ -316,7 +316,7 @@ class PianoManager {
 
         // Main visual bar entity
         let entity = ModelEntity(mesh: box, materials: [material])
-        entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
+        // entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
         entity.position = [0, 0.01, -offset]
 
         return entity
@@ -328,12 +328,12 @@ class PianoManager {
 
         // Build up the actual entity - attaching the materials and the mesh
         // Also attach a GroundingShadowComponent so the notes cast shadows
-        let material = SimpleMaterial(color: .systemBlue, isMetallic: false)
+        let material = SimpleMaterial(color: color, isMetallic: false)
         let entity = ModelEntity(mesh: box, materials: [material])
-        entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
+        // entity.components[GroundingShadowComponent.self] = GroundingShadowComponent(castsShadow: true)
 
         // Set the note name
-        let textMesh = MeshResource.generateText(note, extrusionDepth: 0.005, font: .boldSystemFont(ofSize: 0.007))
+        let textMesh = MeshResource.generateText(note, extrusionDepth: 0.005, font: .boldSystemFont(ofSize: 0.01))
         let textMaterial = SimpleMaterial(color: .white, isMetallic: false)
         let textEntity = ModelEntity(mesh: textMesh, materials: [textMaterial])
 

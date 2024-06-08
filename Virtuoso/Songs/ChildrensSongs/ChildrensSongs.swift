@@ -13,6 +13,7 @@ extension SongCollection {
             title: "Children's Songs",
             details: "A collection of children's songs",
             songs: [
+                // Done
                 Song(
                     title: "Itsy Bitsy Spider",
                     artist: "Traditional",
@@ -29,27 +30,6 @@ extension SongCollection {
                         Song.Track(trackNumber: 6, sound: .piano),
                         Song.Track(trackNumber: 7, sound: .piano),
                         Song.Track(trackNumber: 8, sound: .drums),
-                    ]),
-                Song(
-                    title: "Baa Baa Black Sheep",
-                    artist: "Traditional",
-                    details: "A piano arrangement of the classic nursery rhyme",
-                    midiFile: "baabaablacksheep",
-                    midiTracks: [
-                        Song.Track(trackNumber: 0, sound: .piano, hand: .both, lessonTrack: true),
-                    ]),
-                Song(
-                    title: "Farmer in the Dell",
-                    artist: "Traditional",
-                    details: "A piano arrangement of the classic nursery rhyme",
-                    midiFile: "farmer_in_the_dell",
-                    midiTracks: [
-                        Song.Track(trackNumber: 1, sound: .piano, hand: .both, lessonTrack: true),
-                        Song.Track(trackNumber: 2, sound: .guitar),
-                        Song.Track(trackNumber: 3, sound: .brass),
-                        Song.Track(trackNumber: 4, sound: .drums),
-                        Song.Track(trackNumber: 5, sound: .bass),
-
                     ]),
             ])
 }

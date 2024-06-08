@@ -43,7 +43,8 @@ enum DataController {
     }()
 
     static func addDefaults(container: ModelContainer) {
-        container.mainContext.insert(SongCollection.classicRockSongs)
+        //container.mainContext.insert(SongCollection.classicRockSongs)
         container.mainContext.insert(SongCollection.childrensSongs)
+        container.mainContext.insert(SongCollection.classicalSongs)
     }
 }
